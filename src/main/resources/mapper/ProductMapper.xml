@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backend.dao.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.example.backend.model.Product">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="productID" jdbcType="VARCHAR" property="productID" />
+        <result column="productName" jdbcType="VARCHAR" property="productName" />
+        <result column="imageList" jdbcType="VARCHAR" property="imageList" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+        <result column="classification" jdbcType="VARCHAR" property="classification" />
+        <result column="tab" jdbcType="VARCHAR" property="tab" />
+
+    </resultMap>
+
+    <insert id="addProduct" parameterType="com.example.backend.model.Product">
+        INSERT INTO product (productID,productName,imageList,description,classification,tab)
+        values(#{productID},#{productName},#{imageList},#{description},#{classification},#{tab})
+    </insert>
+
+</mapper>

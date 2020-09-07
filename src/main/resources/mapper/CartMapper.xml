@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backend.dao.CartMapper">
+    <resultMap id="BaseResultMap" type="com.example.backend.model.Cart">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="userID" jdbcType="VARCHAR" property="userID" />
+        <result column="productID" jdbcType="VARCHAR" property="productID" />
+        <result column="num" jdbcType="INTEGER" property="num" />
+
+    </resultMap>
+
+    <insert id="addCart" parameterType="com.example.backend.model.Cart" >
+        INSERT INTO cart (userID,productID,num)
+        values (#{userID},#{productID},#{num})
+    </insert>
+
+    <delete id="deleteCart" parameterType="com.example.backend.model.Cart">
+        DELETE FROM cart WHERE userID=#{userID} AND productID=#{productID}
+    </delete>
+
+</mapper>

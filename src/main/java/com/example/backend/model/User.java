@@ -21,7 +21,6 @@ public class User {
 
     private Date registrationTime;
 
-
     public String getUserID() {
         return userID;
     }
