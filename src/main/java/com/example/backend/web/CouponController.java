@@ -1,0 +1,26 @@
+package com.example.backend.web;
+
+import com.example.backend.core.Result;
+import com.example.backend.core.ResultGenerator;
+import com.example.backend.model.Coupon;
+import com.example.backend.service.CouponService;
+import com.example.backend.web.model.MyRequestBody;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+@RestController
+@RequestMapping("/coupon")
+public class CouponController {
+    @Resource
+    private CouponService couponService;
+
+    @PostMapping("/add")
+    public Result addCoupon(@RequestBody Coupon coupon){
+        couponService.addCoupon(coupon);
+        return ResultGenerator.genSuccessResult();
+    }
+}

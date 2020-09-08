@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backend.dao.CouponMapper">
+    <resultMap id="BaseResultMap" type="com.example.backend.model.Coupon">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="couponID" jdbcType="VARCHAR" property="couponID" />
+        <result column="couponName" jdbcType="VARCHAR" property="couponName" />
+        <result column="restriction" jdbcType="INTEGER" property="restriction" />
+        <result column="discount" jdbcType="INTEGER" property="discount" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+
+    </resultMap>
+
+    <insert id="addCoupon" parameterType="com.example.backend.model.Coupon" >
+        INSERT INTO coupon ( couponID,couponName,restriction,discount,description ) values(#{couponID},#{couponName},#{restriction},#{discount},#{description})
+    </insert>
+
+
+</mapper>

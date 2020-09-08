@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backend.dao.UserCouponMapper">
+    <resultMap id="BaseResultMap" type="com.example.backend.model.UserCoupon">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="userID" jdbcType="VARCHAR" property="userID" />
+        <result column="couponID" jdbcType="VARCHAR" property="couponID" />
+        <result column="state" jdbcType="INTEGER" property="state" />
+
+    </resultMap>
+
+    <insert id="getCoupon" parameterType="com.example.backend.model.UserCoupon" >
+        INSERT INTO userCoupon ( userID,couponID,state ) values(#{userID},#{couponID},#{state})
+    </insert>
+
+    <select id="couponList" parameterType="String" resultType="com.example.backend.model.Coupon">
+        SELECT c.couponID,c.couponName,c.restriction,c.discount,c.description
+        FROM userCoupon as u join coupon as c on (u.couponID=c.couponID)
+        WHERE u.userID=#{userID}
+    </select>
+
+</mapper>
