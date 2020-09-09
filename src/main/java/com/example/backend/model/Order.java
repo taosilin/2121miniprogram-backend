@@ -1,6 +1,7 @@
 package com.example.backend.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Order {
@@ -17,11 +18,11 @@ public class Order {
 
     private Double actualPayment;
 
-    private Date orderTime;
+    private Timestamp orderTime;
 
-    private Date paymentTime;
+    private Timestamp paymentTime;
 
-    private Date receiptTime;
+    private Timestamp receiptTime;
 
     private String state;
 
@@ -80,29 +81,6 @@ public class Order {
         this.actualPayment = actualPayment;
     }
 
-    public Date getOrderTime() {
-        return orderTime;
-    }
-
-    public void setOrderTime(Date orderTime) {
-        this.orderTime = orderTime;
-    }
-
-    public Date getPaymentTime() {
-        return paymentTime;
-    }
-
-    public void setPaymentTime(Date paymentTime) {
-        this.paymentTime = paymentTime;
-    }
-
-    public Date getReceiptTime() {
-        return receiptTime;
-    }
-
-    public void setReceiptTime(Date receiptTime) {
-        this.receiptTime = receiptTime;
-    }
 
     public String getState() {
         return state;
@@ -134,5 +112,29 @@ public class Order {
 
     public void setDeliveryMethod(String deliveryMethod) {
         this.deliveryMethod = deliveryMethod;
+    }
+
+    public Timestamp getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(Timestamp orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    public Timestamp getPaymentTime() {
+        return paymentTime;
+    }
+
+    public void setPaymentTime(Timestamp paymentTime) {
+        this.paymentTime = paymentTime;
+    }
+
+    public Timestamp getReceiptTime() {
+        return receiptTime;
+    }
+
+    public void setReceiptTime(Timestamp receiptTime) {
+        this.receiptTime = receiptTime;
     }
 }

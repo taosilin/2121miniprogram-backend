@@ -1,7 +1,5 @@
 package com.example.backend.model;
 
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
-
 import javax.persistence.*;
 
 public class OrderProduct {

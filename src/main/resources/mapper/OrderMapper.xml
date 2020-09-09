@@ -13,9 +13,9 @@
         <result column="totalAmount" jdbcType="DECIMAL" property="totalAmount" />
         <result column="actualPayment" jdbcType="DECIMAL" property="actualPayment" />
 
-        <result column="orderTime" jdbcType="DATE" property="orderTime" />
-        <result column="paymentTime" jdbcType="DATE" property="paymentTime" />
-        <result column="receiptTime" jdbcType="DATE" property="receiptTime" />
+        <result column="orderTime" jdbcType="TIMESTAMP" property="orderTime" />
+        <result column="paymentTime" jdbcType="TIMESTAMP" property="paymentTime" />
+        <result column="receiptTime" jdbcType="TIMESTAMP" property="receiptTime" />
 
         <result column="state" jdbcType="VARCHAR" property="state" />
         <result column="remark" jdbcType="VARCHAR" property="remark" />
@@ -23,4 +23,8 @@
         <result column="deliveryMethod" jdbcType="VARCHAR" property="deliveryMethod" />
     </resultMap>
 
+    <insert id="addOrder" parameterType="com.example.backend.model.Order">
+        INSERT INTO orderTable ( orderID,userID,addressID,couponID,totalAmount,actualPayment,orderTime,paymentTime,receiptTime,state,remark,courierID,deliveryMethod)
+        values (#{orderID},#{userID},#{addressID},#{couponID},#{totalAmount},#{actualPayment},#{orderTime},#{paymentTime},#{receiptTime},#{state},#{remark},#{courierID},#{deliveryMethod})
+    </insert>
 </mapper>

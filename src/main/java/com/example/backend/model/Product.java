@@ -16,6 +16,14 @@ public class Product {
 
     private String tab;
 
+    private String coverImage;
+
+    private String state;
+
+    private String sketch;
+
+    private String keyword;
+
     public String getProductID() {
         return productID;
     }
@@ -62,5 +70,37 @@ public class Product {
 
     public void setTab(String tab) {
         this.tab = tab;
+    }
+
+    public String getCoverImage() {
+        return coverImage;
+    }
+
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getSketch() {
+        return sketch;
+    }
+
+    public void setSketch(String sketch) {
+        this.sketch = sketch;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 }

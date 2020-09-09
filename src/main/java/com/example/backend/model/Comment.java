@@ -1,6 +1,7 @@
 package com.example.backend.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Comment {
@@ -9,7 +10,9 @@ public class Comment {
 
     private String orderID;
 
-    private Date commentTime;
+    private String productID;
+
+    private Timestamp commentTime;
 
     private String commentContent;
 
@@ -19,7 +22,7 @@ public class Comment {
 
     private String reply;
 
-    private Date replyTime;
+    private Timestamp replyTime;
 
     public String getCommentID() {
         return commentID;
@@ -37,13 +40,6 @@ public class Comment {
         this.orderID = orderID;
     }
 
-    public Date getCommentTime() {
-        return commentTime;
-    }
-
-    public void setCommentTime(Date commentTime) {
-        this.commentTime = commentTime;
-    }
 
     public String getCommentContent() {
         return commentContent;
@@ -77,11 +73,28 @@ public class Comment {
         this.reply = reply;
     }
 
-    public Date getReplyTime() {
+
+    public String getProductID() {
+        return productID;
+    }
+
+    public void setProductID(String productID) {
+        this.productID = productID;
+    }
+
+    public Timestamp getCommentTime() {
+        return commentTime;
+    }
+
+    public void setCommentTime(Timestamp commentTime) {
+        this.commentTime = commentTime;
+    }
+
+    public Timestamp getReplyTime() {
         return replyTime;
     }
 
-    public void setReplyTime(Date replyTime) {
+    public void setReplyTime(Timestamp replyTime) {
         this.replyTime = replyTime;
     }
 }

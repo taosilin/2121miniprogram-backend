@@ -11,12 +11,16 @@
         <result column="description" jdbcType="VARCHAR" property="description" />
         <result column="classification" jdbcType="VARCHAR" property="classification" />
         <result column="tab" jdbcType="VARCHAR" property="tab" />
+        <result column="coverImage" jdbcType="VARCHAR" property="coverImage" />
+        <result column="state" jdbcType="VARCHAR" property="state" />
+        <result column="sketch" jdbcType="VARCHAR" property="sketch" />
+        <result column="keyword" jdbcType="VARCHAR" property="keyword" />
 
     </resultMap>
 
     <insert id="addProduct" parameterType="com.example.backend.model.Product">
-        INSERT INTO product (productID,productName,imageList,description,classification,tab)
-        values(#{productID},#{productName},#{imageList},#{description},#{classification},#{tab})
+        INSERT INTO product (productID,productName,imageList,description,classification,tab,coverImage,state,sketch,keyword)
+        values(#{productID},#{productName},#{imageList},#{description},#{classification},#{tab},#{coverImage},#{state},#{sketch},#{keyword})
     </insert>
 
     <select id="productDetail" parameterType="String" resultType="com.example.backend.model.Product">

@@ -14,4 +14,9 @@
 
     </resultMap>
 
+    <insert id="addOrderProduct" parameterType="com.example.backend.model.OrderProduct">
+        INSERT INTO orderProduct ( orderID,productID,specID,state,num,price )
+        values ( #{orderID},#{productID},#{specID},#{state},#{num},#{price} )
+    </insert>
+
 </mapper>
