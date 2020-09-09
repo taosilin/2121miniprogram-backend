@@ -16,4 +16,10 @@
         values (#{attributeID},#{productID},#{attributeName})
     </insert>
 
+    <select id="attributeList" parameterType="String" resultType="com.example.backend.model.Attribute">
+        SELECT attributeID,productID,attributeName
+        FROM attribute
+        WHERE productID=#{productID}
+    </select>
+
 </mapper>

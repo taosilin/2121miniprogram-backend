@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backend.dao.SpecMapper">
+    <resultMap id="BaseResultMap" type="com.example.backend.model.Spec">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="specID" jdbcType="VARCHAR" property="specID" />
+        <result column="productID" jdbcType="VARCHAR" property="productID" />
+        <result column="productSpec" jdbcType="VARCHAR" property="productSpec" />
+        <result column="quantity" jdbcType="INTEGER" property="quantity" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="specImage" jdbcType="VARCHAR" property="specImage" />
+
+    </resultMap>
+
+    <insert id="addSpec" parameterType="com.example.backend.model.Spec">
+        INSERT INTO spec ( specID,productID,productSpec,quantity,price,specImage )
+        values (#{specID},#{productID},#{productSpec},#{quantity},#{price},#{specImage})
+    </insert>
+
+    <select id="specList" parameterType="String" resultType="com.example.backend.model.Spec">
+        SELECT specID,productID,productSpec,quantity,price,specImage
+        FROM spec
+        WHERE productID=#{productID}
+    </select>
+
+</mapper>

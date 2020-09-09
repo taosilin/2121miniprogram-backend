@@ -1,10 +1,9 @@
 package com.example.backend.service.impl;
 
 import com.example.backend.core.ServiceException;
-import com.example.backend.dao.AttributeMapper;
-import com.example.backend.model.Attribute;
-import com.example.backend.model.Value;
-import com.example.backend.service.AttributeService;
+import com.example.backend.dao.SpecMapper;
+import com.example.backend.model.Spec;
+import com.example.backend.service.SpecService;
 import com.example.backend.core.AbstractService;
 
 import java.util.ArrayList;
@@ -19,12 +18,11 @@ import javax.annotation.Resource;
 
 @Service
 @Transactional
-public class AttributeServiceImpl extends AbstractService<Attribute> implements AttributeService{
+public class SpecServiceImpl extends AbstractService<Spec> implements SpecService{
     @Resource
-    private AttributeMapper attributeMapper;
+    private SpecMapper specMapper;
 
-    public void addAttribute(Attribute a){
-        attributeMapper.addAttribute(a);
+    public void addSpec(Spec s){
+        specMapper.addSpec(s);
     }
-
 }

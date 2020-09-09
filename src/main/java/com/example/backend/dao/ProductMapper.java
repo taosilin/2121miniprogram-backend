@@ -6,4 +6,5 @@ import org.apache.ibatis.annotations.Param;
 
 public interface ProductMapper extends Mapper<Product> {
     public void addProduct(Product p);
+    public Product productDetail(@Param("productID") String productID);
 }

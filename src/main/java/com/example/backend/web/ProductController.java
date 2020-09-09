@@ -6,6 +6,7 @@ import com.example.backend.model.Product;
 import com.example.backend.model.User;
 import com.example.backend.service.ProductService;
 import com.example.backend.web.model.MyRequestBody;
+import com.example.backend.web.model.ProductDetail;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
@@ -23,5 +24,11 @@ public class ProductController {
     public Result addProduct(@RequestBody Product product) {
         productService.addProduct(product);
         return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping("/detail")
+    public Result productDetail(@RequestBody Product product){
+        ProductDetail p = productService.productDetail(product.getProductID());
+        return ResultGenerator.genSuccessResult(p);
     }
 }

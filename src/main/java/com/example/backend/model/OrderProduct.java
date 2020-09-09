@@ -16,6 +16,8 @@ public class OrderProduct {
 
     private Integer num;
 
+    private Double price;
+
     public String getOrderID() {
         return orderID;
     }
@@ -54,5 +56,13 @@ public class OrderProduct {
 
     public void setNum(Integer num) {
         this.num = num;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

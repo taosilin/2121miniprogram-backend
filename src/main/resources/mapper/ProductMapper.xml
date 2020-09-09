@@ -19,4 +19,9 @@
         values(#{productID},#{productName},#{imageList},#{description},#{classification},#{tab})
     </insert>
 
+    <select id="productDetail" parameterType="String" resultType="com.example.backend.model.Product">
+        SELECT *
+        FROM product
+        WHERE productID=#{productID}
+    </select>
 </mapper>

@@ -20,6 +20,10 @@ public class Address {
 
     private String detail;
 
+    private String defaultAdd;
+
+    private String zipCode;
+
     public String getAddressID() {
         return addressID;
     }
@@ -82,5 +86,21 @@ public class Address {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public String getDefaultAdd() {
+        return defaultAdd;
+    }
+
+    public void setDefaultAdd(String defaultAdd) {
+        this.defaultAdd = defaultAdd;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 }
