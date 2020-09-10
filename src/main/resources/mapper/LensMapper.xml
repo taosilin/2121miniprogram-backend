@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backend.dao.LensMapper">
+    <resultMap id="BaseResultMap" type="com.example.backend.model.Lens">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="lensID" jdbcType="VARCHAR" property="lensID" />
+        <result column="lensName" jdbcType="VARCHAR" property="lensName" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="refractiveIndex" jdbcType="VARCHAR" property="refractiveIndex" />
+        <result column="material" jdbcType="VARCHAR" property="material" />
+        <result column="radian" jdbcType="VARCHAR" property="radian" />
+        <result column="variety" jdbcType="VARCHAR" property="variety" />
+        <result column="film" jdbcType="VARCHAR" property="film" />
+        <result column="design" jdbcType="VARCHAR" property="design" />
+        <result column="state" jdbcType="VARCHAR" property="state" />
+        <result column="stock" jdbcType="VARCHAR" property="stock" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+
+    </resultMap>
+
+    <insert id="addLens" parameterType="com.example.backend.model.Lens">
+        INSERT INTO lens ( lensID,lensName,price,refractiveIndex,material,radian,variety,film,design,state,stock,description )
+        values (#{lensID},#{lensName},#{price},#{refractiveIndex},#{material},#{radian},#{variety},#{film},#{design},#{state},#{stock},#{description})
+    </insert>
+
+</mapper>

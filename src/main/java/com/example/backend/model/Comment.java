@@ -12,6 +12,8 @@ public class Comment {
 
     private String productID;
 
+    private String userID;
+
     private Timestamp commentTime;
 
     private String commentContent;
@@ -96,5 +98,13 @@ public class Comment {
 
     public void setReplyTime(Timestamp replyTime) {
         this.replyTime = replyTime;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 }

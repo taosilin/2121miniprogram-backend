@@ -8,6 +8,7 @@
         <id column="commentID" jdbcType="VARCHAR" property="commentID" />
         <result column="orderID" jdbcType="VARCHAR" property="orderID" />
         <result column="productID" jdbcType="VARCHAR" property="productID" />
+        <result column="userID" jdbcType="VARCHAR" property="userID" />
         <result column="commentTime" jdbcType="TIMESTAMP" property="commentTime" />
         <result column="commentContent" jdbcType="VARCHAR" property="commentContent" />
         <result column="evaluation" jdbcType="VARCHAR" property="evaluation" />
@@ -18,8 +19,19 @@
     </resultMap>
 
     <insert id="addComment" parameterType="com.example.backend.model.Comment">
-        INSERT INTO comment ( commentID,orderID,productID,commentTime,commentContent,evaluation,commentPhoto,reply,replyTime )
-        values (#{commentID},#{orderID},#{productID},#{commentTime},#{commentContent},#{evaluation},#{commentPhoto},#{reply},#{replyTime})
+        INSERT INTO comment ( commentID,orderID,productID,userID,commentTime,commentContent,evaluation,commentPhoto,reply,replyTime )
+        values (#{commentID},#{orderID},#{productID},#{userID},#{commentTime},#{commentContent},#{evaluation},#{commentPhoto},#{reply},#{replyTime})
     </insert>
 
+    <update id="replyComment" parameterType="com.example.backend.web.model.ReplyRequest">
+        UPDATE comment
+        SET reply=#{reply}, replyTime=#{replyTime}
+        WHERE commentID=#{commentID}
+    </update>
+
+    <select id="commentList" parameterType="String" resultType="com.example.backend.model.Comment">
+        SELECT *
+        FROM comment
+        WHERE productID=#{productID}
+    </select>
 </mapper>
