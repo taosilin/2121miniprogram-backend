@@ -19,4 +19,9 @@
         values ( #{orderID},#{productID},#{specID},#{state},#{num},#{price} )
     </insert>
 
+    <select id="findOrderProduct" parameterType="String" resultType="com.example.backend.model.OrderProduct">
+        SELECT *
+        FROM orderProduct
+        WHERE orderID=#{orderID}
+    </select>
 </mapper>

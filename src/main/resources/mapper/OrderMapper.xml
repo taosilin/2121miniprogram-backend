@@ -27,4 +27,17 @@
         INSERT INTO orderTable ( orderID,userID,addressID,couponID,totalAmount,actualPayment,orderTime,paymentTime,receiptTime,state,remark,courierID,deliveryMethod)
         values (#{orderID},#{userID},#{addressID},#{couponID},#{totalAmount},#{actualPayment},#{orderTime},#{paymentTime},#{receiptTime},#{state},#{remark},#{courierID},#{deliveryMethod})
     </insert>
+
+    <select id="findByOrderID" parameterType="String" resultType="com.example.backend.model.Order">
+        SELECT *
+        FROM orderTable
+        WHERE orderID=#{orderID}
+    </select>
+
+    <select id="findByUserID" parameterType="String" resultType="com.example.backend.model.Order">
+        SELECT *
+        FROM orderTable
+        WHERE userID=#{userID}
+    </select>
+
 </mapper>

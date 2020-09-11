@@ -7,4 +7,5 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 public interface OrderProductMapper extends Mapper<OrderProduct> {
     public void addOrderProduct(OrderProduct o);
+    public List<OrderProduct> findOrderProduct(@Param("orderID") String orderID);
 }

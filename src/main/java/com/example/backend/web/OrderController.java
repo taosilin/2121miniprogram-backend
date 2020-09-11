@@ -24,4 +24,16 @@ public class OrderController {
         orderService.addOrder(orderRequest);
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/detail")
+    public Result orderDetail(@RequestBody Order order){
+        OrderRequest orderRequest = orderService.orderDetail(order.getOrderID());
+        return ResultGenerator.genSuccessResult(orderRequest);
+    }
+
+    @PostMapping("/userlist")
+    public Result userOrderList(@RequestBody Order order){
+        List<OrderRequest> list = orderService.userOrderList(order.getUserID());
+        return ResultGenerator.genSuccessResult(list);
+    }
 }

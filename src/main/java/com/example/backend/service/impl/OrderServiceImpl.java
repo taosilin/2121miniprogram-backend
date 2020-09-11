@@ -1,9 +1,11 @@
 package com.example.backend.service.impl;
 
 import com.example.backend.core.ServiceException;
+import com.example.backend.dao.OrderFrameMapper;
 import com.example.backend.dao.OrderMapper;
 import com.example.backend.dao.OrderProductMapper;
 import com.example.backend.model.Order;
+import com.example.backend.model.OrderFrame;
 import com.example.backend.model.OrderProduct;
 import com.example.backend.service.OrderService;
 import com.example.backend.core.AbstractService;
@@ -28,10 +30,37 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
     @Resource
     private OrderProductMapper orderProductMapper;
 
+    @Resource
+    private OrderFrameMapper orderFrameMapper;
+
     public void addOrder(OrderRequest o){
         orderMapper.addOrder(o.order);
         for (OrderProduct product:o.products){
             orderProductMapper.addOrderProduct(product);
         }
+        for (OrderFrame frame:o.frames){
+            orderFrameMapper.addOrderFrame(frame);
+        }
+    }
+
+    public OrderRequest orderDetail(String orderID){
+        OrderRequest orderRequest = new OrderRequest();
+        orderRequest.order = orderMapper.findByOrderID(orderID);
+        orderRequest.products = orderProductMapper.findOrderProduct(orderID);
+        orderRequest.frames = orderFrameMapper.findOrderFrame(orderID);
+        return orderRequest;
+    }
+
+    public List<OrderRequest> userOrderList(String userID){
+        List<OrderRequest> orderRequests = new ArrayList<>();
+        List<Order> orders = orderMapper.findByUserID(userID);
+        for (Order order:orders){
+            OrderRequest orderRequest = new OrderRequest();
+            orderRequest.order = order;
+            orderRequest.products = orderProductMapper.findOrderProduct(order.getOrderID());
+            orderRequest.frames = orderFrameMapper.findOrderFrame(order.getOrderID());
+            orderRequests.add(orderRequest);
+        }
+        return orderRequests;
     }
 }

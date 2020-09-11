@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backend.dao.OrderFrameMapper">
+    <resultMap id="BaseResultMap" type="com.example.backend.model.OrderFrame">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="orderID" jdbcType="VARCHAR" property="orderID" />
+        <result column="frameID" jdbcType="VARCHAR" property="frameID" />
+        <result column="lensID" jdbcType="VARCHAR" property="lensID" />
+        <result column="state" jdbcType="VARCHAR" property="state" />
+        <result column="num" jdbcType="INTEGER" property="num" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="leftDegree" jdbcType="DECIMAL" property="leftDegree" />
+        <result column="rightDegree" jdbcType="DECIMAL" property="rightDegree" />
+        <result column="interpupillary" jdbcType="INTEGER" property="interpupillary" />
+        <result column="leftAstigmatism" jdbcType="DECIMAL" property="leftAstigmatism" />
+        <result column="rightAstigmatism" jdbcType="DECIMAL" property="rightAstigmatism" />
+        <result column="leftAxis" jdbcType="INTEGER" property="leftAxis" />
+        <result column="rightAxis" jdbcType="INTEGER" property="rightAxis" />
+    </resultMap>
+
+    <insert id="addOrderFrame" parameterType="com.example.backend.model.OrderFrame">
+        INSERT INTO orderFrame ( orderID,frameID,lensID,state,num,price,leftDegree,rightDegree,interpupillary,leftAstigmatism,rightAstigmatism,leftAxis,rightAxis )
+        values ( #{orderID},#{frameID},#{lensID},#{state},#{num},#{price},#{leftDegree},#{rightDegree},#{interpupillary},#{leftAstigmatism},#{rightAstigmatism},#{leftAxis},#{rightAxis} )
+    </insert>
+
+    <select id="findOrderFrame" parameterType="String" resultType="com.example.backend.model.OrderFrame">
+        SELECT *
+        FROM orderFrame
+        WHERE orderID=#{orderID}
+    </select>
+
+</mapper>

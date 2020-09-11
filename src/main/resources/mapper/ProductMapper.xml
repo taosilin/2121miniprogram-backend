@@ -28,4 +28,10 @@
         FROM product
         WHERE productID=#{productID}
     </select>
+
+    <update id="updateProduct" parameterType="com.example.backend.model.Product">
+        UPDATE product
+        SET productName=#{productName},imageList=#{imageList},description=#{description},classification=#{classification},tab=#{tab},coverImage=#{coverImage},state=#{state},sketch=#{sketch},keyword=#{keyword}
+        WHERE productID=#{productID}
+    </update>
 </mapper>

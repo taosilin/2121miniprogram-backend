@@ -7,4 +7,5 @@ import com.example.backend.web.model.ProductDetail;
 public interface ProductService extends Service<Product> {
     void addProduct(Product p);
     ProductDetail productDetail(String productID);
+    void updateProduct (Product p);
 }

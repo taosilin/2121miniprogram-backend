@@ -53,4 +53,8 @@ public class ProductServiceImpl extends AbstractService<Product> implements Prod
         p.attributes = valueLists;
         return p;
     }
+
+    public void updateProduct(Product p){
+        productMapper.updateProduct(p);
+    }
 }

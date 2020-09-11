@@ -31,4 +31,10 @@ public class ProductController {
         ProductDetail p = productService.productDetail(product.getProductID());
         return ResultGenerator.genSuccessResult(p);
     }
+
+    @PostMapping("/update")
+    public Result updateProduct(@RequestBody Product product){
+        productService.updateProduct(product);
+        return ResultGenerator.genSuccessResult();
+    }
 }
