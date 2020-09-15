@@ -28,4 +28,10 @@
         values (#{frameID},#{frameName},#{price},#{material},#{shape},#{nosePad},#{dimension},#{state},#{imageList},#{description},#{classification},#{tab},#{coverImage},#{sketch},#{keyword})
     </insert>
 
+    <select id="frameList" resultType="com.example.backend.model.Frame">
+        SELECT *
+        FROM frame
+        limit #{page},#{size}
+    </select>
+
 </mapper>

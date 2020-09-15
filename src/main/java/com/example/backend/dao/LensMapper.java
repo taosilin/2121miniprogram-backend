@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface LensMapper extends Mapper<Lens> {
     public void addLens(Lens l);
+    public List<Lens> lensList(@Param("page")Integer page,@Param("size")Integer size);
 }

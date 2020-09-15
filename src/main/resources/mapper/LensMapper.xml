@@ -25,4 +25,9 @@
         values (#{lensID},#{lensName},#{price},#{refractiveIndex},#{material},#{radian},#{variety},#{film},#{design},#{state},#{stock},#{description})
     </insert>
 
+    <select id="lensList" resultType="com.example.backend.model.Lens">
+        SELECT *
+        FROM lens
+        limit #{page},#{size}
+    </select>
 </mapper>

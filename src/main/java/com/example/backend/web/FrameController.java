@@ -23,4 +23,10 @@ public class FrameController {
         frameService.addFrame(frame);
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/list")
+    public Result frameList(@RequestBody MyRequestBody myRequestBody){
+        List<Frame> list = frameService.frameList(myRequestBody.page,myRequestBody.size);
+        return ResultGenerator.genSuccessResult(list);
+    }
 }

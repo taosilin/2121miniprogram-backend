@@ -23,4 +23,10 @@ public class LensController {
         lensService.addLens(lens);
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/list")
+    public Result lensList(@RequestBody MyRequestBody myRequestBody){
+        List<Lens> list = lensService.lensList(myRequestBody.page, myRequestBody.size);
+        return ResultGenerator.genSuccessResult(list);
+    }
 }

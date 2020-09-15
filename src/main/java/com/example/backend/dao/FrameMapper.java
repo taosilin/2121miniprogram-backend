@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface FrameMapper extends Mapper<Frame> {
     public void addFrame(Frame f);
+    public List<Frame> frameList(@Param("page")Integer page, @Param("size")Integer size);
 }

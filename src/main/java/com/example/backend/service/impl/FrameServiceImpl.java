@@ -25,4 +25,8 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
     public void addFrame(Frame f){
         frameMapper.addFrame(f);
     }
+
+    public List<Frame> frameList(Integer page,Integer size){
+        return frameMapper.frameList(page*size,size);
+    }
 }
