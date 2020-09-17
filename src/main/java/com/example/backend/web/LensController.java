@@ -29,4 +29,16 @@ public class LensController {
         List<Lens> list = lensService.lensList(myRequestBody.page, myRequestBody.size);
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/update")
+    public Result updateLens(@RequestBody Lens lens){
+        lensService.updateLens(lens);
+        return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping("/delete")
+    public Result deleteLens(@RequestBody Lens lens){
+        lensService.deleteLens(lens.getLensID());
+        return ResultGenerator.genSuccessResult();
+    }
 }

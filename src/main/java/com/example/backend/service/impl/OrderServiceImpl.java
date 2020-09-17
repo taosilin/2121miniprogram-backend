@@ -63,4 +63,8 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
         }
         return orderRequests;
     }
+
+    public List<Order> orderList(Integer page,Integer size){
+        return orderMapper.orderList(page*size,size);
+    }
 }

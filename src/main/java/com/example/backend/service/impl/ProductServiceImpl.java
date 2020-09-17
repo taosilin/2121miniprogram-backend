@@ -57,4 +57,8 @@ public class ProductServiceImpl extends AbstractService<Product> implements Prod
     public void updateProduct(Product p){
         productMapper.updateProduct(p);
     }
+
+    public List<Product> productList(Integer page,Integer size){
+        return productMapper.productList(page*size, size);
+    }
 }

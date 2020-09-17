@@ -10,4 +10,5 @@ public interface OrderService extends Service<Order> {
     void addOrder(OrderRequest o);
     OrderRequest orderDetail(String orderID);
     List<OrderRequest> userOrderList(String userID);
+    List<Order> orderList(Integer page,Integer size);
 }

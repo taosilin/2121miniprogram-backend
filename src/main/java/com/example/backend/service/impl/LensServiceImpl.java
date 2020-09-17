@@ -30,4 +30,12 @@ public class LensServiceImpl extends AbstractService<Lens> implements LensServic
     public List<Lens> lensList(Integer page,Integer size){
        return lensMapper.lensList(page*size, size);
     }
+
+    public void updateLens(Lens l){
+        lensMapper.updateLens(l);
+    }
+
+    public void deleteLens(String lensID){
+        lensMapper.deleteLens(lensID);
+    }
 }

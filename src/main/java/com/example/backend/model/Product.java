@@ -8,6 +8,10 @@ public class Product {
 
     private String productName;
 
+    private String sketch;
+
+    private String coverImage;
+
     private String imageList;
 
     private String description;
@@ -16,13 +20,9 @@ public class Product {
 
     private String tab;
 
-    private String coverImage;
+    private String keyword;
 
     private String state;
-
-    private String sketch;
-
-    private String keyword;
 
     public String getProductID() {
         return productID;

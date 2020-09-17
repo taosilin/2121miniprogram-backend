@@ -36,4 +36,10 @@ public class OrderController {
         List<OrderRequest> list = orderService.userOrderList(order.getUserID());
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/list")
+    public Result orderList(@RequestBody MyRequestBody myRequestBody){
+        List<Order> list = orderService.orderList(myRequestBody.page, myRequestBody.size);
+        return ResultGenerator.genSuccessResult(list);
+    }
 }
