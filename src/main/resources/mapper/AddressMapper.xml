@@ -39,4 +39,10 @@
         FROM address
         WHERE userID=#{userID}
     </select>
+
+    <select id="findByAddressID" parameterType="String" resultType="com.example.backend.model.Address">
+        SELECT *
+        FROM address
+        WHERE addressID=#{addressID}
+    </select>
 </mapper>

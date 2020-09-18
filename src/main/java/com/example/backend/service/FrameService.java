@@ -8,4 +8,5 @@ import java.util.List;
 public interface FrameService extends Service<Frame> {
     void addFrame(Frame f);
     List<Frame> frameList(Integer page,Integer size);
+    Frame findByFrameID(String frameID);
 }

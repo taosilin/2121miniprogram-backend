@@ -39,4 +39,10 @@ public class AddressController {
         List<Address> list = addressService.userAddressList(a.getUserID());
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/detail")
+    public Result findByAddressID(@RequestBody Address a){
+        Address address = addressService.findByAddressID(a.getAddressID());
+        return ResultGenerator.genSuccessResult(address);
+    }
 }

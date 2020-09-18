@@ -17,5 +17,15 @@
         INSERT INTO coupon ( couponID,couponName,restriction,discount,description ) values(#{couponID},#{couponName},#{restriction},#{discount},#{description})
     </insert>
 
+    <select id="findByCouponID" parameterType="String" resultType="com.example.backend.model.Coupon">
+        SELECT *
+        FROM coupon
+        WHERE couponID=#{couponID}
+    </select>
 
+    <select id="couponList" resultType="com.example.backend.model.Coupon">
+        SELECT *
+        FROM coupon
+        limit #{page},#{size}
+    </select>
 </mapper>

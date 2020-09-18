@@ -25,4 +25,12 @@ public class CouponServiceImpl extends AbstractService<Coupon> implements Coupon
     public void addCoupon(Coupon c){
         couponMapper.addCoupon(c);
     }
+
+    public Coupon findByCouponID(String couponID){
+        return couponMapper.findByCouponID(couponID);
+    }
+
+    public List<Coupon> couponList(Integer page,Integer size){
+        return couponMapper.couponList(page*size, size);
+    }
 }

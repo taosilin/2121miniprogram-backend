@@ -30,4 +30,10 @@ public class FrameController {
         List<Frame> list = frameService.frameList(myRequestBody.page,myRequestBody.size);
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/detail")
+    public Result findByFrameID(@RequestBody Frame f){
+        Frame frame = frameService.findByFrameID(f.getFrameID());
+        return ResultGenerator.genSuccessResult(frame);
+    }
 }

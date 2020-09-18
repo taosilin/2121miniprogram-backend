@@ -29,4 +29,8 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
     public List<Frame> frameList(Integer page,Integer size){
         return frameMapper.frameList(page*size,size);
     }
+
+    public Frame findByFrameID(String frameID){
+        return frameMapper.findByFrameID(frameID);
+    }
 }

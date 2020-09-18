@@ -34,4 +34,8 @@ public class AddressServiceImpl extends AbstractService<Address> implements Addr
     public List<Address> userAddressList(String userID){
         return addressMapper.userAddressList(userID);
     }
+
+    public Address findByAddressID(String addressID){
+        return addressMapper.findByAddressID(addressID);
+    }
 }

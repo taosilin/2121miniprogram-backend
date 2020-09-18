@@ -11,4 +11,5 @@ public interface AddressMapper extends Mapper<Address>{
     public void deleteByAddressID(String addressID);
     public void updateAddress(Address a);
     public List<Address> userAddressList(String userID);
+    public Address findByAddressID(@Param("addressID") String addressID);
 }

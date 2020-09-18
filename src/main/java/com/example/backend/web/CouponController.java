@@ -23,4 +23,16 @@ public class CouponController {
         couponService.addCoupon(coupon);
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/detail")
+    public Result findByCouponID(@RequestBody Coupon c){
+        Coupon coupon = couponService.findByCouponID(c.getCouponID());
+        return ResultGenerator.genSuccessResult(coupon);
+    }
+
+    @PostMapping("/list")
+    public Result couponList(@RequestBody MyRequestBody myRequestBody){
+        List<Coupon> list = couponService.couponList(myRequestBody.page, myRequestBody.size);
+        return ResultGenerator.genSuccessResult(list);
+    }
 }

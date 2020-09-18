@@ -8,4 +8,5 @@ public interface AddressService extends Service<Address>{
     void deleteByAddressID(String addressID);
     void updateAddress(Address a);
     List<Address> userAddressList(String userID);
+    Address findByAddressID(String addressID);
 }
