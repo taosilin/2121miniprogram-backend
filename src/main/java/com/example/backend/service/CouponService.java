@@ -9,4 +9,5 @@ public interface CouponService extends Service<Coupon> {
     void addCoupon(Coupon c);
     Coupon findByCouponID(String couponID);
     List<Coupon> couponList(Integer page,Integer size);
+    void deleteCoupon(String couponID);
 }

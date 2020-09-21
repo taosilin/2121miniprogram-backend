@@ -37,4 +37,10 @@ public class CommentController {
         List<UserComment> list = commentService.commentList(comment.getProductID());
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/all")
+    public Result allComment(@RequestBody MyRequestBody myRequestBody){
+        List<Comment> list = commentService.allComment(myRequestBody.page, myRequestBody.size);
+        return ResultGenerator.genSuccessResult(list);
+    }
 }

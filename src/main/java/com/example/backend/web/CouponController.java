@@ -35,4 +35,10 @@ public class CouponController {
         List<Coupon> list = couponService.couponList(myRequestBody.page, myRequestBody.size);
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/delete")
+    public Result deleteCoupon(@RequestBody Coupon coupon){
+        couponService.deleteCoupon(coupon.getCouponID());
+        return ResultGenerator.genSuccessResult();
+    }
 }

@@ -7,14 +7,15 @@
         -->
         <id column="couponID" jdbcType="VARCHAR" property="couponID" />
         <result column="couponName" jdbcType="VARCHAR" property="couponName" />
-        <result column="restriction" jdbcType="INTEGER" property="restriction" />
-        <result column="discount" jdbcType="INTEGER" property="discount" />
+        <result column="restriction" jdbcType="DECIMAL" property="restriction" />
+        <result column="discount" jdbcType="DECIMAL" property="discount" />
         <result column="description" jdbcType="VARCHAR" property="description" />
-
+        <result column="productType" jdbcType="VARCHAR" property="productType" />
+        <result column="timeLimit" jdbcType="INTEGER" property="timeLimit" />
     </resultMap>
 
     <insert id="addCoupon" parameterType="com.example.backend.model.Coupon" >
-        INSERT INTO coupon ( couponID,couponName,restriction,discount,description ) values(#{couponID},#{couponName},#{restriction},#{discount},#{description})
+        INSERT INTO coupon ( couponID,couponName,restriction,discount,description,productType,timeLimit ) values(#{couponID},#{couponName},#{restriction},#{discount},#{description},#{productType},#{timeLimit})
     </insert>
 
     <select id="findByCouponID" parameterType="String" resultType="com.example.backend.model.Coupon">
@@ -28,4 +29,8 @@
         FROM coupon
         limit #{page},#{size}
     </select>
+
+    <delete id="deleteCoupon" parameterType="String">
+        DELETE FROM coupon WHERE couponID=#{couponID}
+    </delete>
 </mapper>

@@ -34,4 +34,10 @@
         FROM comment
         WHERE productID=#{productID}
     </select>
+    
+    <select id="allComment" resultType="com.example.backend.model.Comment">
+        SELECT *
+        FROM comment
+        limit #{page},#{size}
+    </select>
 </mapper>

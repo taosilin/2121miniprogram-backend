@@ -33,4 +33,8 @@ public class CouponServiceImpl extends AbstractService<Coupon> implements Coupon
     public List<Coupon> couponList(Integer page,Integer size){
         return couponMapper.couponList(page*size, size);
     }
+
+    public void deleteCoupon(String couponID){
+        couponMapper.deleteCoupon(couponID);
+    }
 }

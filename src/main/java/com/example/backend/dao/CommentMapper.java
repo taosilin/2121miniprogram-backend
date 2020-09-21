@@ -11,4 +11,5 @@ public interface CommentMapper extends Mapper<Comment> {
     public void addComment(Comment c);
     public void replyComment(ReplyRequest r);
     public List<Comment> commentList(@Param("productID") String productID);
+    public List<Comment> allComment(@Param("page")Integer page,@Param("size")Integer size);
 }

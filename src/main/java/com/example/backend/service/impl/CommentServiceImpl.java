@@ -47,4 +47,8 @@ public class CommentServiceImpl extends AbstractService<Comment> implements Comm
         }
         return userComments;
     }
+
+    public List<Comment> allComment(Integer page,Integer size){
+        return commentMapper.allComment(page*size, size);
+    }
 }

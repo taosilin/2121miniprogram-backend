@@ -8,11 +8,15 @@ public class Coupon {
 
     private String couponName;
 
-    private Integer restriction;
+    private Double restriction;
 
-    private Integer discount;
+    private Double discount;
 
     private String description;
+
+    private String productType;
+
+    private Integer timeLimit;
 
     public String getCouponID() {
         return couponID;
@@ -30,27 +34,43 @@ public class Coupon {
         this.couponName = couponName;
     }
 
-    public Integer getRestriction() {
-        return restriction;
-    }
-
-    public void setRestriction(Integer restriction) {
-        this.restriction = restriction;
-    }
-
-    public Integer getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Integer discount) {
-        this.discount = discount;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
+    }
+
+    public Integer getTimeLimit() {
+        return timeLimit;
+    }
+
+    public void setTimeLimit(Integer timeLimit) {
+        this.timeLimit = timeLimit;
+    }
+
+    public Double getRestriction() {
+        return restriction;
+    }
+
+    public void setRestriction(Double restriction) {
+        this.restriction = restriction;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
     }
 }
