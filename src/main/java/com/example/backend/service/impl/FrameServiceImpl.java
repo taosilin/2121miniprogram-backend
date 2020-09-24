@@ -33,4 +33,12 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
     public Frame findByFrameID(String frameID){
         return frameMapper.findByFrameID(frameID);
     }
+
+    public void updateFrame(Frame f){
+        frameMapper.updateFrame(f);
+    }
+
+    public void deleteFrame(String frameID){
+        frameMapper.deleteFrame(frameID);
+    }
 }

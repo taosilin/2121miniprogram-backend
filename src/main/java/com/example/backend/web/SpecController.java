@@ -23,4 +23,16 @@ public class SpecController {
         specService.addSpec(spec);
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/delete")
+    public Result deleteSpec(@RequestBody Spec spec){
+        specService.deleteSpec(spec.getSpecID());
+        return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping("/update")
+    public Result updateSpec(@RequestBody Spec spec){
+        specService.updateSpec(spec);
+        return ResultGenerator.genSuccessResult();
+    }
 }

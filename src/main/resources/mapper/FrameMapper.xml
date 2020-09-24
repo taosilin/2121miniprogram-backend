@@ -39,4 +39,15 @@
         FROM frame
         WHERE frameID=#{frameID}
     </select>
+
+    <update id="updateFrame" parameterType="com.example.backend.model.Frame">
+        UPDATE frame
+        SET frameName=#{frameName},price=#{price},material=#{material},shape=#{shape},nosePad=#{nosePad},dimension=#{dimension},state=#{state},imageList=#{imageList},description=#{description},classification=#{classification},tab=#{tab},coverImage=#{coverImage},sketch=#{sketch},keyword=#{keyword}
+        WHERE frameID=#{frameID}
+    </update>
+
+    <delete id="deleteFrame" parameterType="String">
+        DELETE FROM frame WHERE frameID=#{frameID}
+    </delete>
+
 </mapper>

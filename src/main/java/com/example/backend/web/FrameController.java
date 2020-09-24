@@ -36,4 +36,16 @@ public class FrameController {
         Frame frame = frameService.findByFrameID(f.getFrameID());
         return ResultGenerator.genSuccessResult(frame);
     }
+
+    @PostMapping("/update")
+    public Result updateFrame(@RequestBody Frame f){
+        frameService.updateFrame(f);
+        return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping("/delete")
+    public Result deleteFrame(@RequestBody Frame f){
+        frameService.deleteFrame(f.getFrameID());
+        return ResultGenerator.genSuccessResult();
+    }
 }

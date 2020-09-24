@@ -8,4 +8,6 @@ import java.util.List;
 public interface SpecMapper extends Mapper<Spec> {
     public void addSpec(Spec s);
     public List<Spec> specList(@Param("productID") String productID);
+    public void deleteSpec(@Param("specID")String specID);
+    public void updateSpec(Spec s);
 }

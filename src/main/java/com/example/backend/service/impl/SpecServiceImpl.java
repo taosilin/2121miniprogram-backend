@@ -25,4 +25,12 @@ public class SpecServiceImpl extends AbstractService<Spec> implements SpecServic
     public void addSpec(Spec s){
         specMapper.addSpec(s);
     }
+
+    public void deleteSpec(String specID){
+        specMapper.deleteSpec(specID);
+    }
+
+    public void updateSpec(Spec s){
+        specMapper.updateSpec(s);
+    }
 }
