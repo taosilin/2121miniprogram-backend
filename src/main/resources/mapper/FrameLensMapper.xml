@@ -21,4 +21,8 @@
         WHERE f.frameID=#{frameID}
     </select>
 
+    <delete id="deleteFrameLens" parameterType="com.example.backend.model.FrameLens">
+        DELETE FROM frameLens WHERE frameID=#{frameID} AND lensID=#{lensID}
+    </delete>
+
 </mapper>

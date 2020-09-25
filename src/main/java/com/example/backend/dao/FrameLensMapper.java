@@ -10,4 +10,5 @@ import java.util.List;
 public interface FrameLensMapper extends Mapper<FrameLens> {
     public void addFrameLens(FrameLens f);
     public List<Lens> lensList(@Param("frameID")String frameID);
+    public void deleteFrameLens(FrameLens f);
 }

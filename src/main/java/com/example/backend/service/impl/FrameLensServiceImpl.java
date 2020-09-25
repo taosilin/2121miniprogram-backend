@@ -30,4 +30,8 @@ public class FrameLensServiceImpl extends AbstractService<FrameLens> implements 
     public List<Lens> lensList(String frameID){
         return frameLensMapper.lensList(frameID);
     }
+
+    public void deleteFrameLens(FrameLens f){
+        frameLensMapper.deleteFrameLens(f);
+    }
 }

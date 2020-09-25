@@ -4,6 +4,7 @@ import com.example.backend.core.Result;
 import com.example.backend.core.ResultGenerator;
 import com.example.backend.model.Frame;
 import com.example.backend.service.FrameService;
+import com.example.backend.web.model.FrameDetail;
 import com.example.backend.web.model.MyRequestBody;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -33,8 +34,8 @@ public class FrameController {
 
     @PostMapping("/detail")
     public Result findByFrameID(@RequestBody Frame f){
-        Frame frame = frameService.findByFrameID(f.getFrameID());
-        return ResultGenerator.genSuccessResult(frame);
+        FrameDetail frameDetail = frameService.findByFrameID(f.getFrameID());
+        return ResultGenerator.genSuccessResult(frameDetail);
     }
 
     @PostMapping("/update")

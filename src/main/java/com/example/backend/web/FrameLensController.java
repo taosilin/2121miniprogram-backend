@@ -30,4 +30,10 @@ public class FrameLensController {
         List<Lens> list = frameLensService.lensList(frameLens.getFrameID());
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/delete")
+    public Result deleteFrameLens(@RequestBody FrameLens frameLens){
+        frameLensService.deleteFrameLens(frameLens);
+        return ResultGenerator.genSuccessResult();
+    }
 }

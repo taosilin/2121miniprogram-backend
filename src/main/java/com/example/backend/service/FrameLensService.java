@@ -9,4 +9,5 @@ import java.util.List;
 public interface FrameLensService extends Service<FrameLens> {
     void addFrameLens(FrameLens f);
     List<Lens> lensList(String frameID);
+    void deleteFrameLens(FrameLens f);
 }
