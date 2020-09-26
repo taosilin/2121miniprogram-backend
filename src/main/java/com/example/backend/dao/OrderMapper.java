@@ -11,4 +11,5 @@ public interface OrderMapper extends Mapper<Order> {
     public Order findByOrderID(@Param("orderID") String orderID);
     public List<Order> findByUserID(@Param("userID") String userID);
     public List<Order> orderList(@Param("page")Integer page,@Param("size")Integer size);
+    public void updateOrder(Order o);
 }

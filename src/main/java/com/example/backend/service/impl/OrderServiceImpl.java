@@ -67,4 +67,8 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
     public List<Order> orderList(Integer page,Integer size){
         return orderMapper.orderList(page*size,size);
     }
+
+    public void updateOrder(Order o){
+        orderMapper.updateOrder(o);
+    }
 }

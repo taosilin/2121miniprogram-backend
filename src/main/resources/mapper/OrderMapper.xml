@@ -45,4 +45,10 @@
         FROM orderTable
         limit #{page},#{size}
     </select>
+
+    <update id="updateOrder" parameterType="com.example.backend.model.Order">
+        UPDATE orderTable
+        SET totalAmount=#{totalAmount},state=#{state},remark=#{remark},courierID=#{courierID},deliveryMethod=#{deliveryMethod}
+        WHERE orderID=#{orderID}
+    </update>
 </mapper>

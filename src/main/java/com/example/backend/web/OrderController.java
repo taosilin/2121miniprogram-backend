@@ -42,4 +42,10 @@ public class OrderController {
         List<Order> list = orderService.orderList(myRequestBody.page, myRequestBody.size);
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/update")
+    public Result updateOrder(@RequestBody Order o){
+        orderService.updateOrder(o);
+        return ResultGenerator.genSuccessResult();
+    }
 }
