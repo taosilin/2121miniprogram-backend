@@ -26,6 +26,8 @@ public class Comment {
 
     private Timestamp replyTime;
 
+    private String state;
+
     public String getCommentID() {
         return commentID;
     }
@@ -106,5 +108,13 @@ public class Comment {
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }

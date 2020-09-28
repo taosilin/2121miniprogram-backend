@@ -9,4 +9,5 @@ public class FrameDetail {
     public Frame frame;
     public List<ValueList> attributes;
     public List<Spec> specs;
+    public List<FrameColorResult> colors;
 }

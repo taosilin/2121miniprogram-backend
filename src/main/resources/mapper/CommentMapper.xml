@@ -15,12 +15,12 @@
         <result column="commentPhoto" jdbcType="VARCHAR" property="commentPhoto" />
         <result column="reply" jdbcType="VARCHAR" property="reply" />
         <result column="replyTime" jdbcType="TIMESTAMP" property="replyTime" />
-
+        <result column="state" jdbcType="VARCHAR" property="state" />
     </resultMap>
 
     <insert id="addComment" parameterType="com.example.backend.model.Comment">
-        INSERT INTO comment ( commentID,orderID,productID,userID,commentTime,commentContent,evaluation,commentPhoto,reply,replyTime )
-        values (#{commentID},#{orderID},#{productID},#{userID},#{commentTime},#{commentContent},#{evaluation},#{commentPhoto},#{reply},#{replyTime})
+        INSERT INTO comment ( commentID,orderID,productID,userID,commentTime,commentContent,evaluation,commentPhoto,reply,replyTime,state )
+        values (#{commentID},#{orderID},#{productID},#{userID},#{commentTime},#{commentContent},#{evaluation},#{commentPhoto},#{reply},#{replyTime},#{state})
     </insert>
 
     <update id="replyComment" parameterType="com.example.backend.web.model.ReplyRequest">
@@ -40,4 +40,10 @@
         FROM comment
         limit #{page},#{size}
     </select>
+
+    <update id="updateState" parameterType="com.example.backend.model.Comment">
+        UPDATE comment
+        SET state=#{state}
+        WHERE commentID=#{commentID}
+    </update>
 </mapper>

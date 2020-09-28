@@ -51,4 +51,8 @@ public class CommentServiceImpl extends AbstractService<Comment> implements Comm
     public List<Comment> allComment(Integer page,Integer size){
         return commentMapper.allComment(page*size, size);
     }
+
+    public void updateState(Comment c){
+        commentMapper.updateState(c);
+    }
 }

@@ -1,10 +1,7 @@
 package com.example.backend.service.impl;
 
 import com.example.backend.core.ServiceException;
-import com.example.backend.dao.AttributeMapper;
-import com.example.backend.dao.FrameMapper;
-import com.example.backend.dao.SpecMapper;
-import com.example.backend.dao.ValueMapper;
+import com.example.backend.dao.*;
 import com.example.backend.model.Attribute;
 import com.example.backend.model.Frame;
 import com.example.backend.service.FrameService;
@@ -33,6 +30,8 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
     private ValueMapper valueMapper;
     @Resource
     private SpecMapper specMapper;
+    @Resource
+    private FrameColorMapper frameColorMapper;
 
     public void addFrame(Frame f){
         frameMapper.addFrame(f);
@@ -47,6 +46,7 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
         List<ValueList> valueLists = new ArrayList<>();
         f.specs=specMapper.specList(frameID);
         f.frame = frameMapper.findByFrameID(frameID);
+        f.colors = frameColorMapper.findByFrameID(frameID);
         List<Attribute> attributes = attributeMapper.attributeList(frameID);
         for (Attribute a:attributes){
             ValueList valueList = new ValueList();

@@ -43,4 +43,10 @@ public class CommentController {
         List<Comment> list = commentService.allComment(myRequestBody.page, myRequestBody.size);
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/update")
+    public Result updateState(@RequestBody Comment comment){
+        commentService.updateState(comment);
+        return ResultGenerator.genSuccessResult();
+    }
 }
