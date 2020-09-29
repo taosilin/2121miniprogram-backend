@@ -3,13 +3,24 @@ package com.example.backend.model;
 import javax.persistence.*;
 
 public class LensStock {
+    @Id
+    private String stockID;
+
     private String lensID;
 
-    private Double SPH;
+    private Double sph;
 
-    private Double CYL;
+    private Double cyl;
 
     private Integer stock;
+
+    public String getStockID() {
+        return stockID;
+    }
+
+    public void setStockID(String stockID) {
+        this.stockID = stockID;
+    }
 
     public String getLensID() {
         return lensID;
@@ -19,27 +30,27 @@ public class LensStock {
         this.lensID = lensID;
     }
 
-    public Double getSPH() {
-        return SPH;
-    }
-
-    public void setSPH(Double SPH) {
-        this.SPH = SPH;
-    }
-
-    public Double getCYL() {
-        return CYL;
-    }
-
-    public void setCYL(Double CYL) {
-        this.CYL = CYL;
-    }
-
     public Integer getStock() {
         return stock;
     }
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public Double getSph() {
+        return sph;
+    }
+
+    public void setSph(Double sph) {
+        this.sph = sph;
+    }
+
+    public Double getCyl() {
+        return cyl;
+    }
+
+    public void setCyl(Double cyl) {
+        this.cyl = cyl;
     }
 }

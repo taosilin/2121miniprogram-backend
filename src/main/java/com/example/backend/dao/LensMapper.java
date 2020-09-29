@@ -11,4 +11,5 @@ public interface LensMapper extends Mapper<Lens> {
     public List<Lens> lensList(@Param("page")Integer page,@Param("size")Integer size);
     public void updateLens(Lens l);
     public void deleteLens(@Param("lensID")String lensID);
+    public Lens findByLensID(@Param("lensID")String lensID);
 }

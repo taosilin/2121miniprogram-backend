@@ -40,4 +40,10 @@
     <delete id="deleteLens" parameterType="String">
         DELETE FROM lens WHERE lensID=#{lensID}
     </delete>
+
+    <select id="findByLensID" parameterType="String" resultType="com.example.backend.model.Lens">
+        SELECT *
+        FROM lens
+        WHERE lensID=#{lensID}
+    </select>
 </mapper>

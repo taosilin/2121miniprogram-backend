@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backend.dao.LensStockMapper">
+    <resultMap id="BaseResultMap" type="com.example.backend.model.LensStock">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="stockID" jdbcType="VARCHAR" property="stockID" />
+        <result column="lensID" jdbcType="VARCHAR" property="lensID" />
+        <result column="sph" jdbcType="DECIMAL" property="sph" />
+        <result column="cyl" jdbcType="DECIMAL" property="cyl" />
+        <result column="stock" jdbcType="INTEGER" property="stock" />
+
+    </resultMap>
+
+    <insert id="addLensStock" parameterType="com.example.backend.model.LensStock">
+        INSERT INTO lensStock ( stockID,lensID,sph,cyl,stock )
+        values ( #{stockID},#{lensID},#{sph},#{cyl},#{stock} )
+    </insert>
+
+    <update id="updateLensStock" parameterType="com.example.backend.model.LensStock">
+        UPDATE lensStock
+        SET stock=#{stock}
+        WHERE stockID=#{stockID}
+    </update>
+
+    <delete id="deleteLensStock">
+        DELETE FROM lensStock WHERE stockID=#{stockID}
+    </delete>
+
+    <select id="stockList" parameterType="String" resultType="com.example.backend.model.LensStock">
+        SELECT *
+        FROM lensStock
+        WHERE lensID=#{lensID}
+    </select>
+
+</mapper>

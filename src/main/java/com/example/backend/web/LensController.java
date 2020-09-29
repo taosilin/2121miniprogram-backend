@@ -41,4 +41,10 @@ public class LensController {
         lensService.deleteLens(lens.getLensID());
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/detail")
+    public Result findByLensID(@RequestBody Lens l){
+        Lens lens = lensService.findByLensID(l.getLensID());
+        return ResultGenerator.genSuccessResult(lens);
+    }
 }
