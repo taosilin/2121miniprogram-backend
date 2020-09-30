@@ -16,7 +16,7 @@
     </insert>
 
     <select id="lensList" parameterType="String" resultType="com.example.backend.model.Lens">
-        SELECT l.lensID,l.lensName,l.price,l.refractiveIndex,l.material,l.radian,l.variety,l.film,l.design,l.state,l.stock,l.description
+        SELECT l.lensID,l.lensName,l.price,l.refractiveIndex,l.material,l.radian,l.variety,l.film,l.design,l.state,l.description
         FROM frameLens as f join lens as l on (f.lensID=l.lensID)
         WHERE f.frameID=#{frameID}
     </select>

@@ -24,8 +24,6 @@ public class Lens {
 
     private String state;
 
-    private Integer stock;
-
     private String description;
 
     public String getLensID() {
@@ -106,14 +104,6 @@ public class Lens {
 
     public void setState(String state) {
         this.state = state;
-    }
-
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
     }
 
     public String getDescription() {

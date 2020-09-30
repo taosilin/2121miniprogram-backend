@@ -15,14 +15,13 @@
         <result column="film" jdbcType="VARCHAR" property="film" />
         <result column="design" jdbcType="VARCHAR" property="design" />
         <result column="state" jdbcType="VARCHAR" property="state" />
-        <result column="stock" jdbcType="VARCHAR" property="stock" />
         <result column="description" jdbcType="VARCHAR" property="description" />
 
     </resultMap>
 
     <insert id="addLens" parameterType="com.example.backend.model.Lens">
-        INSERT INTO lens ( lensID,lensName,price,refractiveIndex,material,radian,variety,film,design,state,stock,description )
-        values (#{lensID},#{lensName},#{price},#{refractiveIndex},#{material},#{radian},#{variety},#{film},#{design},#{state},#{stock},#{description})
+        INSERT INTO lens ( lensID,lensName,price,refractiveIndex,material,radian,variety,film,design,state,description )
+        values (#{lensID},#{lensName},#{price},#{refractiveIndex},#{material},#{radian},#{variety},#{film},#{design},#{state},#{description})
     </insert>
 
     <select id="lensList" resultType="com.example.backend.model.Lens">
@@ -33,7 +32,7 @@
 
     <update id="updateLens" parameterType="com.example.backend.model.Lens">
         UPDATE lens
-        SET lensName=#{lensName},price=#{price},refractiveIndex=#{refractiveIndex},material=#{material},radian=#{radian},variety=#{variety},film=#{film},design=#{design},state=#{state},stock=#{stock},description=#{description}
+        SET lensName=#{lensName},price=#{price},refractiveIndex=#{refractiveIndex},material=#{material},radian=#{radian},variety=#{variety},film=#{film},design=#{design},state=#{state},description=#{description}
         WHERE lensID=#{lensID}
     </update>
 
