@@ -1,10 +1,7 @@
 package com.example.backend.service.impl;
 
 import com.example.backend.core.ServiceException;
-import com.example.backend.dao.AttributeMapper;
-import com.example.backend.dao.ProductMapper;
-import com.example.backend.dao.SpecMapper;
-import com.example.backend.dao.ValueMapper;
+import com.example.backend.dao.*;
 import com.example.backend.model.Attribute;
 import com.example.backend.model.Product;
 import com.example.backend.service.ProductService;
@@ -14,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.backend.web.model.ProductDetail;
+import com.example.backend.web.model.ProductOverview;
 import com.example.backend.web.model.ValueList;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -60,5 +58,14 @@ public class ProductServiceImpl extends AbstractService<Product> implements Prod
 
     public List<Product> productList(Integer page,Integer size){
         return productMapper.productList(page*size, size);
+    }
+
+    public ProductOverview productOverview(){
+        ProductOverview p = new ProductOverview();
+        p.pending = productMapper.productNum("0");
+        p.onShelf = productMapper.productNum("1");
+        p.offShelf = productMapper.productNum("2");
+        p.total = productMapper.productTotal();
+        return p;
     }
 }

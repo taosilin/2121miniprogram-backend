@@ -49,4 +49,9 @@ public class FrameController {
         frameService.deleteFrame(f.getFrameID());
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/overview")
+    public Result frameOverview(){
+        return ResultGenerator.genSuccessResult(frameService.frameOverview());
+    }
 }

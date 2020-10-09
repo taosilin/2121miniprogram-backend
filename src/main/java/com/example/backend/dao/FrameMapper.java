@@ -12,4 +12,6 @@ public interface FrameMapper extends Mapper<Frame> {
     public Frame findByFrameID(@Param("frameID") String frameID);
     public void updateFrame(Frame f);
     public void deleteFrame(@Param("frameID")String frameID);
+    public Integer frameNum(@Param("state")String state);
+    public Integer frameTotal();
 }

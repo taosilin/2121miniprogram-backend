@@ -11,4 +11,6 @@ public interface ProductMapper extends Mapper<Product> {
     public Product productDetail(@Param("productID") String productID);
     public void updateProduct(Product p);
     public List<Product> productList(@Param("page")Integer page,@Param("size")Integer size);
+    public Integer productNum(@Param("state")String state);
+    public Integer productTotal();
 }

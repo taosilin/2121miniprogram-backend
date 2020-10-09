@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.backend.web.model.FrameDetail;
+import com.example.backend.web.model.ProductOverview;
 import com.example.backend.web.model.ValueList;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -64,5 +65,14 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
 
     public void deleteFrame(String frameID){
         frameMapper.deleteFrame(frameID);
+    }
+
+    public ProductOverview frameOverview(){
+        ProductOverview p = new ProductOverview();
+        p.pending = frameMapper.frameNum("0");
+        p.onShelf = frameMapper.frameNum("1");
+        p.offShelf = frameMapper.frameNum("2");
+        p.total = frameMapper.frameTotal();
+        return p;
     }
 }

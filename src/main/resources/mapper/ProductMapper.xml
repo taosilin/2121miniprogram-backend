@@ -42,4 +42,14 @@
         FROM product
         limit #{page},#{size}
     </select>
+
+    <select id="productNum" parameterType="String" resultType="Integer">
+        SELECT COUNT(*)
+        FROM product
+        WHERE state=#{state}
+    </select>
+
+    <select id="productTotal" resultType="Integer">
+        SELECT COUNT(*) FROM product
+    </select>
 </mapper>

@@ -43,4 +43,9 @@ public class ProductController {
         List<Product> list = productService.productList(myRequestBody.page, myRequestBody.size);
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/overview")
+    public Result productOverview(){
+        return ResultGenerator.genSuccessResult(productService.productOverview());
+    }
 }

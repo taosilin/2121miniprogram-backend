@@ -50,4 +50,14 @@
         DELETE FROM frame WHERE frameID=#{frameID}
     </delete>
 
+    <select id="frameNum" parameterType="String" resultType="Integer">
+        SELECT COUNT(*)
+        FROM frame
+        WHERE state=#{state}
+    </select>
+
+    <select id="frameTotal" resultType="Integer">
+        SELECT COUNT(*) FROM frame
+    </select>
+
 </mapper>
