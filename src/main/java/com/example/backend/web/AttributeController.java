@@ -5,6 +5,7 @@ import com.example.backend.core.ResultGenerator;
 import com.example.backend.model.Attribute;
 import com.example.backend.service.AttributeService;
 import com.example.backend.web.model.MyRequestBody;
+import com.example.backend.web.model.ValueList;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,11 @@ public class AttributeController {
     public Result addAttribute(@RequestBody Attribute attribute){
         attributeService.addAttribute(attribute);
         return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping("/detail")
+    public Result attributeDetail(@RequestBody Attribute attribute){
+        List<ValueList> list = attributeService.attributeDetail(attribute);
+        return ResultGenerator.genSuccessResult(list);
     }
 }
