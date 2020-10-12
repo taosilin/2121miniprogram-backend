@@ -64,11 +64,13 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
         return orderRequests;
     }
 
-    public List<Order> orderList(Integer page,Integer size){
-        return orderMapper.orderList(page*size,size);
+    public List<Order> orderList(String state,Integer page,Integer size){
+        if (state.equals("0")) return orderMapper.orderList(page*size,size);
+        else return orderMapper.stateFilter(state,page*size,size);
     }
 
     public void updateOrder(Order o){
         orderMapper.updateOrder(o);
     }
+
 }

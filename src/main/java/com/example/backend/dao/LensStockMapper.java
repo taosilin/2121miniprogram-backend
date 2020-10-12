@@ -11,4 +11,5 @@ public interface LensStockMapper extends Mapper<LensStock> {
     public void updateLensStock(LensStock l);
     public void deleteLensStock(@Param("stockID")String stockID);
     public List<LensStock> stockList(@Param("lensID")String lensID);
+    public List<Integer> cylFilter(@Param("lensID")String lensID,@Param("cyl")Double cyl);
 }

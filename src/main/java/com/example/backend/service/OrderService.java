@@ -10,6 +10,6 @@ public interface OrderService extends Service<Order> {
     void addOrder(OrderRequest o);
     OrderRequest orderDetail(String orderID);
     List<OrderRequest> userOrderList(String userID);
-    List<Order> orderList(Integer page,Integer size);
+    List<Order> orderList(String state,Integer page,Integer size);
     void updateOrder(Order o);
 }

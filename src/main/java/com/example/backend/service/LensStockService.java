@@ -10,4 +10,5 @@ public interface LensStockService extends Service<LensStock> {
     void updateLensStock(LensStock l);
     void deleteLensStock(String stockID);
     List<LensStock> stockList(String lensID);
+    List<List<Integer>> cylFilter(String lensID);
 }

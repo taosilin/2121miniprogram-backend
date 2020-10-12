@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
+import static java.lang.Math.abs;
+
 @RestController
 @RequestMapping("/lensstock")
 public class LensStockController {
@@ -40,5 +42,32 @@ public class LensStockController {
     public Result stockList(@RequestBody LensStock lensStock){
         List<LensStock> list = lensStockService.stockList(lensStock.getLensID());
         return ResultGenerator.genSuccessResult(list);
+    }
+
+    @PostMapping("/cyl")
+    public Result cylFilter(@RequestBody LensStock lensStock){
+        List<List<Integer>> list = lensStockService.cylFilter(lensStock.getLensID());
+        return ResultGenerator.genSuccessResult(list);
+    }
+
+    @PostMapping("/adddata")
+    public Result adddata(@RequestBody LensStock lensStock){
+
+        Integer i,j;
+        String lensID = lensStock.getLensID();
+        for (i=-1200;i<=1200;i=i+25){
+            for (j=-600;j<=0;j=j+25){
+                LensStock l = new LensStock();
+                l.setStockID(lensID+"_"+i.toString()+"_"+j.toString());
+                l.setLensID(lensID);
+                l.setSph(i.doubleValue()/100);
+                l.setCyl(j.doubleValue()/100);
+                l.setStock(abs(i+j));
+                lensStockService.addLensStock(l);
+            }
+        }
+
+
+        return ResultGenerator.genSuccessResult();
     }
 }

@@ -39,7 +39,7 @@ public class OrderController {
 
     @PostMapping("/list")
     public Result orderList(@RequestBody MyRequestBody myRequestBody){
-        List<Order> list = orderService.orderList(myRequestBody.page, myRequestBody.size);
+        List<Order> list = orderService.orderList(myRequestBody.sortedBy, myRequestBody.page, myRequestBody.size);
         return ResultGenerator.genSuccessResult(list);
     }
 
@@ -48,4 +48,5 @@ public class OrderController {
         orderService.updateOrder(o);
         return ResultGenerator.genSuccessResult();
     }
+
 }

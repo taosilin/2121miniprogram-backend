@@ -34,4 +34,10 @@
         WHERE lensID=#{lensID}
     </select>
 
+    <select id="cylFilter" resultType="Integer">
+        SELECT stock
+        FROM lensStock
+        WHERE lensID=#{lensID} AND cyl=#{cyl}
+        order by sph DESC
+    </select>
 </mapper>

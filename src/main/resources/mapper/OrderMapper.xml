@@ -51,4 +51,12 @@
         SET totalAmount=#{totalAmount},state=#{state},remark=#{remark},courierID=#{courierID},deliveryMethod=#{deliveryMethod}
         WHERE orderID=#{orderID}
     </update>
+
+    <select id="stateFilter" resultType="com.example.backend.model.Order">
+        SELECT *
+        FROM orderTable
+        WHERE state=#{state}
+        limit #{page},#{size}
+    </select>
+
 </mapper>

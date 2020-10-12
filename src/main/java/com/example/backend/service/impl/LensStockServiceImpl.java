@@ -37,4 +37,14 @@ public class LensStockServiceImpl extends AbstractService<LensStock> implements 
     public List<LensStock> stockList(String lensID){
         return lensStockMapper.stockList(lensID);
     }
+
+    public List<List<Integer>> cylFilter(String lensID){
+        List<List<Integer>> result = new ArrayList<>();
+        Integer i;
+        for (i=0;i>=-600;i=i-25){
+            List<Integer> list = lensStockMapper.cylFilter(lensID, i.doubleValue()/100);
+            result.add(list);
+        }
+        return result;
+    }
 }
