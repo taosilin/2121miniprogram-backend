@@ -5,6 +5,7 @@ import com.example.backend.core.ResultGenerator;
 import com.example.backend.model.Class;
 import com.example.backend.service.ClassService;
 import com.example.backend.web.model.MyRequestBody;
+import com.example.backend.web.model.SuperiorClass;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -37,6 +38,12 @@ public class ClassController {
     @PostMapping("/list")
     public Result classList(@RequestBody MyRequestBody myRequestBody){
         List<Class> list = classService.classList(myRequestBody.page, myRequestBody.size);
+        return ResultGenerator.genSuccessResult(list);
+    }
+
+    @PostMapping("/superior")
+    public Result superiorClass(@RequestBody Class c){
+        List<SuperiorClass> list = classService.superiorClass(c.getSuperior());
         return ResultGenerator.genSuccessResult(list);
     }
 }

@@ -34,4 +34,10 @@
         limit #{page},#{size}
     </select>
 
+    <select id="findBySuperior" parameterType="Integer" resultType="com.example.backend.model.Class">
+        SELECT *
+        FROM class
+        WHERE superior=#{superior}
+    </select>
+
 </mapper>

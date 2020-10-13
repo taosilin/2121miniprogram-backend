@@ -5,6 +5,7 @@ import com.example.backend.core.ResultGenerator;
 import com.example.backend.model.Order;
 import com.example.backend.service.OrderService;
 import com.example.backend.web.model.MyRequestBody;
+import com.example.backend.web.model.OrderPending;
 import com.example.backend.web.model.OrderRequest;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -47,6 +48,12 @@ public class OrderController {
     public Result updateOrder(@RequestBody Order o){
         orderService.updateOrder(o);
         return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping("/pending")
+    public Result orderPending(){
+        OrderPending orderPending = orderService.orderPending();
+        return ResultGenerator.genSuccessResult(orderPending);
     }
 
 }

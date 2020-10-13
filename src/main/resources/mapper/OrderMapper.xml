@@ -59,4 +59,14 @@
         limit #{page},#{size}
     </select>
 
+    <select id="stateOrderNum" parameterType="String" resultType="Integer">
+        SELECT COUNT(*)
+        FROM orderTable
+        WHERE state=#{state}
+    </select>
+
+    <select id="orderTotal" resultType="Integer">
+        SELECT COUNT(*) FROM orderTable
+    </select>
+
 </mapper>

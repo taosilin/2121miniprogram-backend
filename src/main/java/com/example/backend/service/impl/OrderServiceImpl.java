@@ -13,6 +13,7 @@ import com.example.backend.core.AbstractService;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.backend.web.model.OrderPending;
 import com.example.backend.web.model.OrderRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -73,4 +74,10 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
         orderMapper.updateOrder(o);
     }
 
+    public OrderPending orderPending(){
+        OrderPending orderPending = new OrderPending();
+        orderPending.toBeReviewed = orderMapper.stateOrderNum("2");
+        orderPending.toBeDelivered = orderMapper.stateOrderNum("3");
+        return orderPending;
+    }
 }
