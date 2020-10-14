@@ -4,6 +4,7 @@ import com.example.backend.core.Mapper;
 import com.example.backend.model.Order;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface OrderMapper extends Mapper<Order> {
@@ -15,4 +16,5 @@ public interface OrderMapper extends Mapper<Order> {
     public List<Order> stateFilter(@Param("state")String state,@Param("page")Integer page,@Param("size")Integer size);
     public Integer stateOrderNum(@Param("state")String state);
     public Integer orderTotal();
+    public List<Order> findByDate(@Param("orderTime") Date orderTime);
 }

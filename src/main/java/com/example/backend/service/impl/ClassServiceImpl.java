@@ -31,6 +31,12 @@ public class ClassServiceImpl extends AbstractService<Class> implements ClassSer
 
     public void deleteClass(Integer classID){
         classMapper.deleteClass(classID);
+        List<Class> list = classMapper.findBySuperior(classID);
+        if (!list.isEmpty()){
+            for (Class c:list){
+                this.deleteClass(c.getClassID());
+            }
+        }
     }
 
     public List<Class> classList(Integer page,Integer size){

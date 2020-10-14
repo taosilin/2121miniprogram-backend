@@ -7,6 +7,7 @@ import com.example.backend.service.OrderService;
 import com.example.backend.web.model.MyRequestBody;
 import com.example.backend.web.model.OrderPending;
 import com.example.backend.web.model.OrderRequest;
+import com.example.backend.web.model.TransactionBoard;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
@@ -54,6 +55,12 @@ public class OrderController {
     public Result orderPending(){
         OrderPending orderPending = orderService.orderPending();
         return ResultGenerator.genSuccessResult(orderPending);
+    }
+
+    @PostMapping("/findByDate")
+    public Result findByDate(@RequestBody TransactionBoard t){
+        List<Order> list = orderService.findByDate(t.orderTime);
+        return ResultGenerator.genSuccessResult(list);
     }
 
 }

@@ -11,6 +11,7 @@ import com.example.backend.service.OrderService;
 import com.example.backend.core.AbstractService;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.example.backend.web.model.OrderPending;
@@ -77,7 +78,14 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
     public OrderPending orderPending(){
         OrderPending orderPending = new OrderPending();
         orderPending.toBeReviewed = orderMapper.stateOrderNum("2");
-        orderPending.toBeDelivered = orderMapper.stateOrderNum("3");
+        orderPending.toBeProduced = orderMapper.stateOrderNum("3");
+        orderPending.toBeDelivered = orderMapper.stateOrderNum("4");
+        orderPending.refundApplication = orderMapper.stateOrderNum("9");
+        orderPending.returnApplication = orderMapper.stateOrderNum("11");
         return orderPending;
+    }
+
+    public List<Order> findByDate(Date orderTime){
+        return orderMapper.findByDate(orderTime);
     }
 }

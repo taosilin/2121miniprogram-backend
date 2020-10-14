@@ -40,6 +40,7 @@
         WHERE userID=#{userID}
     </select>
 
+    <!--全部订单 列表 分页-->
     <select id="orderList" resultType="com.example.backend.model.Order">
         SELECT *
         FROM orderTable
@@ -52,6 +53,7 @@
         WHERE orderID=#{orderID}
     </update>
 
+    <!--按状态筛选订单 列表 分页-->
     <select id="stateFilter" resultType="com.example.backend.model.Order">
         SELECT *
         FROM orderTable
@@ -59,14 +61,23 @@
         limit #{page},#{size}
     </select>
 
+    <!--查询某状态的订单数量-->
     <select id="stateOrderNum" parameterType="String" resultType="Integer">
         SELECT COUNT(*)
         FROM orderTable
         WHERE state=#{state}
     </select>
 
+    <!--订单总数-->
     <select id="orderTotal" resultType="Integer">
         SELECT COUNT(*) FROM orderTable
+    </select>
+
+    <!--查询某日全部订单-->
+    <select id="findByDate" resultType="com.example.backend.model.Order">
+        SELECT *
+        FROM orderTable
+        WHERE orderTime>=#{orderTime}
     </select>
 
 </mapper>

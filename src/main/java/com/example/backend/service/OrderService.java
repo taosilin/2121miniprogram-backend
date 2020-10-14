@@ -5,6 +5,7 @@ import com.example.backend.model.Order;
 import com.example.backend.web.model.OrderPending;
 import com.example.backend.web.model.OrderRequest;
 
+import java.util.Date;
 import java.util.List;
 
 public interface OrderService extends Service<Order> {
@@ -14,4 +15,5 @@ public interface OrderService extends Service<Order> {
     List<Order> orderList(String state,Integer page,Integer size);
     void updateOrder(Order o);
     OrderPending orderPending();
+    List<Order> findByDate(Date orderTime);
 }
