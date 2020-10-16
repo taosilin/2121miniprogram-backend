@@ -74,10 +74,31 @@
     </select>
 
     <!--查询某日全部订单-->
-    <select id="findByDate" resultType="com.example.backend.model.Order">
+    <select id="findByDate" parameterType="Date" resultType="com.example.backend.model.Order">
         SELECT *
         FROM orderTable
-        WHERE orderTime>=#{orderTime}
+        WHERE to_days(orderTime)=to_days(#{orderTime})
+    </select>
+
+    <!--查询某日全部付款订单-->
+    <select id="findByPaymentDate" parameterType="Date" resultType="com.example.backend.model.Order">
+        SELECT *
+        FROM orderTable
+        WHERE to_days(paymentTime)=to_days(#{paymentTime})
+    </select>
+
+    <!--查询今日付款订单-->
+    <select id="todayOrder" resultType="com.example.backend.model.Order">
+        SELECT *
+        FROM orderTable
+        WHERE to_days(paymentTime) = to_days(now())
+    </select>
+
+    <!--查询昨日付款订单-->
+    <select id="yesterdayOrder" resultType="com.example.backend.model.Order">
+        SELECT *
+        FROM orderTable
+        WHERE to_days(now())-to_days(paymentTime) = 1
     </select>
 
 </mapper>

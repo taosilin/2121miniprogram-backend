@@ -11,11 +11,14 @@ import com.example.backend.service.OrderService;
 import com.example.backend.core.AbstractService;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import com.example.backend.web.model.OrderPending;
 import com.example.backend.web.model.OrderRequest;
+import com.example.backend.web.model.OrderStatistics;
+import com.example.backend.web.model.TransactionBoard;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -87,5 +90,57 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
 
     public List<Order> findByDate(Date orderTime){
         return orderMapper.findByDate(orderTime);
+    }
+
+    //今日交易看板
+    public TransactionBoard transactionBoard(){
+        TransactionBoard transactionBoard = new TransactionBoard();
+        List<Order> today = orderMapper.todayOrder();
+        List<Order> yesterday = orderMapper.yesterdayOrder();
+        transactionBoard.paymentOrderNum = today.size();
+        transactionBoard.yesterdayOrderNum = yesterday.size();
+        for (Order order:today){
+            transactionBoard.paymentOrderAmount = transactionBoard.paymentOrderAmount + order.getActualPayment();
+        }
+        for (Order order:yesterday){
+            transactionBoard.yesterdayOrderAmount = transactionBoard.yesterdayOrderAmount + order.getActualPayment();
+        }
+        return transactionBoard;
+    }
+
+    //订单统计
+    public List<OrderStatistics> orderStatistics(){
+        List<OrderStatistics> list = new ArrayList<>();
+
+        Date today = new Date(); //获取今天的日期
+        Calendar c = Calendar.getInstance();
+        c.setTime(today);
+
+        Integer i =1;
+
+        for (i=0;i<8;i++){
+
+            OrderStatistics o = new OrderStatistics();
+            o.orderDate = c.getTime();
+            List<Order> orders = orderMapper.findByDate(o.orderDate); //求当天全部订单
+            o.orderNum = orders.size();
+            List<Order> paymentOrders = orderMapper.findByPaymentDate(o.orderDate);//求当天全部付款订单
+            o.paymentOrderNum = paymentOrders.size();
+
+            if (o.orderNum!=0){
+                o.paymentRate = o.paymentOrderNum.doubleValue()/o.orderNum;
+            }
+
+            for (Order order:paymentOrders){
+                o.paymentOrderAmount = o.paymentOrderAmount + order.getActualPayment();
+            }
+
+            list.add(o);
+
+            c.add(Calendar.DAY_OF_MONTH, -1);//求前一天
+        }
+
+
+        return list;
     }
 }

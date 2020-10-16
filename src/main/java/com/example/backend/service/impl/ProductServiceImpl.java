@@ -45,7 +45,7 @@ public class ProductServiceImpl extends AbstractService<Product> implements Prod
         for (Attribute a:attributes){
             ValueList valueList = new ValueList();
             valueList.attribute = a;
-            valueList.values = valueMapper.valueList(a.getAttributeID());
+            valueList.values = valueMapper.findByAttribute(a.getAttributeID());
             valueLists.add(valueList);
         }
         p.attributes = valueLists;

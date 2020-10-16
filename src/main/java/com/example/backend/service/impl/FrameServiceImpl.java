@@ -52,7 +52,7 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
         for (Attribute a:attributes){
             ValueList valueList = new ValueList();
             valueList.attribute = a;
-            valueList.values = valueMapper.valueList(a.getAttributeID());
+            valueList.values = valueMapper.findByAttribute(a.getAttributeID());
             valueLists.add(valueList);
         }
         f.attributes = valueLists;

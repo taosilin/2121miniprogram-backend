@@ -37,7 +37,7 @@ public class AttributeServiceImpl extends AbstractService<Attribute> implements 
         for (Attribute attribute:attributes){
             ValueList valueList = new ValueList();
             valueList.attribute = attribute;
-            valueList.values = valueMapper.valueList(attribute.getAttributeID());
+            valueList.values = valueMapper.findByAttribute(attribute.getAttributeID());
             list.add(valueList);
         }
         return list;

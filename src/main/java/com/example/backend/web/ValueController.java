@@ -23,4 +23,10 @@ public class ValueController {
         valueService.addValue(value);
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/attribute")
+    public Result findByAttribute(@RequestBody Value value){
+        List<Value> list = valueService.findByAttribute(value.getAttributeID());
+        return ResultGenerator.genSuccessResult(list);
+    }
 }

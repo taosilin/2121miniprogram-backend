@@ -16,7 +16,7 @@
         values (#{valueID},#{attributeID},#{valueName})
     </insert>
 
-    <select id="valueList" parameterType="String" resultType="com.example.backend.model.Value">
+    <select id="findByAttribute" parameterType="String" resultType="com.example.backend.model.Value">
         SELECT valueID,attributeID,valueName
         FROM valueTable
         WHERE attributeID=#{attributeID}
