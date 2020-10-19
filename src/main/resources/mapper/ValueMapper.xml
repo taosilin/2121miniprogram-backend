@@ -22,4 +22,12 @@
         WHERE attributeID=#{attributeID}
     </select>
 
+    <delete id="deleteValue" parameterType="String">
+        DELETE FROM valueTable WHERE valueID=#{valueID}
+    </delete>
+
+    <delete id="deleteByAttribute" parameterType="String">
+        DELETE FROM valueTable WHERE attributeID=#{attributeID}
+    </delete>
+
 </mapper>

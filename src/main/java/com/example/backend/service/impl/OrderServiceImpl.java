@@ -78,6 +78,7 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
         orderMapper.updateOrder(o);
     }
 
+    // 待办预警
     public OrderPending orderPending(){
         OrderPending orderPending = new OrderPending();
         orderPending.toBeReviewed = orderMapper.stateOrderNum("2");

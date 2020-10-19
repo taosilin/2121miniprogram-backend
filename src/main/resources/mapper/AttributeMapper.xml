@@ -22,4 +22,12 @@
         WHERE productID=#{productID}
     </select>
 
+    <delete id="deleteAttribute" parameterType="String">
+        DELETE FROM attribute WHERE attributeID=#{attributeID}
+    </delete>
+
+    <delete id="deleteByProduct" parameterType="String">
+        DELETE FROM attribute WHERE productID=#{productID}
+    </delete>
+
 </mapper>

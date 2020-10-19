@@ -12,6 +12,8 @@ public class Spec {
 
     private Integer quantity;
 
+    private Integer warning;
+
     private Double price;
 
     private String specImage;
@@ -62,5 +64,13 @@ public class Spec {
 
     public void setProductSpec(String productSpec) {
         this.productSpec = productSpec;
+    }
+
+    public Integer getWarning() {
+        return warning;
+    }
+
+    public void setWarning(Integer warning) {
+        this.warning = warning;
     }
 }
