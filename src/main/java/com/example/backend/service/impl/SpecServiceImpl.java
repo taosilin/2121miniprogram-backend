@@ -9,6 +9,7 @@ import com.example.backend.core.AbstractService;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.backend.web.model.StockWarning;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,5 +33,11 @@ public class SpecServiceImpl extends AbstractService<Spec> implements SpecServic
 
     public void updateSpec(Spec s){
         specMapper.updateSpec(s);
+    }
+
+    public StockWarning stockWarning(){
+        StockWarning stockWarning = new StockWarning();
+        stockWarning.productWarning = specMapper.productWarning().size();
+        return stockWarning;
     }
 }

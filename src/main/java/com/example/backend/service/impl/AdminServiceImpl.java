@@ -25,4 +25,16 @@ public class AdminServiceImpl extends AbstractService<Admin> implements AdminSer
     public Admin adminLogin(String adminID){
         return adminMapper.adminLogin(adminID);
     }
+
+    public List<Admin> adminList(Integer page,Integer size){
+        return adminMapper.adminList(page*size, size);
+    }
+
+    public void addAdmin(Admin a){
+        adminMapper.addAdmin(a);
+    }
+
+    public void deleteAdmin(String adminID){
+        adminMapper.deleteAdmin(adminID);
+    }
 }

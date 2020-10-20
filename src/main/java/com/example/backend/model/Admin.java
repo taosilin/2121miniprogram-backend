@@ -8,6 +8,8 @@ public class Admin {
 
     private String password;
 
+    private String adminName;
+
     private String authority;
 
     public String getAdminID() {
@@ -32,5 +34,13 @@ public class Admin {
 
     public void setAuthority(String authority) {
         this.authority = authority;
+    }
+
+    public String getAdminName() {
+        return adminName;
+    }
+
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
     }
 }

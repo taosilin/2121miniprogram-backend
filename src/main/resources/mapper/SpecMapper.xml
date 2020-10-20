@@ -36,4 +36,11 @@
         WHERE specID=#{specID}
     </update>
 
+    <!--查询库存不足的商品SKU-->
+    <select id="productWarning" resultType="com.example.backend.model.Spec">
+        SELECT *
+        FROM spec
+        WHERE quantity &lt;= warning
+    </select>
+
 </mapper>

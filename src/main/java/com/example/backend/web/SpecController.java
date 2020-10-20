@@ -5,6 +5,7 @@ import com.example.backend.core.ResultGenerator;
 import com.example.backend.model.Spec;
 import com.example.backend.service.SpecService;
 import com.example.backend.web.model.MyRequestBody;
+import com.example.backend.web.model.StockWarning;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
@@ -34,5 +35,11 @@ public class SpecController {
     public Result updateSpec(@RequestBody Spec spec){
         specService.updateSpec(spec);
         return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping("/warning")
+    public Result stockWarning(){
+        StockWarning stockWarning = specService.stockWarning();
+        return ResultGenerator.genSuccessResult(stockWarning);
     }
 }

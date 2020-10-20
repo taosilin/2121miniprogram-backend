@@ -28,4 +28,22 @@ public class AdminController {
             return ResultGenerator.genFailResult("用户名或密码错误");
         }
     }
+
+    @PostMapping("/list")
+    public Result adminList(@RequestBody MyRequestBody myRequestBody){
+        List<Admin> list = adminService.adminList(myRequestBody.page, myRequestBody.size);
+        return ResultGenerator.genSuccessResult(list);
+    }
+
+    @PostMapping("/add")
+    public Result addAdmin(@RequestBody Admin admin){
+        adminService.addAdmin(admin);
+        return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping("/delete")
+    public Result deleteAdmin(@RequestBody Admin admin){
+        adminService.deleteAdmin(admin.getAdminID());
+        return ResultGenerator.genSuccessResult();
+    }
 }

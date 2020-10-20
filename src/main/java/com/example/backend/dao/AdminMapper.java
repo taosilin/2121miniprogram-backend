@@ -7,5 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface AdminMapper extends Mapper<Admin>{
-    public Admin adminLogin(@Param("adminID")String adminID);
+    public Admin adminLogin(@Param("adminID")String adminID); // 管理员登录
+    public List<Admin> adminList(@Param("page")Integer page,@Param("size")Integer size);
+    public void addAdmin(Admin a);
+    public void deleteAdmin(@Param("adminID") String adminID);
 }

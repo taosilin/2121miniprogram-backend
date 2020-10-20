@@ -7,13 +7,31 @@
         -->
         <id column="adminID" jdbcType="VARCHAR" property="adminID" />
         <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="adminName" jdbcType="VARCHAR" property="adminName" />
         <result column="authority" jdbcType="VARCHAR" property="authority" />
 
     </resultMap>
 
+    <!--管理员登录-->
     <select id="adminLogin" parameterType="String" resultType="com.example.backend.model.Admin">
         SELECT * FROM admin WHERE adminID=#{adminID}
     </select>
 
+    <!--管理员列表 分页-->
+    <select id="adminList" resultType="com.example.backend.model.Admin">
+        SELECT *
+        FROM admin
+        limit #{page},#{size}
+    </select>
 
+    <!--添加管理员-->
+    <insert id="addAdmin" parameterType="com.example.backend.model.Admin">
+        INSERT INTO admin ( adminID,password,adminName,authority )
+        values ( #{adminID},#{password},#{adminName},#{authority} )
+    </insert>
+
+    <!--删除管理员-->
+    <delete id="deleteAdmin" parameterType="String">
+        DELETE FROM admin WHERE adminID=#{adminID}
+    </delete>
 </mapper>
