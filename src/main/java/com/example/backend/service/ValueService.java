@@ -8,4 +8,5 @@ import java.util.List;
 public interface ValueService extends Service<Value> {
     void addValue(Value v);
     List<Value> findByAttribute(String attributeID);
+    void deleteValue(String valueID);
 }

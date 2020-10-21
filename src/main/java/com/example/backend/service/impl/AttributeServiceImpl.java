@@ -42,4 +42,9 @@ public class AttributeServiceImpl extends AbstractService<Attribute> implements 
         }
         return list;
     }
+
+    public void deleteAttribute(String attributeID){
+        attributeMapper.deleteAttribute(attributeID);
+        valueMapper.deleteByAttribute(attributeID);
+    }
 }

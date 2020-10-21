@@ -10,4 +10,5 @@ import java.util.List;
 public interface AttributeService extends Service<Attribute> {
     void addAttribute(Attribute a);
     List<ValueList> attributeDetail(Attribute a);
+    public void deleteAttribute(String attributeID);
 }

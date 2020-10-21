@@ -34,4 +34,12 @@
     <delete id="deleteAdmin" parameterType="String">
         DELETE FROM admin WHERE adminID=#{adminID}
     </delete>
+
+    <!--按ID查找管理员-->
+    <select id="findByAdminID" parameterType="String" resultType="com.example.backend.model.Admin">
+        SELECT *
+        FROM admin
+        WHERE adminID=#{adminID}
+    </select>
+
 </mapper>

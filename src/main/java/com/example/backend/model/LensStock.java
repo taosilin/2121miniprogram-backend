@@ -14,6 +14,8 @@ public class LensStock {
 
     private Integer stock;
 
+    private Integer warning;
+
     public String getStockID() {
         return stockID;
     }
@@ -52,5 +54,13 @@ public class LensStock {
 
     public void setCyl(Double cyl) {
         this.cyl = cyl;
+    }
+
+    public Integer getWarning() {
+        return warning;
+    }
+
+    public void setWarning(Integer warning) {
+        this.warning = warning;
     }
 }

@@ -29,4 +29,10 @@ public class ValueController {
         List<Value> list = valueService.findByAttribute(value.getAttributeID());
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/delete")
+    public Result deleteValue(@RequestBody Value value){
+        valueService.deleteValue(value.getValueID());
+        return ResultGenerator.genSuccessResult();
+    }
 }

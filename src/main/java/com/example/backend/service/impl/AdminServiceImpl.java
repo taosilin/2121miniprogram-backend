@@ -37,4 +37,8 @@ public class AdminServiceImpl extends AbstractService<Admin> implements AdminSer
     public void deleteAdmin(String adminID){
         adminMapper.deleteAdmin(adminID);
     }
+
+    public Admin findByAdminID(String adminID){
+        return adminMapper.findByAdminID(adminID);
+    }
 }

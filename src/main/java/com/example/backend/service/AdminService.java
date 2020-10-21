@@ -10,4 +10,5 @@ public interface AdminService extends Service<Admin> {
     List<Admin> adminList(Integer page,Integer size);
     void addAdmin(Admin a);
     void deleteAdmin(String adminID);
+    Admin findByAdminID(String adminID);
 }

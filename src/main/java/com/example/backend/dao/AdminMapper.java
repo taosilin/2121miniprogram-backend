@@ -11,4 +11,5 @@ public interface AdminMapper extends Mapper<Admin>{
     public List<Admin> adminList(@Param("page")Integer page,@Param("size")Integer size);
     public void addAdmin(Admin a);
     public void deleteAdmin(@Param("adminID") String adminID);
+    public Admin findByAdminID(@Param("adminID") String adminID); // 按ID查找管理员
 }

@@ -25,7 +25,7 @@ public class AdminController {
             return ResultGenerator.genSuccessResult("登录成功！");
         }
         else {
-            return ResultGenerator.genFailResult("用户名或密码错误");
+            return ResultGenerator.genFailResult("用户名或密码错误！");
         }
     }
 
@@ -37,8 +37,14 @@ public class AdminController {
 
     @PostMapping("/add")
     public Result addAdmin(@RequestBody Admin admin){
-        adminService.addAdmin(admin);
-        return ResultGenerator.genSuccessResult();
+        Admin a = adminService.findByAdminID(admin.getAdminID());
+        if (a==null){
+            adminService.addAdmin(admin);
+            return ResultGenerator.genSuccessResult("添加成功！");
+        }
+        else{
+            return ResultGenerator.genFailResult("该管理员ID已存在！");
+        }
     }
 
     @PostMapping("/delete")

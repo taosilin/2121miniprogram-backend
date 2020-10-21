@@ -10,21 +10,21 @@
         <result column="sph" jdbcType="DECIMAL" property="sph" />
         <result column="cyl" jdbcType="DECIMAL" property="cyl" />
         <result column="stock" jdbcType="INTEGER" property="stock" />
-
+        <result column="warning" jdbcType="INTEGER" property="warning" />
     </resultMap>
 
     <insert id="addLensStock" parameterType="com.example.backend.model.LensStock">
-        INSERT INTO lensStock ( stockID,lensID,sph,cyl,stock )
-        values ( #{stockID},#{lensID},#{sph},#{cyl},#{stock} )
+        INSERT INTO lensStock ( stockID,lensID,sph,cyl,stock,warning )
+        values ( #{stockID},#{lensID},#{sph},#{cyl},#{stock},#{warning} )
     </insert>
 
     <update id="updateLensStock" parameterType="com.example.backend.model.LensStock">
         UPDATE lensStock
-        SET stock=#{stock}
+        SET stock=#{stock},warning=#{warning}
         WHERE stockID=#{stockID}
     </update>
 
-    <delete id="deleteLensStock">
+    <delete id="deleteLensStock" parameterType="String">
         DELETE FROM lensStock WHERE stockID=#{stockID}
     </delete>
 
@@ -40,4 +40,12 @@
         WHERE lensID=#{lensID} AND cyl=#{cyl}
         order by sph DESC
     </select>
+
+    <!--查询库存不足的镜片SKU-->
+    <select id="lensStockWarning" resultType="com.example.backend.model.LensStock">
+        SELECT *
+        FROM lensStock
+        WHERE stock &lt;= warning
+    </select>
+
 </mapper>

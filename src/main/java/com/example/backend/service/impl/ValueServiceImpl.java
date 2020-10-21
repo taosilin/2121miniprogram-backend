@@ -29,4 +29,8 @@ public class ValueServiceImpl extends AbstractService<Value> implements ValueSer
     public List<Value> findByAttribute(String attributeID){
         return valueMapper.findByAttribute(attributeID);
     }
+
+    public void deleteValue(String valueID){
+        valueMapper.deleteValue(valueID);
+    }
 }

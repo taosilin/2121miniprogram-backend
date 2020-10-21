@@ -30,4 +30,10 @@ public class AttributeController {
         List<ValueList> list = attributeService.attributeDetail(attribute);
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/delete")
+    public Result deleteAttribute(@RequestBody Attribute attribute){
+        attributeService.deleteAttribute(attribute.getAttributeID());
+        return ResultGenerator.genSuccessResult();
+    }
 }

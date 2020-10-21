@@ -12,4 +12,5 @@ public interface LensStockMapper extends Mapper<LensStock> {
     public void deleteLensStock(@Param("stockID")String stockID);
     public List<LensStock> stockList(@Param("lensID")String lensID);
     public List<Integer> cylFilter(@Param("lensID")String lensID,@Param("cyl")Double cyl);
+    public List<LensStock> lensStockWarning(); // 查询库存不足的镜片SKU
 }
