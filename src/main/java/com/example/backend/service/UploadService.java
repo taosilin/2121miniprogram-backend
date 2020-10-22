@@ -22,7 +22,7 @@ public class UploadService {
 
     public String uploadImg(HttpServletRequest request) throws IOException, ServletException {
         InputStream inputStream = request.getInputStream();
-        //获取请求头中Contect-Type的值
+        // 获取请求头中Contect-Type的值
         // 图片后缀
         String imgSuffix = "png";
         Enumeration enumeration=request.getHeaderNames();
