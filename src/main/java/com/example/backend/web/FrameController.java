@@ -22,8 +22,14 @@ public class FrameController {
 
     @PostMapping("/add")
     public Result addFrame(@RequestBody Frame frame){
-        frameService.addFrame(frame);
-        return ResultGenerator.genSuccessResult();
+        Frame f = frameService.findByFrameID(frame.getFrameID()).frame;
+        if (f==null){
+            frameService.addFrame(frame);
+            return ResultGenerator.genSuccessResult();
+        }
+        else{
+            return ResultGenerator.genFailResult("该镜框ID已存在！");
+        }
     }
 
     @PostMapping("/list")

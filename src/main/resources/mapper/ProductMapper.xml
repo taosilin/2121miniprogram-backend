@@ -16,8 +16,6 @@
         <result column="keyword" jdbcType="VARCHAR" property="keyword" />
         <result column="state" jdbcType="VARCHAR" property="state" />
 
-
-
     </resultMap>
 
     <insert id="addProduct" parameterType="com.example.backend.model.Product">

@@ -22,8 +22,14 @@ public class ProductController {
 
     @PostMapping("/add")
     public Result addProduct(@RequestBody Product product) {
-        productService.addProduct(product);
-        return ResultGenerator.genSuccessResult();
+        Product p = productService.productDetail(product.getProductID()).product;
+        if (p==null){
+            productService.addProduct(product);
+            return ResultGenerator.genSuccessResult();
+        }
+        else{
+            return ResultGenerator.genFailResult("该商品ID已存在！");
+        }
     }
 
     @PostMapping("/detail")
