@@ -32,6 +32,8 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
     @Resource
     private SpecMapper specMapper;
     @Resource
+    private FrameLensMapper frameLensMapper;
+    @Resource
     private FrameColorMapper frameColorMapper;
 
     public void addFrame(Frame f){
@@ -64,6 +66,14 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
     }
 
     public void deleteFrame(String frameID){
+        frameLensMapper.deleteByFrameID(frameID);
+        frameColorMapper.deleteByFrameID(frameID);
+        specMapper.deleteByProductID(frameID);
+        List<Attribute> attributes = attributeMapper.attributeList(frameID);
+        for (Attribute attribute:attributes){
+            valueMapper.deleteByAttribute(attribute.getAttributeID());
+            attributeMapper.deleteAttribute(attribute.getAttributeID());
+        }
         frameMapper.deleteFrame(frameID);
     }
 

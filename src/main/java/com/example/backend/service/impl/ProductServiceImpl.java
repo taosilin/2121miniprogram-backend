@@ -56,6 +56,16 @@ public class ProductServiceImpl extends AbstractService<Product> implements Prod
         productMapper.updateProduct(p);
     }
 
+    public void deleteProduct(String productID){
+        specMapper.deleteByProductID(productID);
+        List<Attribute> attributes = attributeMapper.attributeList(productID);
+        for (Attribute attribute:attributes){
+            valueMapper.deleteByAttribute(attribute.getAttributeID());
+            attributeMapper.deleteAttribute(attribute.getAttributeID());
+        }
+        productMapper.deleteProduct(productID);
+    }
+
     public List<Product> productList(Integer page,Integer size){
         return productMapper.productList(page*size, size);
     }

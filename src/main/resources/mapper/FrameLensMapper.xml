@@ -25,4 +25,14 @@
         DELETE FROM frameLens WHERE frameID=#{frameID} AND lensID=#{lensID}
     </delete>
 
+    <!--根据frameID删除-->
+    <delete id="deleteByFrameID" parameterType="String">
+        DELETE FROM frameLens WHERE frameID=#{frameID}
+    </delete>
+
+    <!--根据lensID删除-->
+    <delete id="deleteByLensID" parameterType="String">
+        DELETE FROM frameLens WHERE lensID=#{lensID}
+    </delete>
+
 </mapper>

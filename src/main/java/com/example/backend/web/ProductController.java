@@ -44,6 +44,12 @@ public class ProductController {
         return ResultGenerator.genSuccessResult();
     }
 
+    @PostMapping("/delete")
+    public Result deleteProduct(@RequestBody Product product){
+        productService.deleteProduct(product.getProductID());
+        return ResultGenerator.genSuccessResult();
+    }
+
     @PostMapping("/list")
     public Result productList(@RequestBody MyRequestBody myRequestBody){
         List<Product> list = productService.productList(myRequestBody.page, myRequestBody.size);

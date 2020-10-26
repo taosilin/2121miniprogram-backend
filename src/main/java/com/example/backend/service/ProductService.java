@@ -11,6 +11,7 @@ public interface ProductService extends Service<Product> {
     void addProduct(Product p);
     ProductDetail productDetail(String productID);
     void updateProduct (Product p);
+    void deleteProduct(String productID);
     List<Product> productList(Integer page,Integer size);
     ProductOverview productOverview();
 }

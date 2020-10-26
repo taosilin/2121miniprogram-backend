@@ -17,7 +17,7 @@
     </insert>
 
     <select id="attributeList" parameterType="String" resultType="com.example.backend.model.Attribute">
-        SELECT attributeID,productID,attributeName
+        SELECT *
         FROM attribute
         WHERE productID=#{productID}
     </select>

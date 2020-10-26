@@ -30,6 +30,11 @@
         DELETE FROM spec WHERE specID=#{specID}
     </delete>
 
+    <!--根据商品ID删除-->
+    <delete id="deleteByProductID" parameterType="String">
+        DELETE FROM spec WHERE productID=#{productID}
+    </delete>
+
     <update id="updateSpec" parameterType="com.example.backend.model.Spec">
         UPDATE spec
         SET quantity=#{quantity},warning=#{warning},price=#{price},specImage=#{specImage}

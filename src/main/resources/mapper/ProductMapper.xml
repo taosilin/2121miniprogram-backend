@@ -35,6 +35,10 @@
         WHERE productID=#{productID}
     </update>
 
+    <delete id="deleteProduct" parameterType="String">
+        DELETE FROM product WHERE productID=#{productID}
+    </delete>
+
     <select id="productList" resultType="com.example.backend.model.Product">
         SELECT *
         FROM product

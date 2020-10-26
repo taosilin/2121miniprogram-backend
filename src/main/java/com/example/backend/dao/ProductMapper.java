@@ -10,6 +10,7 @@ public interface ProductMapper extends Mapper<Product> {
     public void addProduct(Product p);
     public Product productDetail(@Param("productID") String productID);
     public void updateProduct(Product p);
+    public void deleteProduct(@Param("productID")String productID);
     public List<Product> productList(@Param("page")Integer page,@Param("size")Integer size);
     public Integer productNum(@Param("state")String state);
     public Integer productTotal();

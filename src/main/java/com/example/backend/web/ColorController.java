@@ -6,6 +6,7 @@ import com.example.backend.model.Color;
 import com.example.backend.service.ColorService;
 import com.example.backend.web.model.MyRequestBody;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -38,5 +39,18 @@ public class ColorController {
     public Result deleteColor(@RequestBody Color color){
         colorService.deleteColor(color.getColorID());
         return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping("/uploadImage")
+    public String uploadImage(@RequestParam("imageFile") MultipartFile imageFile) {
+        String returnValue = "start";
+        try {
+            String fileName = colorService.saveImage(imageFile);
+            returnValue = "http://localhost:80/pictures/"+ fileName;
+        } catch (Exception e) {
+            e.printStackTrace();
+            returnValue = "error";
+        }
+        return returnValue;
     }
 }

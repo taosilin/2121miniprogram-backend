@@ -11,5 +11,6 @@ public interface FrameColorMapper extends Mapper<FrameColor> {
     public void addFrameColor(FrameColor f);
     public void updateFrameColor(FrameColor f);
     public void deleteFrameColor(@Param("frameID")String frameID,@Param("colorID")Integer colorID);
+    public void deleteByFrameID(@Param("frameID")String frameID);
     public List<FrameColorResult> findByFrameID(@Param("frameID")String frameID);
 }

@@ -2,6 +2,7 @@ package com.example.backend.service;
 
 import com.example.backend.core.Service;
 import com.example.backend.model.Color;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -10,4 +11,6 @@ public interface ColorService extends Service<Color> {
     List<Color> colorList(Integer page,Integer size);
     void updateColor(Color c);
     void deleteColor(Integer colorID);
+
+    String saveImage(MultipartFile imageFile) throws Exception;
 }

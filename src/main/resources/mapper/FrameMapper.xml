@@ -23,39 +23,46 @@
 
     </resultMap>
 
+    <!--添加镜框-->
     <insert id="addFrame" parameterType="com.example.backend.model.Frame">
         INSERT INTO frame ( frameID,frameName,price,material,shape,nosePad,dimension,state,imageList,description,classification,tab,coverImage,sketch,keyword )
         values (#{frameID},#{frameName},#{price},#{material},#{shape},#{nosePad},#{dimension},#{state},#{imageList},#{description},#{classification},#{tab},#{coverImage},#{sketch},#{keyword})
     </insert>
 
+    <!--管理员镜框列表 分页-->
     <select id="frameList" resultType="com.example.backend.model.Frame">
         SELECT *
         FROM frame
         limit #{page},#{size}
     </select>
 
+    <!--根据ID查找镜框-->
     <select id="findByFrameID" parameterType="String" resultType="com.example.backend.model.Frame">
         SELECT *
         FROM frame
         WHERE frameID=#{frameID}
     </select>
 
+    <!--更新镜框信息-->
     <update id="updateFrame" parameterType="com.example.backend.model.Frame">
         UPDATE frame
         SET frameName=#{frameName},price=#{price},material=#{material},shape=#{shape},nosePad=#{nosePad},dimension=#{dimension},state=#{state},imageList=#{imageList},description=#{description},classification=#{classification},tab=#{tab},coverImage=#{coverImage},sketch=#{sketch},keyword=#{keyword}
         WHERE frameID=#{frameID}
     </update>
 
+    <!--根据ID删除镜框-->
     <delete id="deleteFrame" parameterType="String">
         DELETE FROM frame WHERE frameID=#{frameID}
     </delete>
 
+    <!--根据状态筛选镜框数量-->
     <select id="frameNum" parameterType="String" resultType="Integer">
         SELECT COUNT(*)
         FROM frame
         WHERE state=#{state}
     </select>
 
+    <!--镜框总数-->
     <select id="frameTotal" resultType="Integer">
         SELECT COUNT(*) FROM frame
     </select>
