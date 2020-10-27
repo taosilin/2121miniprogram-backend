@@ -42,4 +42,9 @@
         WHERE adminID=#{adminID}
     </select>
 
+    <!--管理员总数-->
+    <select id="adminTotal" resultType="Integer">
+        SELECT COUNT(*) FROM admin
+    </select>
+
 </mapper>

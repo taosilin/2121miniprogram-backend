@@ -34,4 +34,8 @@
         DELETE FROM problem WHERE problemID=#{problemID}
     </delete>
 
+    <!--常见问题总数-->
+    <select id="problemTotal" resultType="Integer">
+        SELECT COUNT(*) FROM problem
+    </select>
 </mapper>

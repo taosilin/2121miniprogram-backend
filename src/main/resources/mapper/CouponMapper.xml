@@ -33,4 +33,9 @@
     <delete id="deleteCoupon" parameterType="String">
         DELETE FROM coupon WHERE couponID=#{couponID}
     </delete>
+
+    <!--优惠券总数-->
+    <select id="couponTotal" resultType="Integer">
+        SELECT COUNT(*) FROM coupon
+    </select>
 </mapper>

@@ -49,4 +49,9 @@ public class CommentController {
         commentService.updateState(comment);
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/total")
+    public Integer commentTotal(){
+        return commentService.commentTotal();
+    }
 }

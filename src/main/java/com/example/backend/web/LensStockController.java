@@ -39,8 +39,8 @@ public class LensStockController {
     }
 
     @PostMapping("/list")
-    public Result stockList(@RequestBody LensStock lensStock){
-        List<LensStock> list = lensStockService.stockList(lensStock.getLensID());
+    public Result stockList(@RequestBody MyRequestBody myRequestBody){
+        List<LensStock> list = lensStockService.stockList(myRequestBody.userID, myRequestBody.page, myRequestBody.size);
         return ResultGenerator.genSuccessResult(list);
     }
 
@@ -50,24 +50,28 @@ public class LensStockController {
         return ResultGenerator.genSuccessResult(list);
     }
 
-    @PostMapping("/adddata")
-    public Result adddata(@RequestBody LensStock lensStock){
-
-        Integer i,j;
-        String lensID = lensStock.getLensID();
-        for (i=-1200;i<=1200;i=i+25){
-            for (j=-600;j<=0;j=j+25){
-                LensStock l = new LensStock();
-                l.setStockID(lensID+"_"+i.toString()+"_"+j.toString());
-                l.setLensID(lensID);
-                l.setSph(i.doubleValue()/100);
-                l.setCyl(j.doubleValue()/100);
-                l.setStock(abs(i+j));
-                lensStockService.addLensStock(l);
-            }
-        }
-
-
-        return ResultGenerator.genSuccessResult();
+    @PostMapping("/total")
+    public Integer lensStockTotal(@RequestBody LensStock lensStock){
+        return lensStockService.lensStockTotal(lensStock.getLensID());
     }
+//    @PostMapping("/adddata")
+//    public Result adddata(@RequestBody LensStock lensStock){
+//
+//        Integer i,j;
+//        String lensID = lensStock.getLensID();
+//        for (i=-1200;i<=1200;i=i+25){
+//            for (j=-600;j<=0;j=j+25){
+//                LensStock l = new LensStock();
+//                l.setStockID(lensID+"_"+i.toString()+"_"+j.toString());
+//                l.setLensID(lensID);
+//                l.setSph(i.doubleValue()/100);
+//                l.setCyl(j.doubleValue()/100);
+//                l.setStock(abs(i+j));
+//                lensStockService.addLensStock(l);
+//            }
+//        }
+//
+//
+//        return ResultGenerator.genSuccessResult();
+//    }
 }

@@ -12,4 +12,5 @@ public interface ClassMapper extends Mapper<Class> {
     public void deleteClass(@Param("classID")Integer classID);
     public List<Class> classList(@Param("page")Integer page,@Param("size") Integer size);
     public List<Class> findBySuperior(@Param("superior")Integer superior);
+    public Integer classTotal();
 }

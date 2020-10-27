@@ -42,8 +42,12 @@ public class ColorServiceImpl extends AbstractService<Color> implements ColorSer
         colorMapper.deleteColor(colorID);
     }
 
+    public Integer colorTotal(){
+        return colorMapper.colorTotal();
+    }
+
     public String saveImage(MultipartFile imageFile) throws Exception {
-        String folder = "/Users/2121 Engineer/Desktop/";
+        String folder = "/Users/2121 Engineer/Desktop/color/";
         byte[] bytes = imageFile.getBytes();
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
         String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳

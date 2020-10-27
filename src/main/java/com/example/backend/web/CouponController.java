@@ -41,4 +41,9 @@ public class CouponController {
         couponService.deleteCoupon(coupon.getCouponID());
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/total")
+    public Integer couponTotal(){
+        return couponService.couponTotal();
+    }
 }

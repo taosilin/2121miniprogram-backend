@@ -8,4 +8,5 @@ import java.util.List;
 public interface RefundService extends Service<Refund> {
     void addRefund(Refund r);
     List<Refund> refundList(Integer page,Integer size);
+    Integer refundTotal();
 }

@@ -40,4 +40,7 @@
         WHERE superior=#{superior}
     </select>
 
+    <select id="classTotal" resultType="Integer">
+        SELECT COUNT(*) FROM class
+    </select>
 </mapper>

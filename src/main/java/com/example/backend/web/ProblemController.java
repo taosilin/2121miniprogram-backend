@@ -40,4 +40,8 @@ public class ProblemController {
         return ResultGenerator.genSuccessResult();
     }
 
+    @PostMapping("/total")
+    public Integer problemTotal(){
+        return problemService.problemTotal();
+    }
 }

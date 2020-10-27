@@ -41,12 +41,17 @@ public class ColorController {
         return ResultGenerator.genSuccessResult();
     }
 
+    @PostMapping("/total")
+    public Integer colorTotal(){
+        return colorService.colorTotal();
+    }
+
     @PostMapping("/uploadImage")
     public String uploadImage(@RequestParam("imageFile") MultipartFile imageFile) {
         String returnValue = "start";
         try {
             String fileName = colorService.saveImage(imageFile);
-            returnValue = "http://localhost:80/pictures/"+ fileName;
+            returnValue = "http://localhost:80/pictures/color/"+ fileName;
         } catch (Exception e) {
             e.printStackTrace();
             returnValue = "error";

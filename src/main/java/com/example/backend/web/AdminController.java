@@ -52,4 +52,9 @@ public class AdminController {
         adminService.deleteAdmin(admin.getAdminID());
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/total")
+    public Integer adminTotal(){
+        return adminService.adminTotal();
+    }
 }

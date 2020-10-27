@@ -10,4 +10,5 @@ public interface ProblemService extends Service<Problem> {
     List<Problem> problemList(Integer page,Integer size);
     void updateProblem(Problem p);
     void deleteProblem(Integer problemID);
+    Integer problemTotal();
 }

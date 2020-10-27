@@ -12,4 +12,5 @@ public interface AdminMapper extends Mapper<Admin>{
     public void addAdmin(Admin a);
     public void deleteAdmin(@Param("adminID") String adminID);
     public Admin findByAdminID(@Param("adminID") String adminID); // 按ID查找管理员
+    public Integer adminTotal();
 }

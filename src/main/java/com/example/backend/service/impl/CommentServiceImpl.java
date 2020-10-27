@@ -55,4 +55,8 @@ public class CommentServiceImpl extends AbstractService<Comment> implements Comm
     public void updateState(Comment c){
         commentMapper.updateState(c);
     }
+
+    public Integer commentTotal(){
+        return commentMapper.commentTotal();
+    }
 }

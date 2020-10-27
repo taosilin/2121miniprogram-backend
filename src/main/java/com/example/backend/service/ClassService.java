@@ -12,4 +12,5 @@ public interface ClassService extends Service<Class> {
     void deleteClass(Integer classID);
     List<Class> classList(Integer page,Integer size);
     List<SuperiorClass> superiorClass(Integer superior);
+    Integer classTotal();
 }

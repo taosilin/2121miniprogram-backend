@@ -46,4 +46,9 @@ public class ClassController {
         List<SuperiorClass> list = classService.superiorClass(c.getSuperior());
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/total")
+    public Integer classTotal(){
+        return classService.classTotal();
+    }
 }

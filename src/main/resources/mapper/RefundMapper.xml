@@ -28,4 +28,8 @@
         limit #{page},#{size}
     </select>
 
+    <!--退款信息总数-->
+    <select id="refundTotal" resultType="Integer">
+        SELECT COUNT(*) FROM refund
+    </select>
 </mapper>

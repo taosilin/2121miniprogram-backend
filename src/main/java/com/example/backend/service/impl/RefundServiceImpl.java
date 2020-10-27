@@ -26,4 +26,8 @@ public class RefundServiceImpl extends AbstractService<Refund> implements Refund
     public List<Refund> refundList(Integer page,Integer size){
         return refundMapper.refundList(page*size, size);
     }
+
+    public Integer refundTotal(){
+        return refundMapper.refundTotal();
+    }
 }

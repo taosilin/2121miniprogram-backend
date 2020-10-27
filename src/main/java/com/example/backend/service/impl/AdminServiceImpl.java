@@ -41,4 +41,8 @@ public class AdminServiceImpl extends AbstractService<Admin> implements AdminSer
     public Admin findByAdminID(String adminID){
         return adminMapper.findByAdminID(adminID);
     }
+
+    public Integer adminTotal(){
+        return adminMapper.adminTotal();
+    }
 }

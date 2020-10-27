@@ -37,4 +37,8 @@ public class CouponServiceImpl extends AbstractService<Coupon> implements Coupon
     public void deleteCoupon(String couponID){
         couponMapper.deleteCoupon(couponID);
     }
+
+    public Integer couponTotal(){
+        return couponMapper.couponTotal();
+    }
 }

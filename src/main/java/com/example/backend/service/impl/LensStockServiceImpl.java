@@ -34,8 +34,8 @@ public class LensStockServiceImpl extends AbstractService<LensStock> implements 
         lensStockMapper.deleteLensStock(stockID);
     }
 
-    public List<LensStock> stockList(String lensID){
-        return lensStockMapper.stockList(lensID);
+    public List<LensStock> stockList(String lensID,Integer page,Integer size){
+        return lensStockMapper.stockList(lensID,page*size,size);
     }
 
     public List<List<Integer>> cylFilter(String lensID){
@@ -46,5 +46,9 @@ public class LensStockServiceImpl extends AbstractService<LensStock> implements 
             result.add(list);
         }
         return result;
+    }
+
+    public Integer lensStockTotal(String lensID){
+        return lensStockMapper.lensStockTotal(lensID);
     }
 }

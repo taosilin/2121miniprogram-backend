@@ -11,4 +11,5 @@ public interface AdminService extends Service<Admin> {
     void addAdmin(Admin a);
     void deleteAdmin(String adminID);
     Admin findByAdminID(String adminID);
+    Integer adminTotal();
 }

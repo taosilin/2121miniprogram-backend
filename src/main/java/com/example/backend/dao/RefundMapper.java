@@ -9,5 +9,5 @@ import java.util.List;
 public interface RefundMapper extends Mapper<Refund> {
     public void addRefund(Refund r);
     public List<Refund> refundList(@Param("page")Integer page,@Param("size")Integer size);
-
+    public Integer refundTotal();
 }

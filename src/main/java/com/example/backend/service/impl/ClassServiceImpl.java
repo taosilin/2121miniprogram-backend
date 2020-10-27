@@ -57,4 +57,8 @@ public class ClassServiceImpl extends AbstractService<Class> implements ClassSer
        }
        return result;
     }
+
+    public Integer classTotal(){
+        return classMapper.classTotal();
+    }
 }

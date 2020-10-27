@@ -11,6 +11,6 @@ public interface ColorService extends Service<Color> {
     List<Color> colorList(Integer page,Integer size);
     void updateColor(Color c);
     void deleteColor(Integer colorID);
-
+    Integer colorTotal();
     String saveImage(MultipartFile imageFile) throws Exception;
 }

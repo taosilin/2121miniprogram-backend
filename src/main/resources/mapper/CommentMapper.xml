@@ -46,4 +46,9 @@
         SET state=#{state}
         WHERE commentID=#{commentID}
     </update>
+
+    <!--评论总数-->
+    <select id="commentTotal" resultType="Integer">
+        SELECT COUNT(*) FROM comment
+    </select>
 </mapper>

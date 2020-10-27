@@ -11,4 +11,5 @@ public interface ProblemMapper extends Mapper<Problem> {
     public List<Problem> problemList(@Param("page")Integer page,@Param("size")Integer size);
     public void updateProblem(Problem p);
     public void deleteProblem(@Param("problemID")Integer problemID);
+    public Integer problemTotal();
 }

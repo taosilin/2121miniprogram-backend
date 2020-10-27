@@ -11,4 +11,5 @@ public interface ColorMapper extends Mapper<Color> {
     public List<Color> colorList(@Param("page")Integer page,@Param("size")Integer size);
     public void updateColor(Color c);
     public void deleteColor(@Param("colorID")Integer colorID);
+    public Integer colorTotal();
 }

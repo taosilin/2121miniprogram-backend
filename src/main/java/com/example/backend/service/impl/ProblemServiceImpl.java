@@ -34,4 +34,8 @@ public class ProblemServiceImpl extends AbstractService<Problem> implements Prob
     public void deleteProblem(Integer problemID){
         problemMapper.deleteProblem(problemID);
     }
+
+    public Integer problemTotal(){
+        return problemMapper.problemTotal();
+    }
 }

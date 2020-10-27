@@ -27,4 +27,9 @@ public class RefundController {
         List<Refund> list = refundService.refundList(myRequestBody.page, myRequestBody.size);
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/total")
+    public Integer refundTotal(){
+        return refundService.refundTotal();
+    }
 }

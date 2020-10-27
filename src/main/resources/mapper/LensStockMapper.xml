@@ -28,8 +28,17 @@
         DELETE FROM lensStock WHERE stockID=#{stockID}
     </delete>
 
-    <select id="stockList" parameterType="String" resultType="com.example.backend.model.LensStock">
+    <select id="stockList" resultType="com.example.backend.model.LensStock">
         SELECT *
+        FROM lensStock
+        WHERE lensID=#{lensID}
+        order by sph desc, cyl desc
+        limit #{page},#{size}
+    </select>
+
+    <!--一类镜片的库存信息总条数-->
+    <select id="lensStockTotal" parameterType="String" resultType="Integer">
+        SELECT COUNT(*)
         FROM lensStock
         WHERE lensID=#{lensID}
     </select>
