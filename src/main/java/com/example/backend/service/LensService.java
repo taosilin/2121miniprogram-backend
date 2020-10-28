@@ -11,4 +11,5 @@ public interface LensService extends Service<Lens> {
     void updateLens(Lens l);
     void deleteLens(String lensID);
     Lens findByLensID(String lensID);
+    Integer lensTotal();
 }

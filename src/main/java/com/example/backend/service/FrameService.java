@@ -4,6 +4,7 @@ import com.example.backend.core.Service;
 import com.example.backend.model.Frame;
 import com.example.backend.web.model.FrameDetail;
 import com.example.backend.web.model.ProductOverview;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface FrameService extends Service<Frame> {
     void updateFrame(Frame f);
     void deleteFrame(String frameID);
     ProductOverview frameOverview();
+    Integer frameTotal();
+    String saveImage(MultipartFile imageFile) throws Exception;
 }

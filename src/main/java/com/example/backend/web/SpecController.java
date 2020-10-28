@@ -9,6 +9,7 @@ import com.example.backend.web.model.StockWarning;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -41,5 +42,18 @@ public class SpecController {
     public Result stockWarning(){
         StockWarning stockWarning = specService.stockWarning();
         return ResultGenerator.genSuccessResult(stockWarning);
+    }
+
+    @PostMapping("/uploadImage")
+    public String uploadImage(@RequestParam("imageFile") MultipartFile imageFile) {
+        String returnValue = "start";
+        try {
+            String fileName = specService.saveImage(imageFile);
+            returnValue = "http://localhost:80/pictures/spec/"+ fileName;
+        } catch (Exception e) {
+            e.printStackTrace();
+            returnValue = "error";
+        }
+        return returnValue;
     }
 }

@@ -22,18 +22,20 @@
         <result column="courierID" jdbcType="VARCHAR" property="courierID" />
         <result column="deliveryMethod" jdbcType="VARCHAR" property="deliveryMethod" />
     </resultMap>
-
+    <!--添加订单-->
     <insert id="addOrder" parameterType="com.example.backend.model.Order">
         INSERT INTO orderTable ( orderID,userID,addressID,couponID,totalAmount,actualPayment,orderTime,paymentTime,receiptTime,state,remark,courierID,deliveryMethod)
         values (#{orderID},#{userID},#{addressID},#{couponID},#{totalAmount},#{actualPayment},#{orderTime},#{paymentTime},#{receiptTime},#{state},#{remark},#{courierID},#{deliveryMethod})
     </insert>
 
+    <!--根据ID查询订单详情-->
     <select id="findByOrderID" parameterType="String" resultType="com.example.backend.model.Order">
         SELECT *
         FROM orderTable
         WHERE orderID=#{orderID}
     </select>
 
+    <!--查询用户全部订单-->
     <select id="findByUserID" parameterType="String" resultType="com.example.backend.model.Order">
         SELECT *
         FROM orderTable

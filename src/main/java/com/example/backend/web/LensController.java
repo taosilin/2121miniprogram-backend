@@ -47,4 +47,9 @@ public class LensController {
         Lens lens = lensService.findByLensID(l.getLensID());
         return ResultGenerator.genSuccessResult(lens);
     }
+
+    @PostMapping("/total")
+    public Integer lensTotal(){
+        return lensService.lensTotal();
+    }
 }

@@ -45,4 +45,9 @@
         FROM lens
         WHERE lensID=#{lensID}
     </select>
+
+    <!--查询镜片总数-->
+    <select id="lensTotal" resultType="Integer">
+        SELECT COUNT(*) FROM lens
+    </select>
 </mapper>

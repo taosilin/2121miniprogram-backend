@@ -117,7 +117,7 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
         Calendar c = Calendar.getInstance();
         c.setTime(today);
 
-        Integer i =1;
+        Integer i = 1;
 
         for (i=0;i<8;i++){
 
@@ -141,7 +141,14 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
             c.add(Calendar.DAY_OF_MONTH, -1);//求前一天
         }
 
-
         return list;
+    }
+
+    public Integer stateOrderNum(String state){
+        return orderMapper.stateOrderNum(state);
+    }
+
+    public Integer orderTotal(){
+        return orderMapper.orderTotal();
     }
 }

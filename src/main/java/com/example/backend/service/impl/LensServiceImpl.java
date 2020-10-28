@@ -41,4 +41,8 @@ public class LensServiceImpl extends AbstractService<Lens> implements LensServic
     public Lens findByLensID(String lensID){
         return lensMapper.findByLensID(lensID);
     }
+
+    public Integer lensTotal(){
+        return lensMapper.lensTotal();
+    }
 }

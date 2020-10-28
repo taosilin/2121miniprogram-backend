@@ -14,8 +14,8 @@ public interface OrderMapper extends Mapper<Order> {
     public List<Order> orderList(@Param("page")Integer page,@Param("size")Integer size);
     public void updateOrder(Order o);
     public List<Order> stateFilter(@Param("state")String state,@Param("page")Integer page,@Param("size")Integer size);
-    public Integer stateOrderNum(@Param("state")String state);
-    public Integer orderTotal();
+    public Integer stateOrderNum(@Param("state")String state); // 查询某状态的订单数量
+    public Integer orderTotal(); // 订单总数
 
     public List<Order> findByDate(@Param("orderTime") Date orderTime);
     public List<Order> findByPaymentDate(@Param("paymentTime") Date paymentTime);

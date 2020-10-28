@@ -19,6 +19,9 @@ public interface OrderService extends Service<Order> {
     OrderPending orderPending();
     List<Order> findByDate(Date orderTime);
 
+    Integer stateOrderNum(String state);
+    Integer orderTotal();
+
     TransactionBoard transactionBoard();//今日交易看板
 
     List<OrderStatistics> orderStatistics();//订单统计

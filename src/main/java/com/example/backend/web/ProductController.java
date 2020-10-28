@@ -10,6 +10,7 @@ import com.example.backend.web.model.ProductDetail;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -59,5 +60,23 @@ public class ProductController {
     @PostMapping("/overview")
     public Result productOverview(){
         return ResultGenerator.genSuccessResult(productService.productOverview());
+    }
+
+    @PostMapping("/total")
+    public Integer productTotal(){
+        return productService.productTotal();
+    }
+
+    @PostMapping("/uploadImage")
+    public String uploadImage(@RequestParam("imageFile") MultipartFile imageFile) {
+        String returnValue = "start";
+        try {
+            String fileName = productService.saveImage(imageFile);
+            returnValue = "http://localhost:80/pictures/product/"+ fileName;
+        } catch (Exception e) {
+            e.printStackTrace();
+            returnValue = "error";
+        }
+        return returnValue;
     }
 }

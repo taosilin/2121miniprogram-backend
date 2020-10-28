@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -59,5 +60,23 @@ public class FrameController {
     @PostMapping("/overview")
     public Result frameOverview(){
         return ResultGenerator.genSuccessResult(frameService.frameOverview());
+    }
+
+    @PostMapping("/total")
+    public Integer frameTotal(){
+        return frameService.frameTotal();
+    }
+
+    @PostMapping("/uploadImage")
+    public String uploadImage(@RequestParam("imageFile") MultipartFile imageFile) {
+        String returnValue = "start";
+        try {
+            String fileName = frameService.saveImage(imageFile);
+            returnValue = "http://localhost:80/pictures/frame/"+ fileName;
+        } catch (Exception e) {
+            e.printStackTrace();
+            returnValue = "error";
+        }
+        return returnValue;
     }
 }

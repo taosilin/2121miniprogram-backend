@@ -72,6 +72,16 @@ public class OrderController {
 //        return ResultGenerator.genSuccessResult(list);
 //    }
 
+    @PostMapping("/state")
+    public Integer stateOrderNum(@RequestBody Order order){
+        return orderService.stateOrderNum(order.getState());
+    }
+
+    @PostMapping("/total")
+    public Integer orderTotal(){
+        return orderService.orderTotal();
+    }
+
     //今日交易看板
     @PostMapping("/transaction")
     public Result transactionBoard(){
