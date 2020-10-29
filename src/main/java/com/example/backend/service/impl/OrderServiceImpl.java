@@ -4,6 +4,7 @@ import com.example.backend.core.ServiceException;
 import com.example.backend.dao.OrderFrameMapper;
 import com.example.backend.dao.OrderMapper;
 import com.example.backend.dao.OrderProductMapper;
+import com.example.backend.dao.RefundMapper;
 import com.example.backend.model.Order;
 import com.example.backend.model.OrderFrame;
 import com.example.backend.model.OrderProduct;
@@ -38,14 +39,17 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
     @Resource
     private OrderFrameMapper orderFrameMapper;
 
+    @Resource
+    private RefundMapper refundMapper;
+
     public void addOrder(OrderRequest o){
         orderMapper.addOrder(o.order);
-        for (OrderProduct product:o.products){
-            orderProductMapper.addOrderProduct(product);
-        }
-        for (OrderFrame frame:o.frames){
-            orderFrameMapper.addOrderFrame(frame);
-        }
+//        for (OrderProduct product:o.products){
+//            orderProductMapper.addOrderProduct(product);
+//        }
+//        for (OrderFrame frame:o.frames){
+//            orderFrameMapper.addOrderFrame(frame);
+//        }
     }
 
     public OrderRequest orderDetail(String orderID){
@@ -53,6 +57,7 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
         orderRequest.order = orderMapper.findByOrderID(orderID);
         orderRequest.products = orderProductMapper.findOrderProduct(orderID);
         orderRequest.frames = orderFrameMapper.findOrderFrame(orderID);
+        orderRequest.refund = refundMapper.findByOrderID(orderID);
         return orderRequest;
     }
 

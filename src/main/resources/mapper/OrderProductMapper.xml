@@ -19,9 +19,9 @@
         values ( #{orderID},#{productID},#{specID},#{state},#{num},#{price} )
     </insert>
 
-    <select id="findOrderProduct" parameterType="String" resultType="com.example.backend.model.OrderProduct">
-        SELECT *
-        FROM orderProduct
+    <select id="findOrderProduct" parameterType="String" resultType="com.example.backend.web.model.OrderProductResult">
+        SELECT o.productID,o.specID,o.state,o.num,o.price,s.productSpec,s.specImage
+        FROM orderProduct as o join spec as s on (o.specID=s.specID)
         WHERE orderID=#{orderID}
     </select>
 </mapper>

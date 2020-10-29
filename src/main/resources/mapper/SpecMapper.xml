@@ -48,4 +48,10 @@
         WHERE quantity &lt;= warning
     </select>
 
+    <!--根据ID查询SKU-->
+    <select id="findBySpecID" parameterType="String" resultType="com.example.backend.model.Spec">
+        SELECT *
+        FROM spec
+        WHERE specID=#{specID}
+    </select>
 </mapper>

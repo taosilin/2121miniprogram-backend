@@ -30,4 +30,5 @@ public class RefundServiceImpl extends AbstractService<Refund> implements Refund
     public Integer refundTotal(){
         return refundMapper.refundTotal();
     }
+
 }

@@ -12,4 +12,5 @@ public interface SpecMapper extends Mapper<Spec> {
     public void deleteByProductID(@Param("productID")String productID);
     public void updateSpec(Spec s);
     public List<Spec> productWarning(); // 查询库存不足的商品SKU
+    public Spec findBySpecID(@Param("specID")String specID);
 }

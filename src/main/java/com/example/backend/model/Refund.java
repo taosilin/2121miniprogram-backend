@@ -11,6 +11,8 @@ public class Refund {
 
     private String productID;
 
+    private String specID;
+
     private String applicant;
 
     private Double amount;
@@ -103,5 +105,13 @@ public class Refund {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getSpecID() {
+        return specID;
+    }
+
+    public void setSpecID(String specID) {
+        this.specID = specID;
     }
 }

@@ -10,6 +10,8 @@ public class OrderFrame {
 
     private String lensID;
 
+    private String specID;
+
     private String state;
 
     private Integer num;
@@ -132,5 +134,13 @@ public class OrderFrame {
 
     public void setRightAxis(Integer rightAxis) {
         this.rightAxis = rightAxis;
+    }
+
+    public String getSpecID() {
+        return specID;
+    }
+
+    public void setSpecID(String specID) {
+        this.specID = specID;
     }
 }

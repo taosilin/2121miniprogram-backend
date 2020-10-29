@@ -8,6 +8,7 @@
         <id column="refundID" jdbcType="VARCHAR" property="refundID" />
         <result column="orderID" jdbcType="VARCHAR" property="orderID" />
         <result column="productID" jdbcType="VARCHAR" property="productID" />
+        <result column="specID" jdbcType="VARCHAR" property="specID" />
         <result column="applicant" jdbcType="VARCHAR" property="applicant" />
         <result column="amount" jdbcType="DECIMAL" property="amount" />
         <result column="reason" jdbcType="VARCHAR" property="reason" />
@@ -18,8 +19,8 @@
     </resultMap>
 
     <insert id="addRefund" parameterType="com.example.backend.model.Refund">
-        INSERT INTO refund ( refundID,orderID,productID,applicant,amount,reason,description,state,type,updateTime )
-        values ( #{refundID},#{orderID},#{productID},#{applicant},#{amount},#{reason},#{description},#{state},#{type},#{updateTime} )
+        INSERT INTO refund ( refundID,orderID,productID,specID,applicant,amount,reason,description,state,type,updateTime )
+        values ( #{refundID},#{orderID},#{productID},#{specID},#{applicant},#{amount},#{reason},#{description},#{state},#{type},#{updateTime} )
     </insert>
 
     <select id="refundList" resultType="com.example.backend.model.Refund">
@@ -32,4 +33,11 @@
     <select id="refundTotal" resultType="Integer">
         SELECT COUNT(*) FROM refund
     </select>
+
+    <select id="findByOrderID" parameterType="String" resultType="com.example.backend.model.Refund">
+        SELECT *
+        FROM refund
+        WHERE orderID=#{orderID}
+    </select>
+
 </mapper>
