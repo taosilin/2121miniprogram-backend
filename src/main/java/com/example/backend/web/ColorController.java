@@ -51,7 +51,7 @@ public class ColorController {
         String returnValue = "start";
         try {
             String fileName = colorService.saveImage(imageFile);
-            returnValue = "http://localhost:80/pictures/color/"+ fileName;
+            returnValue = "http://129.211.168.202:8080/pictures/color/"+ fileName;
         } catch (Exception e) {
             e.printStackTrace();
             returnValue = "error";

@@ -20,8 +20,14 @@ public class UserController {
 
     @PostMapping("/add")
     public Result add(@RequestBody User user) {
-        userService.addUser(user);
-        return ResultGenerator.genSuccessResult();
+        User u = userService.findByUserID(user.getUserID());
+        if (u==null){
+            userService.addUser(user);
+            return ResultGenerator.genSuccessResult("添加成功！");
+        }
+        else{
+            return ResultGenerator.genSuccessResult("该用户已存在！");
+        }
     }
 
     @PostMapping("/detail")

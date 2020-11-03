@@ -97,7 +97,7 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
     }
 
     public String saveImage(MultipartFile imageFile) throws Exception {
-        String folder = "/Users/2121 Engineer/Desktop/frame/";
+        String folder = "/root/public/frame/";
         byte[] bytes = imageFile.getBytes();
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
         String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳

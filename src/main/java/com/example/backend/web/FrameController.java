@@ -72,7 +72,7 @@ public class FrameController {
         String returnValue = "start";
         try {
             String fileName = frameService.saveImage(imageFile);
-            returnValue = "http://localhost:80/pictures/frame/"+ fileName;
+            returnValue = "http://129.211.168.202:8080/pictures/frame/"+ fileName;
         } catch (Exception e) {
             e.printStackTrace();
             returnValue = "error";

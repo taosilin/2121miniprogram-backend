@@ -22,5 +22,5 @@
         INSERT INTO user ( userID,nickname,gender,avatarUrl,registrationTime ) values(#{userID},#{nickname},#{gender},#{avatarUrl},#{registrationTime})
     </insert>
 
-
+    
 </mapper>

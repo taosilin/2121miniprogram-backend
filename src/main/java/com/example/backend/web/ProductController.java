@@ -72,7 +72,7 @@ public class ProductController {
         String returnValue = "start";
         try {
             String fileName = productService.saveImage(imageFile);
-            returnValue = "http://localhost:80/pictures/product/"+ fileName;
+            returnValue = "http://129.211.168.202:8080/pictures/product/"+ fileName;
         } catch (Exception e) {
             e.printStackTrace();
             returnValue = "error";

@@ -7,6 +7,7 @@ import com.example.backend.service.UserService;
 import com.example.backend.core.AbstractService;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -24,13 +25,12 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
     public User findByUserID(String userID)
     {
-        User user= userMapper.findByUserID(userID);
-
-        return user;
+        return userMapper.findByUserID(userID);
     }
 
     public void addUser(User u)
     {
+        u.setRegistrationTime(new Date());
         userMapper.addUser(u);
     }
 }
