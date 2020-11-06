@@ -24,16 +24,19 @@
         values ( #{addressID},#{userID},#{receiver},#{telephone},#{province},#{city},#{district},#{detail},#{defaultAdd},#{zipCode} )
     </insert>
 
+    <!--删除地址-->
     <delete id="deleteByAddressID" parameterType="String">
         DELETE FROM address WHERE addressID = #{addressID}
     </delete>
 
+    <!--编辑地址-->
     <update id="updateAddress" parameterType="com.example.backend.model.Address">
         UPDATE address
-        SET receiver=#{receiver},telephone=#{telephone},province=#{province},city=#{city},district=#{district},detail=#{detail},defaultAdd=#{defaultAdd},zipCode=#{zipCode}
+        SET receiver=#{receiver},telephone=#{telephone},province=#{province},city=#{city},district=#{district},detail=#{detail}
         WHERE addressID=#{addressID}
     </update>
 
+    <!--用户地址列表-->
     <select id="userAddressList" parameterType="String" resultType="com.example.backend.model.Address">
         SELECT *
         FROM address

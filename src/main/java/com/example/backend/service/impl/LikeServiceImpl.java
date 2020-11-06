@@ -2,6 +2,7 @@ package com.example.backend.service.impl;
 
 import com.example.backend.core.ServiceException;
 import com.example.backend.dao.LikeMapper;
+import com.example.backend.model.Frame;
 import com.example.backend.model.Like;
 import com.example.backend.model.Product;
 import com.example.backend.service.LikeService;
@@ -33,5 +34,9 @@ public class LikeServiceImpl extends AbstractService<Like> implements LikeServic
 
     public List<Product> likeList(String userID){
         return likeMapper.likeList(userID);
+    }
+
+    public List<Frame> likeFrameList(String userID){
+        return likeMapper.likeFrameList(userID);
     }
 }

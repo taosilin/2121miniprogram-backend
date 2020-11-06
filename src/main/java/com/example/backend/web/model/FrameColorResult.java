@@ -1,12 +1,12 @@
 package com.example.backend.web.model;
 
 public class FrameColorResult {
+    public String specID;
     public Integer colorID;
     public String colorName;
     public String colorImage;
     public Double price;
-    public String state;
-    public Integer stock;
+    public Integer quantity;
     public Integer warning;
-    public String image;
+    public String specImage;
 }

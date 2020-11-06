@@ -2,6 +2,7 @@ package com.example.backend.web;
 
 import com.example.backend.core.Result;
 import com.example.backend.core.ResultGenerator;
+import com.example.backend.model.Frame;
 import com.example.backend.model.Like;
 import com.example.backend.model.Product;
 import com.example.backend.service.LikeService;
@@ -34,6 +35,12 @@ public class LikeController {
     @PostMapping("/list")
     public Result likeList(@RequestBody Like like){
         List<Product> list = likeService.likeList(like.getUserID());
+        return ResultGenerator.genSuccessResult(list);
+    }
+
+    @PostMapping("/frame")
+    public Result likeFrameList(@RequestBody Like like){
+        List<Frame> list = likeService.likeFrameList(like.getUserID());
         return ResultGenerator.genSuccessResult(list);
     }
 }

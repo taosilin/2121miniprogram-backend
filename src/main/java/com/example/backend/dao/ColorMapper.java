@@ -12,4 +12,5 @@ public interface ColorMapper extends Mapper<Color> {
     public void updateColor(Color c);
     public void deleteColor(@Param("colorID")Integer colorID);
     public Integer colorTotal();
+    public Color findByColorID(@Param("colorID")Integer colorID);
 }

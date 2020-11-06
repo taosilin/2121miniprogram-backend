@@ -37,4 +37,10 @@
     <select id="colorTotal" resultType="Integer">
         SELECT COUNT(*) FROM color
     </select>
+
+    <select id="findByColorID" parameterType="Integer" resultType="com.example.backend.model.Color">
+        SELECT *
+        FROM color
+        WHERE colorID=#{colorID}
+    </select>
 </mapper>

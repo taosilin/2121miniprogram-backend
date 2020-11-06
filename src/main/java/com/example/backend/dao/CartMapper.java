@@ -8,4 +8,5 @@ import java.util.List;
 public interface CartMapper extends Mapper<Cart>{
     public void addCart(Cart c);
     public void deleteCart(Cart c);
+    public void updateCart(Cart c);
 }

@@ -8,6 +8,8 @@ public class Cart {
 
     private String productID;
 
+    private String specID;
+
     private Integer num;
 
     public String getUserID() {
@@ -32,5 +34,13 @@ public class Cart {
 
     public void setNum(Integer num) {
         this.num = num;
+    }
+
+    public String getSpecID() {
+        return specID;
+    }
+
+    public void setSpecID(String specID) {
+        this.specID = specID;
     }
 }

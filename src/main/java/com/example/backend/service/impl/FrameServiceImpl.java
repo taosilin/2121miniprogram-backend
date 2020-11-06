@@ -4,6 +4,7 @@ import com.example.backend.core.ServiceException;
 import com.example.backend.dao.*;
 import com.example.backend.model.Attribute;
 import com.example.backend.model.Frame;
+import com.example.backend.model.Spec;
 import com.example.backend.service.FrameService;
 import com.example.backend.core.AbstractService;
 
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.example.backend.web.model.FrameColorResult;
 import com.example.backend.web.model.FrameDetail;
 import com.example.backend.web.model.ProductOverview;
 import com.example.backend.web.model.ValueList;
@@ -42,6 +44,7 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
     @Resource
     private FrameColorMapper frameColorMapper;
 
+
     public void addFrame(Frame f){
         frameMapper.addFrame(f);
     }
@@ -53,9 +56,10 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
     public FrameDetail findByFrameID(String frameID){
         FrameDetail f = new FrameDetail();
         List<ValueList> valueLists = new ArrayList<>();
-        f.specs=specMapper.specList(frameID);
+        List<FrameColorResult> colorResults = new ArrayList<>();
+
         f.frame = frameMapper.findByFrameID(frameID);
-        f.colors = frameColorMapper.findByFrameID(frameID);
+
         List<Attribute> attributes = attributeMapper.attributeList(frameID);
         for (Attribute a:attributes){
             ValueList valueList = new ValueList();
@@ -64,6 +68,14 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
             valueLists.add(valueList);
         }
         f.attributes = valueLists;
+
+        f.specs=specMapper.specList(frameID);
+        for (Spec s:f.specs){
+            FrameColorResult frameColorResult = specMapper.findFrameSpec(s.getSpecID());
+            colorResults.add(frameColorResult);
+        }
+        f.colors = colorResults;
+
         return f;
     }
 

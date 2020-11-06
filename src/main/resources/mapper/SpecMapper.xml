@@ -54,4 +54,10 @@
         FROM spec
         WHERE specID=#{specID}
     </select>
+
+    <select id="findFrameSpec" parameterType="String" resultType="com.example.backend.web.model.FrameColorResult">
+        SELECT s.specID,c.colorID,c.colorName,c.colorImage,s.price,s.quantity,s.warning,s.specImage
+        FROM spec as s join color as c on (s.productSpec=c.colorID)
+        WHERE specID=#{specID}
+    </select>
 </mapper>

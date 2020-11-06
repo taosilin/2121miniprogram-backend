@@ -29,4 +29,10 @@ public class CartController {
         cartService.deleteCart(cart);
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/update")
+    public Result updateCart(@RequestBody Cart cart){
+        cartService.updateCart(cart);
+        return ResultGenerator.genSuccessResult();
+    }
 }

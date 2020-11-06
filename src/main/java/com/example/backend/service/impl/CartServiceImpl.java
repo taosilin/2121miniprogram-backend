@@ -29,4 +29,8 @@ public class CartServiceImpl extends AbstractService<Cart> implements CartServic
     public void deleteCart(Cart c){
         cartMapper.deleteCart(c);
     }
+
+    public void updateCart(Cart c){
+        cartMapper.updateCart(c);
+    }
 }

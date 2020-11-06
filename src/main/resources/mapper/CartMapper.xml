@@ -7,17 +7,24 @@
         -->
         <result column="userID" jdbcType="VARCHAR" property="userID" />
         <result column="productID" jdbcType="VARCHAR" property="productID" />
+        <result column="specID" jdbcType="VARCHAR" property="specID" />
         <result column="num" jdbcType="INTEGER" property="num" />
 
     </resultMap>
 
     <insert id="addCart" parameterType="com.example.backend.model.Cart" >
-        INSERT INTO cart (userID,productID,num)
-        values (#{userID},#{productID},#{num})
+        INSERT INTO cart (userID,productID,specID,num)
+        values (#{userID},#{productID},#{specID},#{num})
     </insert>
 
     <delete id="deleteCart" parameterType="com.example.backend.model.Cart">
-        DELETE FROM cart WHERE userID=#{userID} AND productID=#{productID}
+        DELETE FROM cart WHERE userID=#{userID} AND productID=#{productID} AND specID=#{specID}
     </delete>
+
+    <update id="updateCart" parameterType="com.example.backend.model.Cart">
+        UPDATE cart
+        SET num=#{num}
+        WHERE userID=#{userID} AND productID=#{productID} AND specID=#{specID}
+    </update>
 
 </mapper>
