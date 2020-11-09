@@ -9,12 +9,19 @@
         <result column="productID" jdbcType="VARCHAR" property="productID" />
         <result column="specID" jdbcType="VARCHAR" property="specID" />
         <result column="num" jdbcType="INTEGER" property="num" />
-
+        <result column="lensID" jdbcType="VARCHAR" property="lensID" />
+        <result column="leftDegree" jdbcType="DECIMAL" property="leftDegree" />
+        <result column="rightDegree" jdbcType="DECIMAL" property="rightDegree" />
+        <result column="interpupillary" jdbcType="INTEGER" property="interpupillary" />
+        <result column="leftAstigmatism" jdbcType="DECIMAL" property="leftAstigmatism" />
+        <result column="rightAstigmatism" jdbcType="DECIMAL" property="rightAstigmatism" />
+        <result column="leftAxis" jdbcType="INTEGER" property="leftAxis" />
+        <result column="rightAxis" jdbcType="INTEGER" property="rightAxis" />
     </resultMap>
 
     <insert id="addCart" parameterType="com.example.backend.model.Cart" >
-        INSERT INTO cart (userID,productID,specID,num)
-        values (#{userID},#{productID},#{specID},#{num})
+        INSERT INTO cart (userID,productID,specID,num,lensID,leftDegree,rightDegree,interpupillary,leftAstigmatism,rightAstigmatism,)
+        values (#{userID},#{productID},#{specID},#{num},#{lensID},#{leftDegree},#{rightDegree},#{interpupillary},#{leftAstigmatism},#{rightAstigmatism},#{leftAxis},#{rightAxis})
     </insert>
 
     <delete id="deleteCart" parameterType="com.example.backend.model.Cart">
