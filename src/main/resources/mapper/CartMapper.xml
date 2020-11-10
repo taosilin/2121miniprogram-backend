@@ -34,4 +34,10 @@
         WHERE userID=#{userID} AND productID=#{productID} AND specID=#{specID}
     </update>
 
+    <select id="findByUserID" parameterType="String" resultType="com.example.backend.model.Cart">
+        SELECT *
+        FROM cart
+        WHERE userID=#{userID}
+    </select>
+
 </mapper>

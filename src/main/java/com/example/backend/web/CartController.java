@@ -5,6 +5,7 @@ import com.example.backend.core.ResultGenerator;
 import com.example.backend.model.Cart;
 import com.example.backend.service.CartService;
 import com.example.backend.web.model.MyRequestBody;
+import com.example.backend.web.model.UserCartResult;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
@@ -34,5 +35,11 @@ public class CartController {
     public Result updateCart(@RequestBody Cart cart){
         cartService.updateCart(cart);
         return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping("/user")
+    public Result findByUserID(@RequestBody Cart cart){
+        List<UserCartResult> list = cartService.findByUserID(cart.getUserID());
+        return ResultGenerator.genSuccessResult(list);
     }
 }
