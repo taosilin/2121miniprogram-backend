@@ -2,6 +2,7 @@ package com.example.backend.web.model;
 
 public class OrderFrameResult {
     public String frameID;
+    public String frameName;
     public String lensID;
     public String specID;
     public String state;
@@ -16,4 +17,5 @@ public class OrderFrameResult {
     public Integer rightAxis;
     public String productSpec;
     public String specImage;
+    public String colorName;
 }

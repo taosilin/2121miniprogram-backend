@@ -27,8 +27,8 @@
     </insert>
 
     <select id="findOrderFrame" parameterType="String" resultType="com.example.backend.web.model.OrderFrameResult">
-        SELECT o.frameID,o.lensID,o.specID,o.state,o.num,o.price,o.leftDegree,o.rightDegree,o.interpupillary,o.leftAstigmatism,o.rightAstigmatism,o.leftAxis,o.rightAxis,s.productSpec,s.specImage
-        FROM orderFrame as o join spec as s on (o.specID=s.specID)
+        SELECT o.frameID,f.frameName,o.lensID,o.specID,o.state,o.num,o.price,o.leftDegree,o.rightDegree,o.interpupillary,o.leftAstigmatism,o.rightAstigmatism,o.leftAxis,o.rightAxis,s.productSpec,s.specImage,c.colorName
+        FROM orderFrame as o join spec as s on (o.specID=s.specID) join frame as f on (o.frameID=f.frameID) join color as c on (s.productSpec=c.colorID)
         WHERE orderID=#{orderID}
     </select>
 
