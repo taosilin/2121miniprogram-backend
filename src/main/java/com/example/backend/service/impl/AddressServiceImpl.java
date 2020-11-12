@@ -38,4 +38,14 @@ public class AddressServiceImpl extends AbstractService<Address> implements Addr
     public Address findByAddressID(String addressID){
         return addressMapper.findByAddressID(addressID);
     }
+
+    public Address findDefaultAdd(String userID){
+        return addressMapper.findDefaultAdd(userID);
+    }
+
+    public void modifyDefaultAdd(String addressID,String userID){
+        Address address = addressMapper.findDefaultAdd(userID);
+        addressMapper.modifyDefaultAdd(address.getAddressID(),"0");
+        addressMapper.modifyDefaultAdd(addressID,"1");
+    }
 }

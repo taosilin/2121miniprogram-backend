@@ -45,4 +45,16 @@ public class AddressController {
         Address address = addressService.findByAddressID(a.getAddressID());
         return ResultGenerator.genSuccessResult(address);
     }
+
+    @PostMapping("/default")
+    public Result findDefaultAdd(@RequestBody Address a){
+        Address address = addressService.findDefaultAdd(a.getUserID());
+        return ResultGenerator.genSuccessResult(address);
+    }
+
+    @PostMapping("/modifyDefaultAdd")
+    public Result modifyDefaultAdd(@RequestBody Address a){
+        addressService.modifyDefaultAdd(a.getAddressID(),a.getUserID());
+        return ResultGenerator.genSuccessResult();
+    }
 }

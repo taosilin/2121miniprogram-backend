@@ -9,4 +9,6 @@ public interface AddressService extends Service<Address>{
     void updateAddress(Address a);
     List<Address> userAddressList(String userID);
     Address findByAddressID(String addressID);
+    Address findDefaultAdd(String userID);
+    void modifyDefaultAdd(String addressID,String userID);
 }

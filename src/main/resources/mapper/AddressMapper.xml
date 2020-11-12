@@ -18,7 +18,7 @@
 
     </resultMap>
 
-
+    <!--新增地址-->
     <insert id="addAddress" parameterType="com.example.backend.model.Address" >
         INSERT INTO address ( addressID,userID,receiver,telephone,province,city,district,detail,defaultAdd,zipCode )
         values ( #{addressID},#{userID},#{receiver},#{telephone},#{province},#{city},#{district},#{detail},#{defaultAdd},#{zipCode} )
@@ -41,11 +41,28 @@
         SELECT *
         FROM address
         WHERE userID=#{userID}
+        order by defaultAdd desc
     </select>
 
+    <!--根据ID查询地址详情-->
     <select id="findByAddressID" parameterType="String" resultType="com.example.backend.model.Address">
         SELECT *
         FROM address
         WHERE addressID=#{addressID}
     </select>
+
+    <!--查找某用户的默认地址-->
+    <select id="findDefaultAdd" parameterType="String" resultType="com.example.backend.model.Address">
+        SELECT *
+        FROM address
+        WHERE userID=#{userID} AND defaultAdd='1'
+    </select>
+
+    <!--修改默认地址-->
+    <update id="modifyDefaultAdd" parameterType="String">
+        UPDATE address
+        SET defaultAdd=#{defaultAdd}
+        WHERE addressID=#{addressID}
+    </update>
+
 </mapper>
