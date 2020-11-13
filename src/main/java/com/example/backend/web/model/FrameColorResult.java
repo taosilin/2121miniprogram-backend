@@ -2,6 +2,7 @@ package com.example.backend.web.model;
 
 public class FrameColorResult {
     public String specID;
+    public String productID;
     public Integer colorID;
     public String colorName;
     public String colorImage;

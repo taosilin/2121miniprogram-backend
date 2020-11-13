@@ -20,7 +20,7 @@
     </resultMap>
 
     <insert id="addCart" parameterType="com.example.backend.model.Cart" >
-        INSERT INTO cart (userID,productID,specID,num,lensID,leftDegree,rightDegree,interpupillary,leftAstigmatism,rightAstigmatism,)
+        INSERT INTO cart (userID,productID,specID,num,lensID,leftDegree,rightDegree,interpupillary,leftAstigmatism,rightAstigmatism,leftAxis,rightAxis)
         values (#{userID},#{productID},#{specID},#{num},#{lensID},#{leftDegree},#{rightDegree},#{interpupillary},#{leftAstigmatism},#{rightAstigmatism},#{leftAxis},#{rightAxis})
     </insert>
 
