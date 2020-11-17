@@ -9,6 +9,7 @@ import com.example.backend.service.UserCouponService;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.backend.web.model.CouponList;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,4 +29,19 @@ public class UserCouponServiceImpl extends AbstractService<UserCoupon> implement
     public List<Coupon> couponList(String userID){
         return userCouponMapper.couponList(userID);
     }
+
+    public CouponList enabledCoupons(String userID,Double totalAmount){
+        CouponList couponList = new CouponList();
+        List<Coupon> coupons = userCouponMapper.couponList(userID);
+        for (Coupon c:coupons){
+            if (totalAmount>=c.getRestriction()){
+                couponList.enabledCoupons.add(c);
+            }
+            else {
+                couponList.disabledCoupons.add(c);
+            }
+        }
+        return couponList;
+    }
+
 }

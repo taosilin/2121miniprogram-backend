@@ -5,7 +5,9 @@ import com.example.backend.core.ResultGenerator;
 import com.example.backend.model.Coupon;
 import com.example.backend.model.UserCoupon;
 import com.example.backend.service.UserCouponService;
+import com.example.backend.web.model.CouponList;
 import com.example.backend.web.model.MyRequestBody;
+import com.example.backend.web.model.UserCouponRequest;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
@@ -29,5 +31,12 @@ public class UserCouponController {
     public Result couponList(@RequestBody UserCoupon userCoupon){
         List<Coupon> list = userCouponService.couponList(userCoupon.getUserID());
         return ResultGenerator.genSuccessResult(list);
+    }
+
+    // 查询可用与不可用优惠券
+    @PostMapping("/enable")
+    public Result enabledCoupons(@RequestBody UserCouponRequest userCouponRequest){
+        CouponList couponList = userCouponService.enabledCoupons(userCouponRequest.userID, userCouponRequest.totalAmount);
+        return ResultGenerator.genSuccessResult(couponList);
     }
 }
