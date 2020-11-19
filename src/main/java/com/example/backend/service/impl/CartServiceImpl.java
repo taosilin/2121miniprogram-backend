@@ -31,7 +31,14 @@ public class CartServiceImpl extends AbstractService<Cart> implements CartServic
     private FrameMapper frameMapper;
 
     public void addCart(Cart c){
-        cartMapper.addCart(c);
+        Cart cart = cartMapper.findCart(c);
+        if (cart!=null){
+            cart.setNum(cart.getNum()+1);
+            cartMapper.updateCart(cart);
+        }
+        else {
+            cartMapper.addCart(c);
+        }
     }
 
     public void deleteCart(Cart c){

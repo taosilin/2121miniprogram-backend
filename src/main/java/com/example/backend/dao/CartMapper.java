@@ -10,4 +10,5 @@ public interface CartMapper extends Mapper<Cart>{
     public void deleteCart(Cart c);
     public void updateCart(Cart c);
     public List<Cart> findByUserID(@Param("userID")String userID);
+    public Cart findCart(Cart c);
 }

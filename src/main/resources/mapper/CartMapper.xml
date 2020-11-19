@@ -25,19 +25,27 @@
     </insert>
 
     <delete id="deleteCart" parameterType="com.example.backend.model.Cart">
-        DELETE FROM cart WHERE userID=#{userID} AND productID=#{productID} AND specID=#{specID}
+        DELETE FROM cart
+        WHERE userID=#{userID} AND productID=#{productID} AND specID=#{specID} AND lensID=#{lensID} AND leftDegree=#{leftDegree} AND rightDegree=#{rightDegree} AND interpupillary=#{interpupillary} AND leftAstigmatism=#{leftAstigmatism} AND rightAstigmatism=#{rightAstigmatism} AND leftAxis=#{leftAxis} AND rightAxis=#{rightAxis}
     </delete>
 
     <update id="updateCart" parameterType="com.example.backend.model.Cart">
         UPDATE cart
         SET num=#{num}
-        WHERE userID=#{userID} AND productID=#{productID} AND specID=#{specID}
+        WHERE userID=#{userID} AND productID=#{productID} AND specID=#{specID} AND lensID=#{lensID} AND leftDegree=#{leftDegree} AND rightDegree=#{rightDegree} AND interpupillary=#{interpupillary} AND leftAstigmatism=#{leftAstigmatism} AND rightAstigmatism=#{rightAstigmatism} AND leftAxis=#{leftAxis} AND rightAxis=#{rightAxis}
     </update>
 
     <select id="findByUserID" parameterType="String" resultType="com.example.backend.model.Cart">
         SELECT *
         FROM cart
         WHERE userID=#{userID}
+    </select>
+
+    <!--购物车里找同款-->
+    <select id="findCart" parameterType="com.example.backend.model.Cart" resultType="com.example.backend.model.Cart">
+        SELECT *
+        FROM cart
+        WHERE userID=#{userID} AND productID=#{productID} AND specID=#{specID} AND lensID=#{lensID} AND leftDegree=#{leftDegree} AND rightDegree=#{rightDegree} AND interpupillary=#{interpupillary} AND leftAstigmatism=#{leftAstigmatism} AND rightAstigmatism=#{rightAstigmatism} AND leftAxis=#{leftAxis} AND rightAxis=#{rightAxis}
     </select>
 
 </mapper>
