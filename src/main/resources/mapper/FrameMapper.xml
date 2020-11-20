@@ -67,4 +67,11 @@
         SELECT COUNT(*) FROM frame
     </select>
 
+    <!--按镜框名称搜索-->
+    <select id="searchByFrameName" parameterType="String" resultType="com.example.backend.model.Frame">
+        SELECT *
+        FROM frame
+        WHERE frameName like #{searchString}
+    </select>
+
 </mapper>

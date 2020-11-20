@@ -79,4 +79,10 @@ public class FrameController {
         }
         return returnValue;
     }
+
+    @PostMapping("/search")
+    public Result searchByFrameName(@RequestBody MyRequestBody myRequestBody){
+        List<Frame> list = frameService.searchByFrameName(myRequestBody.sortedBy);
+        return ResultGenerator.genSuccessResult(list);
+    }
 }

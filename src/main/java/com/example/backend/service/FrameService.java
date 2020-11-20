@@ -17,4 +17,5 @@ public interface FrameService extends Service<Frame> {
     ProductOverview frameOverview();
     Integer frameTotal();
     String saveImage(MultipartFile imageFile) throws Exception;
+    List<Frame> searchByFrameName(String searchString);
 }

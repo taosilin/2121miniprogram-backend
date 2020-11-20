@@ -117,4 +117,8 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
         Files.write(path,bytes);
         return date + imageFile.getOriginalFilename();
     }
+
+    public List<Frame> searchByFrameName(String searchString){
+        return frameMapper.searchByFrameName("%"+searchString+"%");
+    }
 }
