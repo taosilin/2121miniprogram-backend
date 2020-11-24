@@ -49,7 +49,7 @@ public class SpecController {
         String returnValue = "start";
         try {
             String fileName = specService.saveImage(imageFile);
-            returnValue = "http://129.211.168.202:8080/pictures/spec/"+ fileName;
+            returnValue = "https://from2121.com/pictures/spec/"+ fileName;
         } catch (Exception e) {
             e.printStackTrace();
             returnValue = "error";

@@ -8,15 +8,17 @@
         <id column="userID" jdbcType="VARCHAR" property="userID" />
         <result column="couponID" jdbcType="VARCHAR" property="couponID" />
         <result column="state" jdbcType="INTEGER" property="state" />
+        <result column="receiveTime" jdbcType="DATE" property="receiveTime" />
+        <result column="deadline" jdbcType="DATE" property="deadline" />
 
     </resultMap>
 
     <insert id="getCoupon" parameterType="com.example.backend.model.UserCoupon" >
-        INSERT INTO userCoupon ( userID,couponID,state ) values(#{userID},#{couponID},#{state})
+        INSERT INTO userCoupon ( userID,couponID,state,receiveTime,deadline ) values(#{userID},#{couponID},#{state},#{receiveTime},#{deadline})
     </insert>
 
-    <select id="couponList" parameterType="String" resultType="com.example.backend.model.Coupon">
-        SELECT c.couponID,c.couponName,c.restriction,c.discount,c.description
+    <select id="couponList" parameterType="String" resultType="com.example.backend.web.model.UserCouponResult">
+        SELECT c.couponID,c.couponName,c.restriction,c.discount,c.description,u.receiveTime,u.deadline
         FROM userCoupon as u join coupon as c on (u.couponID=c.couponID)
         WHERE u.userID=#{userID}
     </select>

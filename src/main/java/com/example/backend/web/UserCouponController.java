@@ -8,6 +8,7 @@ import com.example.backend.service.UserCouponService;
 import com.example.backend.web.model.CouponList;
 import com.example.backend.web.model.MyRequestBody;
 import com.example.backend.web.model.UserCouponRequest;
+import com.example.backend.web.model.UserCouponResult;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class UserCouponController {
 
     @PostMapping("/list")
     public Result couponList(@RequestBody UserCoupon userCoupon){
-        List<Coupon> list = userCouponService.couponList(userCoupon.getUserID());
+        List<UserCouponResult> list = userCouponService.couponList(userCoupon.getUserID());
         return ResultGenerator.genSuccessResult(list);
     }
 

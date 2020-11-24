@@ -6,6 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CouponList {
-    public List<Coupon> enabledCoupons = new ArrayList<>();
-    public List<Coupon> disabledCoupons = new ArrayList<>();
+    public List<UserCouponResult> enabledCoupons = new ArrayList<>();
+    public List<UserCouponResult> disabledCoupons = new ArrayList<>();
 }

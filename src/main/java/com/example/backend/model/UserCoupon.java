@@ -1,6 +1,7 @@
 package com.example.backend.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 public class UserCoupon {
     @Id
@@ -9,6 +10,10 @@ public class UserCoupon {
     private String couponID;
 
     private Integer state;
+
+    private Date receiveTime;
+
+    private Date deadline;
 
     public String getUserID() {
         return userID;
@@ -32,5 +37,21 @@ public class UserCoupon {
 
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    public Date getReceiveTime() {
+        return receiveTime;
+    }
+
+    public void setReceiveTime(Date receiveTime) {
+        this.receiveTime = receiveTime;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
     }
 }
