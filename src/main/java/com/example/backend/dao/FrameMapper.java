@@ -15,4 +15,5 @@ public interface FrameMapper extends Mapper<Frame> {
     public Integer frameNum(@Param("state")String state);
     public Integer frameTotal();
     public List<Frame> searchByFrameName(@Param("searchString")String searchString);
+    public List<Frame> findByFrameClass(@Param("classification")String classification,@Param("page")Integer page, @Param("size")Integer size); // 按分类筛选镜框
 }

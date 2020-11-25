@@ -118,7 +118,13 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
         return date + imageFile.getOriginalFilename();
     }
 
+    // 按镜框名称搜索
     public List<Frame> searchByFrameName(String searchString){
         return frameMapper.searchByFrameName("%"+searchString+"%");
+    }
+
+    // 按分类筛选镜框
+    public List<Frame> findByFrameClass(String classification,Integer page,Integer size){
+        return frameMapper.findByFrameClass("%"+classification+"%",page*size,size);
     }
 }

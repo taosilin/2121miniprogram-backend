@@ -74,4 +74,11 @@
         WHERE frameName like #{searchString}
     </select>
 
+    <!--按分类筛选镜框-->
+    <select id="findByFrameClass" resultType="com.example.backend.model.Frame">
+        SELECT *
+        FROM frame
+        WHERE classification like #{classification}
+        limit #{page},#{size}
+    </select>
 </mapper>
