@@ -22,8 +22,8 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/add")
-    public Result addOrder(@RequestBody OrderRequest orderRequest){
-        orderService.addOrder(orderRequest);
+    public Result addOrder(@RequestBody AddOrderRequest addOrderRequest){
+        orderService.addOrder(addOrderRequest);
         return ResultGenerator.genSuccessResult();
     }
 

@@ -16,10 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import com.example.backend.web.model.OrderPending;
-import com.example.backend.web.model.OrderRequest;
-import com.example.backend.web.model.OrderStatistics;
-import com.example.backend.web.model.TransactionBoard;
+import com.example.backend.web.model.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,14 +39,19 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
     @Resource
     private RefundMapper refundMapper;
 
-    public void addOrder(OrderRequest o){
+    public void addOrder(AddOrderRequest o){
         orderMapper.addOrder(o.order);
-//        for (OrderProduct product:o.products){
-//            orderProductMapper.addOrderProduct(product);
-//        }
-//        for (OrderFrame frame:o.frames){
-//            orderFrameMapper.addOrderFrame(frame);
-//        }
+        if (o.orderProducts!=null){
+            for (OrderProduct product:o.orderProducts){
+                orderProductMapper.addOrderProduct(product);
+            }
+        }
+        if (o.orderFrames!=null){
+            for (OrderFrame frame:o.orderFrames){
+                orderFrameMapper.addOrderFrame(frame);
+            }
+        }
+
     }
 
     public OrderRequest orderDetail(String orderID){
