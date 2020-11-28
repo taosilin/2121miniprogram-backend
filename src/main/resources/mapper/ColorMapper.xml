@@ -11,11 +11,13 @@
 
     </resultMap>
 
+    <!--添加颜色-->
     <insert id="addColor" parameterType="com.example.backend.model.Color">
         INSERT INTO color (colorID,colorName,colorImage)
         values (#{colorID},#{colorName},#{colorImage})
     </insert>
 
+    <!--（管理员）镜框颜色列表-->
     <select id="colorList" resultType="com.example.backend.model.Color">
         SELECT *
         FROM color
@@ -38,6 +40,7 @@
         SELECT COUNT(*) FROM color
     </select>
 
+    <!--按ID查找颜色-->
     <select id="findByColorID" parameterType="Integer" resultType="com.example.backend.model.Color">
         SELECT *
         FROM color

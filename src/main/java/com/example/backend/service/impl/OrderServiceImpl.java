@@ -1,10 +1,7 @@
 package com.example.backend.service.impl;
 
 import com.example.backend.core.ServiceException;
-import com.example.backend.dao.OrderFrameMapper;
-import com.example.backend.dao.OrderMapper;
-import com.example.backend.dao.OrderProductMapper;
-import com.example.backend.dao.RefundMapper;
+import com.example.backend.dao.*;
 import com.example.backend.model.Order;
 import com.example.backend.model.OrderFrame;
 import com.example.backend.model.OrderProduct;
@@ -39,6 +36,9 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
     @Resource
     private RefundMapper refundMapper;
 
+    @Resource
+    private AddressMapper addressMapper;
+
     public void addOrder(AddOrderRequest o){
         orderMapper.addOrder(o.order);
         if (o.orderProducts!=null){
@@ -60,6 +60,7 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
         orderRequest.products = orderProductMapper.findOrderProduct(orderID);
         orderRequest.frames = orderFrameMapper.findOrderFrame(orderID);
         orderRequest.refund = refundMapper.findByOrderID(orderID);
+        orderRequest.address = addressMapper.findByAddressID(orderRequest.order.getAddressID());
         return orderRequest;
     }
 

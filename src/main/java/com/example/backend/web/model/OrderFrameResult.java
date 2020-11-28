@@ -18,4 +18,6 @@ public class OrderFrameResult {
     public String productSpec;
     public String specImage;
     public String colorName;
+    public String lensName;
+    public String refractiveIndex;
 }

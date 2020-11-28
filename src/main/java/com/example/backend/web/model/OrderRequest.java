@@ -1,9 +1,6 @@
 package com.example.backend.web.model;
 
-import com.example.backend.model.Order;
-import com.example.backend.model.OrderFrame;
-import com.example.backend.model.OrderProduct;
-import com.example.backend.model.Refund;
+import com.example.backend.model.*;
 
 import java.util.List;
 
@@ -12,4 +9,5 @@ public class OrderRequest {
     public List<OrderProductResult> products;
     public List<OrderFrameResult> frames;
     public Refund refund;
+    public Address address;
 }
