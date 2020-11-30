@@ -1,9 +1,7 @@
 package com.example.backend.service.impl;
 
 import com.example.backend.core.ServiceException;
-import com.example.backend.dao.CartMapper;
-import com.example.backend.dao.FrameMapper;
-import com.example.backend.dao.SpecMapper;
+import com.example.backend.dao.*;
 import com.example.backend.model.Cart;
 import com.example.backend.model.Spec;
 import com.example.backend.service.CartService;
@@ -29,6 +27,10 @@ public class CartServiceImpl extends AbstractService<Cart> implements CartServic
     private SpecMapper specMapper;
     @Resource
     private FrameMapper frameMapper;
+    @Resource
+    private ColorMapper colorMapper;
+    @Resource
+    private LensMapper lensMapper;
 
     public void addCart(Cart c){
         Cart cart = cartMapper.findCart(c);
@@ -58,6 +60,8 @@ public class CartServiceImpl extends AbstractService<Cart> implements CartServic
             u.cart = c;
             u.frame = frameMapper.findByFrameID(c.getProductID());
             u.spec = specMapper.findBySpecID(c.getSpecID());
+            u.color = colorMapper.findByColorID(Integer.parseInt(u.spec.getProductSpec()));
+            u.lens = lensMapper.findByLensID(c.getLensID());
             userCartResults.add(u);
         }
 
