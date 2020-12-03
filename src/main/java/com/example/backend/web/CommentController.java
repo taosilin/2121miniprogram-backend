@@ -54,4 +54,10 @@ public class CommentController {
     public Integer commentTotal(){
         return commentService.commentTotal();
     }
+
+    @PostMapping("/latest")
+    public Result latestComment(@RequestBody Comment comment){
+        Comment c = commentService.latestComment(comment.getProductID());
+        return ResultGenerator.genSuccessResult(c);
+    }
 }

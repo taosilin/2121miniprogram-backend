@@ -14,4 +14,5 @@ public interface CommentService extends Service<Comment> {
     List<Comment> allComment(Integer page,Integer size);
     void updateState(Comment c);
     Integer commentTotal();
+    Comment latestComment(String productID);
 }

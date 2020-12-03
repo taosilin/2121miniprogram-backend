@@ -20,7 +20,14 @@ public class AddressServiceImpl extends AbstractService<Address> implements Addr
     private AddressMapper addressMapper;
 
     public void addAddress(Address a){
+
+        if (addressMapper.findDefaultAdd(a.getUserID())==null){
+            a.setDefaultAdd("1");
+        }
+
         addressMapper.addAddress(a);
+
+
     }
 
     public void deleteByAddressID(String addressID){

@@ -26,6 +26,20 @@ public class Lens {
 
     private String description;
 
+    private String descriptionB;
+
+    private Integer deliveryTime;
+
+    private Double sphMin;
+
+    private Double sphMax;
+
+    private Double cylMin;
+
+    private Double cylMax;
+
+    private String classification;
+
     public String getLensID() {
         return lensID;
     }
@@ -112,5 +126,61 @@ public class Lens {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDescriptionB() {
+        return descriptionB;
+    }
+
+    public void setDescriptionB(String descriptionB) {
+        this.descriptionB = descriptionB;
+    }
+
+    public Integer getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(Integer deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
+
+    public Double getSphMin() {
+        return sphMin;
+    }
+
+    public void setSphMin(Double sphMin) {
+        this.sphMin = sphMin;
+    }
+
+    public Double getSphMax() {
+        return sphMax;
+    }
+
+    public void setSphMax(Double sphMax) {
+        this.sphMax = sphMax;
+    }
+
+    public Double getCylMin() {
+        return cylMin;
+    }
+
+    public void setCylMin(Double cylMin) {
+        this.cylMin = cylMin;
+    }
+
+    public Double getCylMax() {
+        return cylMax;
+    }
+
+    public void setCylMax(Double cylMax) {
+        this.cylMax = cylMax;
+    }
+
+    public String getClassification() {
+        return classification;
+    }
+
+    public void setClassification(String classification) {
+        this.classification = classification;
     }
 }

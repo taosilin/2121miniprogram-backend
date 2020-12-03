@@ -59,4 +59,8 @@ public class CommentServiceImpl extends AbstractService<Comment> implements Comm
     public Integer commentTotal(){
         return commentMapper.commentTotal();
     }
+
+    public Comment latestComment(String productID){
+        return commentMapper.latestComment(productID);
+    }
 }

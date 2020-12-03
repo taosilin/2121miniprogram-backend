@@ -16,12 +16,18 @@
         <result column="design" jdbcType="VARCHAR" property="design" />
         <result column="state" jdbcType="VARCHAR" property="state" />
         <result column="description" jdbcType="VARCHAR" property="description" />
-
+        <result column="descriptionB" jdbcType="VARCHAR" property="descriptionB" />
+        <result column="deliveryTime" jdbcType="INTEGER" property="deliveryTime" />
+        <result column="sphMin" jdbcType="DECIMAL" property="sphMin" />
+        <result column="sphMax" jdbcType="DECIMAL" property="sphMax" />
+        <result column="cylMin" jdbcType="DECIMAL" property="cylMin" />
+        <result column="cylMax" jdbcType="DECIMAL" property="cylMax" />
+        <result column="classification" jdbcType="VARCHAR" property="classification" />
     </resultMap>
 
     <insert id="addLens" parameterType="com.example.backend.model.Lens">
-        INSERT INTO lens ( lensID,lensName,price,refractiveIndex,material,radian,variety,film,design,state,description )
-        values (#{lensID},#{lensName},#{price},#{refractiveIndex},#{material},#{radian},#{variety},#{film},#{design},#{state},#{description})
+        INSERT INTO lens ( lensID,lensName,price,refractiveIndex,material,radian,variety,film,design,state,description,descriptionB,deliveryTime,sphMin,sphMax,cylMin,cylMax,classification )
+        values (#{lensID},#{lensName},#{price},#{refractiveIndex},#{material},#{radian},#{variety},#{film},#{design},#{state},#{description},#{descriptionB},#{deliveryTime},#{sphMin},#{sphMax},#{cylMin},#{cylMax},#{classification})
     </insert>
 
     <select id="lensList" resultType="com.example.backend.model.Lens">

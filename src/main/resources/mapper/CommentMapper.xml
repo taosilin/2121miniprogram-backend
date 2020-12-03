@@ -33,6 +33,7 @@
         SELECT *
         FROM comment
         WHERE productID=#{productID}
+        order by commentTime desc
     </select>
     
     <select id="allComment" resultType="com.example.backend.model.Comment">
@@ -51,4 +52,14 @@
     <select id="commentTotal" resultType="Integer">
         SELECT COUNT(*) FROM comment
     </select>
+
+    <!--查询商品最新的一条评论-->
+    <select id="latestComment" parameterType="String" resultType="com.example.backend.model.Comment">
+        SELECT *
+        FROM comment
+        WHERE productID=#{productID}
+        order by commentTime desc
+        limit 0,1
+    </select>
+
 </mapper>
