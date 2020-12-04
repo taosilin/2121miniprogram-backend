@@ -2,8 +2,10 @@ package com.example.backend.service;
 
 import com.example.backend.core.Service;
 import com.example.backend.model.Comment;
+import com.example.backend.web.model.CommentResult;
 import com.example.backend.web.model.ReplyRequest;
 import com.example.backend.web.model.UserComment;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,4 +17,6 @@ public interface CommentService extends Service<Comment> {
     void updateState(Comment c);
     Integer commentTotal();
     Comment latestComment(String productID);
+    String saveImage(MultipartFile imageFile) throws Exception;
+    List<CommentResult> frameCommentList(String productID);
 }

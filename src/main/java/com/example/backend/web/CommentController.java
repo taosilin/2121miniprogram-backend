@@ -10,6 +10,7 @@ import com.example.backend.web.model.UserComment;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -59,5 +60,18 @@ public class CommentController {
     public Result latestComment(@RequestBody Comment comment){
         Comment c = commentService.latestComment(comment.getProductID());
         return ResultGenerator.genSuccessResult(c);
+    }
+
+    @PostMapping("/uploadImage")
+    public String uploadImage(@RequestParam("imageFile") MultipartFile imageFile) {
+        String returnValue = "start";
+        try {
+            String fileName = commentService.saveImage(imageFile);
+            returnValue = "https://from2121.com/pictures/comment/"+ fileName;
+        } catch (Exception e) {
+            e.printStackTrace();
+            returnValue = "error";
+        }
+        return returnValue;
     }
 }
