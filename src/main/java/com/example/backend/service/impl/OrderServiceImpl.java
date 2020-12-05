@@ -39,8 +39,15 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
     @Resource
     private AddressMapper addressMapper;
 
+    @Resource
+    private UserCouponMapper userCouponMapper;
+
     public void addOrder(AddOrderRequest o){
         orderMapper.addOrder(o.order);
+        if (o.order.getCouponID()!=null){
+            userCouponMapper.updateCouponState("2",o.order.getUserID(),o.order.getCouponID());
+        }
+
         if (o.orderProducts!=null){
             for (OrderProduct product:o.orderProducts){
                 orderProductMapper.addOrderProduct(product);

@@ -17,10 +17,18 @@
         INSERT INTO userCoupon ( userID,couponID,state,receiveTime,deadline ) values(#{userID},#{couponID},#{state},#{receiveTime},#{deadline})
     </insert>
 
+    <!--用户未过期的优惠券-->
     <select id="couponList" parameterType="String" resultType="com.example.backend.web.model.UserCouponResult">
         SELECT c.couponID,c.couponName,c.restriction,c.discount,c.description,u.receiveTime,u.deadline
         FROM userCoupon as u join coupon as c on (u.couponID=c.couponID)
-        WHERE u.userID=#{userID}
+        WHERE u.userID=#{userID} AND u.state='1'
     </select>
+
+    <!--用户优惠券状态变更-->
+    <update id="updateCouponState" parameterType="String">
+        UPDATE userCoupon
+        SET state=#{state}
+        WHERE userID=#{userID} AND couponID=#{couponID}
+    </update>
 
 </mapper>
