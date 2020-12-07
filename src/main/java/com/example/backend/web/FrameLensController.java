@@ -5,7 +5,9 @@ import com.example.backend.core.ResultGenerator;
 import com.example.backend.model.FrameLens;
 import com.example.backend.model.Lens;
 import com.example.backend.service.FrameLensService;
+import com.example.backend.web.model.EnabledLens;
 import com.example.backend.web.model.MyRequestBody;
+import com.example.backend.web.model.UserLensRequest;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
@@ -35,5 +37,11 @@ public class FrameLensController {
     public Result deleteFrameLens(@RequestBody FrameLens frameLens){
         frameLensService.deleteFrameLens(frameLens);
         return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping("/enabledLens")
+    public Result enabledLens(@RequestBody UserLensRequest userLensRequest){
+        List<EnabledLens> list = frameLensService.enabledLens(userLensRequest);
+        return ResultGenerator.genSuccessResult(list);
     }
 }

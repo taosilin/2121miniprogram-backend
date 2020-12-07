@@ -21,6 +21,13 @@
         WHERE f.frameID=#{frameID}
     </select>
 
+    <!--用户可选镜片前端显示-->
+    <select id="enabledLens" resultType="com.example.backend.model.Lens">
+        SELECT l.lensID,l.lensName,l.price,l.refractiveIndex,l.material,l.radian,l.variety,l.film,l.design,l.state,l.description,l.descriptionB,l.deliveryTime,l.sphMin,l.sphMax,l.cylMin,l.cylMax,l.classification
+        FROM frameLens as f join lens as l on (f.lensID=l.lensID)
+        WHERE f.frameID=#{frameID}
+    </select>
+
     <delete id="deleteFrameLens" parameterType="com.example.backend.model.FrameLens">
         DELETE FROM frameLens WHERE frameID=#{frameID} AND lensID=#{lensID}
     </delete>
