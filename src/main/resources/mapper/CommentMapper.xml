@@ -16,11 +16,13 @@
         <result column="reply" jdbcType="VARCHAR" property="reply" />
         <result column="replyTime" jdbcType="TIMESTAMP" property="replyTime" />
         <result column="state" jdbcType="VARCHAR" property="state" />
+        <result column="specID" jdbcType="VARCHAR" property="specID" />
+        <result column="lensID" jdbcType="VARCHAR" property="lensID" />
     </resultMap>
 
     <insert id="addComment" parameterType="com.example.backend.model.Comment">
-        INSERT INTO comment ( commentID,orderID,productID,userID,commentTime,commentContent,evaluation,commentPhoto,reply,replyTime,state )
-        values (#{commentID},#{orderID},#{productID},#{userID},#{commentTime},#{commentContent},#{evaluation},#{commentPhoto},#{reply},#{replyTime},#{state})
+        INSERT INTO comment ( commentID,orderID,productID,userID,commentTime,commentContent,evaluation,commentPhoto,reply,replyTime,state,specID,lensID )
+        values (#{commentID},#{orderID},#{productID},#{userID},#{commentTime},#{commentContent},#{evaluation},#{commentPhoto},#{reply},#{replyTime},#{state},#{specID},#{lensID})
     </insert>
 
     <update id="replyComment" parameterType="com.example.backend.web.model.ReplyRequest">
@@ -28,13 +30,6 @@
         SET reply=#{reply}, replyTime=#{replyTime}
         WHERE commentID=#{commentID}
     </update>
-
-    <select id="commentList" parameterType="String" resultType="com.example.backend.model.Comment">
-        SELECT *
-        FROM comment
-        WHERE productID=#{productID}
-        order by commentTime desc
-    </select>
     
     <select id="allComment" resultType="com.example.backend.model.Comment">
         SELECT *
@@ -42,6 +37,7 @@
         limit #{page},#{size}
     </select>
 
+    <!--修改评论状态-->
     <update id="updateState" parameterType="com.example.backend.model.Comment">
         UPDATE comment
         SET state=#{state}
@@ -57,9 +53,17 @@
     <select id="latestComment" parameterType="String" resultType="com.example.backend.model.Comment">
         SELECT *
         FROM comment
-        WHERE productID=#{productID}
+        WHERE productID=#{productID} AND state='0'
         order by commentTime desc
         limit 0,1
+    </select>
+
+    <!--商品评论列表-->
+    <select id="commentList" parameterType="String" resultType="com.example.backend.model.Comment">
+        SELECT *
+        FROM comment
+        WHERE productID=#{productID} AND state='0'
+        order by commentTime desc
     </select>
 
 </mapper>

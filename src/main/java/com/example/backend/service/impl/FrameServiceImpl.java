@@ -124,7 +124,7 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
     }
 
     // 按分类筛选镜框
-    public List<Frame> findByFrameClass(String classification,Integer page,Integer size){
-        return frameMapper.findByFrameClass("%"+classification+"%",page*size,size);
+    public List<Frame> findByFrameClass(String state,String classification,Integer page,Integer size){
+        return frameMapper.findByFrameClass(state,"%"+classification+"%",page*size,size);
     }
 }

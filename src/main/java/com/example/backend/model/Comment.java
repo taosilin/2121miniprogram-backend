@@ -28,6 +28,10 @@ public class Comment {
 
     private String state;
 
+    private String specID;
+
+    private String lensID;
+
     public String getCommentID() {
         return commentID;
     }
@@ -117,4 +121,21 @@ public class Comment {
     public void setState(String state) {
         this.state = state;
     }
+
+    public String getSpecID() {
+        return specID;
+    }
+
+    public void setSpecID(String specID) {
+        this.specID = specID;
+    }
+
+    public String getLensID() {
+        return lensID;
+    }
+
+    public void setLensID(String lensID) {
+        this.lensID = lensID;
+    }
+
 }

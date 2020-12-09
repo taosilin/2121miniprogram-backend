@@ -10,9 +10,11 @@ import java.util.List;
 public interface CommentMapper extends Mapper<Comment> {
     public void addComment(Comment c);
     public void replyComment(ReplyRequest r);
-    public List<Comment> commentList(@Param("productID") String productID);
+
     public List<Comment> allComment(@Param("page")Integer page,@Param("size")Integer size);
     public void updateState(Comment c);
     public Integer commentTotal();
-    public Comment latestComment(@Param("productID")String productID);
+
+    public List<Comment> commentList(@Param("productID") String productID);  // 商品评论列表
+    public Comment latestComment(@Param("productID")String productID);      // 查询商品最新的一条评论
 }

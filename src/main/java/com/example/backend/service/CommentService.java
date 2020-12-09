@@ -12,11 +12,14 @@ import java.util.List;
 public interface CommentService extends Service<Comment> {
     void addComment(Comment c);
     void replyComment(ReplyRequest r);
-    List<UserComment> commentList(String productID);
+
     List<Comment> allComment(Integer page,Integer size);
     void updateState(Comment c);
     Integer commentTotal();
-    Comment latestComment(String productID);
+
     String saveImage(MultipartFile imageFile) throws Exception;
-    List<CommentResult> frameCommentList(String productID);
+
+    List<UserComment> commentList(String productID);
+    CommentResult latestComment(String productID);
+    List<CommentResult> frameCommentList(String productID);     // （用户前端显示）商品评论列表
 }

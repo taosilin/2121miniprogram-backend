@@ -1,9 +1,7 @@
 package com.example.backend.service.impl;
 
 import com.example.backend.core.ServiceException;
-import com.example.backend.dao.CommentMapper;
-import com.example.backend.dao.OrderFrameMapper;
-import com.example.backend.dao.UserMapper;
+import com.example.backend.dao.*;
 import com.example.backend.model.Comment;
 import com.example.backend.service.CommentService;
 import com.example.backend.core.AbstractService;
@@ -36,7 +34,12 @@ public class CommentServiceImpl extends AbstractService<Comment> implements Comm
     private UserMapper userMapper;
     @Resource
     private OrderFrameMapper orderFrameMapper;
-
+    @Resource
+    private SpecMapper specMapper;
+    @Resource
+    private LensMapper lensMapper;
+    @Resource
+    private ColorMapper colorMapper;
 
     public void addComment(Comment c){
         commentMapper.addComment(c);
@@ -70,8 +73,14 @@ public class CommentServiceImpl extends AbstractService<Comment> implements Comm
         return commentMapper.commentTotal();
     }
 
-    public Comment latestComment(String productID){
-        return commentMapper.latestComment(productID);
+    public CommentResult latestComment(String productID){
+        CommentResult commentResult = new CommentResult();
+        commentResult.comment = commentMapper.latestComment(productID);
+        commentResult.user = userMapper.findByUserID(commentResult.comment.getUserID());
+        commentResult.spec = specMapper.findBySpecID(commentResult.comment.getSpecID());
+        commentResult.lens = lensMapper.findByLensID(commentResult.comment.getLensID());
+        commentResult.color = colorMapper.findByColorID(Integer.parseInt(commentResult.spec.getProductSpec()));
+        return commentResult;
     }
 
     public String saveImage(MultipartFile imageFile) throws Exception {
@@ -84,6 +93,7 @@ public class CommentServiceImpl extends AbstractService<Comment> implements Comm
         return date + imageFile.getOriginalFilename();
     }
 
+    // （用户前端显示）商品评论列表
     public List<CommentResult> frameCommentList(String productID){
         List<CommentResult> commentResults = new ArrayList<>();
         List<Comment> comments = commentMapper.commentList(productID);
@@ -91,6 +101,10 @@ public class CommentServiceImpl extends AbstractService<Comment> implements Comm
             CommentResult commentResult = new CommentResult();
             commentResult.comment = comment;
             commentResult.user = userMapper.findByUserID(comment.getUserID());
+            commentResult.spec = specMapper.findBySpecID(comment.getSpecID());
+            commentResult.lens = lensMapper.findByLensID(comment.getLensID());
+            commentResult.color = colorMapper.findByColorID(Integer.parseInt(commentResult.spec.getProductSpec()));
+            commentResults.add(commentResult);
         }
         return commentResults;
     }

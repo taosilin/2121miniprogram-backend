@@ -4,6 +4,7 @@ import com.example.backend.core.Result;
 import com.example.backend.core.ResultGenerator;
 import com.example.backend.model.Comment;
 import com.example.backend.service.CommentService;
+import com.example.backend.web.model.CommentResult;
 import com.example.backend.web.model.MyRequestBody;
 import com.example.backend.web.model.ReplyRequest;
 import com.example.backend.web.model.UserComment;
@@ -56,10 +57,18 @@ public class CommentController {
         return commentService.commentTotal();
     }
 
+    // 查询商品最新的一条评论
     @PostMapping("/latest")
     public Result latestComment(@RequestBody Comment comment){
-        Comment c = commentService.latestComment(comment.getProductID());
+        CommentResult c = commentService.latestComment(comment.getProductID());
         return ResultGenerator.genSuccessResult(c);
+    }
+
+    // （用户前端显示）商品评论列表
+    @PostMapping("/frame")
+    public Result frameCommentList(@RequestBody Comment comment){
+        List<CommentResult> list = commentService.frameCommentList(comment.getProductID());
+        return ResultGenerator.genSuccessResult(list);
     }
 
     @PostMapping("/uploadImage")

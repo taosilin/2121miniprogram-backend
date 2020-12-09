@@ -88,7 +88,7 @@ public class FrameController {
 
     @PostMapping("/class")
     public Result findByFrameClass(@RequestBody MyRequestBody myRequestBody){
-        List<Frame> list = frameService.findByFrameClass(myRequestBody.sortedBy,myRequestBody.page,myRequestBody.size);
+        List<Frame> list = frameService.findByFrameClass(myRequestBody.userID,myRequestBody.sortedBy,myRequestBody.page,myRequestBody.size);
         return ResultGenerator.genSuccessResult(list);
     }
 }
