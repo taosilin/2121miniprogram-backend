@@ -12,7 +12,11 @@ public interface OrderMapper extends Mapper<Order> {
     public Order findByOrderID(@Param("orderID") String orderID);
     public List<Order> findByUserID(@Param("userID") String userID);
     public List<Order> orderList(@Param("page")Integer page,@Param("size")Integer size);
+
     public void updateOrder(Order o);
+
+    public void updateOrderState(@Param("orderID")String orderID,@Param("state")String state); // 修改订单状态
+
     public List<Order> stateFilter(@Param("state")String state,@Param("page")Integer page,@Param("size")Integer size);
     public Integer stateOrderNum(@Param("state")String state); // 查询某状态的订单数量
     public Integer orderTotal(); // 订单总数

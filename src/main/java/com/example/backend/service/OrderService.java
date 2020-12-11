@@ -13,6 +13,9 @@ public interface OrderService extends Service<Order> {
     List<OrderRequest> userOrderList(String userID);
     List<Order> orderList(String state,Integer page,Integer size);
     void updateOrder(Order o);
+
+    void updateOrderState(String orderID,String state); // 修改订单状态
+
     OrderPending orderPending();
     List<Order> findByDate(Date orderTime);
 

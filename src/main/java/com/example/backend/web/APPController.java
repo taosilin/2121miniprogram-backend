@@ -3,6 +3,7 @@ package com.example.backend.web;
 import com.example.backend.core.Result;
 import com.example.backend.core.ResultGenerator;
 import com.example.backend.web.model.APPRequestBody;
+import com.example.backend.web.model.WXLoginResult;
 import org.apache.commons.codec.binary.Base64;
 import org.json.JSONException;
 import org.springframework.web.bind.annotation.*;
@@ -40,9 +41,16 @@ public class APPController {
         JSONObject json = new JSONObject(jsonString);
         // json解析session_key值
         String session_key = json.getString("session_key");
+        String openid = json.getString("openid");
+
+        WXLoginResult wxLoginResult = new WXLoginResult();
+        wxLoginResult.session_key = json.getString("session_key");
+        wxLoginResult.openid = json.getString("openid");
+
         System.out.println("session_key：" + session_key);
+
         // 返回给前端
-        return ResultGenerator.genSuccessResult(session_key);
+        return ResultGenerator.genSuccessResult(wxLoginResult);
     }
 
 

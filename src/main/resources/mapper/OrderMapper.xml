@@ -22,6 +22,7 @@
         <result column="courierID" jdbcType="VARCHAR" property="courierID" />
         <result column="deliveryMethod" jdbcType="VARCHAR" property="deliveryMethod" />
     </resultMap>
+
     <!--添加订单-->
     <insert id="addOrder" parameterType="com.example.backend.model.Order">
         INSERT INTO orderTable ( orderID,userID,addressID,couponID,totalAmount,actualPayment,orderTime,paymentTime,receiptTime,state,remark,courierID,deliveryMethod)
@@ -53,6 +54,13 @@
     <update id="updateOrder" parameterType="com.example.backend.model.Order">
         UPDATE orderTable
         SET totalAmount=#{totalAmount},state=#{state},remark=#{remark},courierID=#{courierID},deliveryMethod=#{deliveryMethod}
+        WHERE orderID=#{orderID}
+    </update>
+
+    <!--修改订单状态-->
+    <update id="updateOrderState" parameterType="String">
+        UPDATE orderTable
+        SET state=#{state}
         WHERE orderID=#{orderID}
     </update>
 

@@ -93,6 +93,11 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
         orderMapper.updateOrder(o);
     }
 
+    // 修改订单状态
+    public void updateOrderState(String orderID,String state){
+        orderMapper.updateOrderState(orderID, state);
+    }
+
     // 待办预警
     public OrderPending orderPending(){
         OrderPending orderPending = new OrderPending();
