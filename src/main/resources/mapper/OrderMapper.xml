@@ -21,12 +21,13 @@
         <result column="remark" jdbcType="VARCHAR" property="remark" />
         <result column="courierID" jdbcType="VARCHAR" property="courierID" />
         <result column="deliveryMethod" jdbcType="VARCHAR" property="deliveryMethod" />
+        <result column="prepayID" jdbcType="VARCHAR" property="prepayID" />
     </resultMap>
 
     <!--添加订单-->
     <insert id="addOrder" parameterType="com.example.backend.model.Order">
-        INSERT INTO orderTable ( orderID,userID,addressID,couponID,totalAmount,actualPayment,orderTime,paymentTime,receiptTime,state,remark,courierID,deliveryMethod)
-        values (#{orderID},#{userID},#{addressID},#{couponID},#{totalAmount},#{actualPayment},#{orderTime},#{paymentTime},#{receiptTime},#{state},#{remark},#{courierID},#{deliveryMethod})
+        INSERT INTO orderTable ( orderID,userID,addressID,couponID,totalAmount,actualPayment,orderTime,paymentTime,receiptTime,state,remark,courierID,deliveryMethod,prepayID)
+        values (#{orderID},#{userID},#{addressID},#{couponID},#{totalAmount},#{actualPayment},#{orderTime},#{paymentTime},#{receiptTime},#{state},#{remark},#{courierID},#{deliveryMethod},#{prepayID})
     </insert>
 
     <!--根据ID查询订单详情-->

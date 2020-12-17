@@ -86,11 +86,12 @@ public class CommentServiceImpl extends AbstractService<Comment> implements Comm
     public String saveImage(MultipartFile imageFile) throws Exception {
         String folder = "/root/public/comment/";
         byte[] bytes = imageFile.getBytes();
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
-        String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
-        Path path = Paths.get(folder + date +imageFile.getOriginalFilename());
+        //SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
+        //String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
+        //Path path = Paths.get(folder + date +imageFile.getOriginalFilename());
+        Path path = Paths.get(folder +imageFile.getOriginalFilename());
         Files.write(path,bytes);
-        return date + imageFile.getOriginalFilename();
+        return imageFile.getOriginalFilename();
     }
 
     // （用户前端显示）商品评论列表

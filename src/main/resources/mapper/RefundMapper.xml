@@ -16,11 +16,12 @@
         <result column="state" jdbcType="VARCHAR" property="state" />
         <result column="type" jdbcType="VARCHAR" property="type" />
         <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="refundImage" jdbcType="VARCHAR" property="refundImage" />
     </resultMap>
 
     <insert id="addRefund" parameterType="com.example.backend.model.Refund">
-        INSERT INTO refund ( refundID,orderID,productID,specID,applicant,amount,reason,description,state,type,updateTime )
-        values ( #{refundID},#{orderID},#{productID},#{specID},#{applicant},#{amount},#{reason},#{description},#{state},#{type},#{updateTime} )
+        INSERT INTO refund ( refundID,orderID,productID,specID,applicant,amount,reason,description,state,type,updateTime,refundImage )
+        values ( #{refundID},#{orderID},#{productID},#{specID},#{applicant},#{amount},#{reason},#{description},#{state},#{type},#{updateTime},#{refundImage} )
     </insert>
 
     <select id="refundList" resultType="com.example.backend.model.Refund">

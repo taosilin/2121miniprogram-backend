@@ -27,6 +27,8 @@ public class Refund {
 
     private Timestamp updateTime;
 
+    private String refundImage;
+
     public String getRefundID() {
         return refundID;
     }
@@ -113,5 +115,13 @@ public class Refund {
 
     public void setSpecID(String specID) {
         this.specID = specID;
+    }
+
+    public String getRefundImage() {
+        return refundImage;
+    }
+
+    public void setRefundImage(String refundImage) {
+        this.refundImage = refundImage;
     }
 }

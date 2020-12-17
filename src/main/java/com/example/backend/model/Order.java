@@ -32,6 +32,8 @@ public class Order {
 
     private String deliveryMethod;
 
+    private String prepayID;
+
 
     public String getOrderID() {
         return orderID;
@@ -136,5 +138,13 @@ public class Order {
 
     public void setReceiptTime(Timestamp receiptTime) {
         this.receiptTime = receiptTime;
+    }
+
+    public String getPrepayID() {
+        return prepayID;
+    }
+
+    public void setPrepayID(String prepayID) {
+        this.prepayID = prepayID;
     }
 }
