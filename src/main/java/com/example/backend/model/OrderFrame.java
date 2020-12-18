@@ -18,6 +18,8 @@ public class OrderFrame {
 
     private Double price;
 
+    private Double actualPayment;
+
     private Double leftDegree;
 
     private Double rightDegree;
@@ -142,5 +144,13 @@ public class OrderFrame {
 
     public void setSpecID(String specID) {
         this.specID = specID;
+    }
+
+    public Double getActualPayment() {
+        return actualPayment;
+    }
+
+    public void setActualPayment(Double actualPayment) {
+        this.actualPayment = actualPayment;
     }
 }

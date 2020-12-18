@@ -8,6 +8,7 @@ public class OrderFrameResult {
     public String state;
     public Integer num;
     public Double price;
+    public Double actualPayment;
     public Double leftDegree;
     public Double rightDegree;
     public Integer interpupillary;
