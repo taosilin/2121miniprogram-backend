@@ -9,6 +9,7 @@
         <result column="orderID" jdbcType="VARCHAR" property="orderID" />
         <result column="productID" jdbcType="VARCHAR" property="productID" />
         <result column="specID" jdbcType="VARCHAR" property="specID" />
+        <result column="lensID" jdbcType="VARCHAR" property="lensID" />
         <result column="applicant" jdbcType="VARCHAR" property="applicant" />
         <result column="amount" jdbcType="DECIMAL" property="amount" />
         <result column="reason" jdbcType="VARCHAR" property="reason" />
@@ -17,11 +18,18 @@
         <result column="type" jdbcType="VARCHAR" property="type" />
         <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
         <result column="refundImage" jdbcType="VARCHAR" property="refundImage" />
+        <result column="leftDegree" jdbcType="DECIMAL" property="leftDegree" />
+        <result column="rightDegree" jdbcType="DECIMAL" property="rightDegree" />
+        <result column="interpupillary" jdbcType="INTEGER" property="interpupillary" />
+        <result column="leftAstigmatism" jdbcType="DECIMAL" property="leftAstigmatism" />
+        <result column="rightAstigmatism" jdbcType="DECIMAL" property="rightAstigmatism" />
+        <result column="leftAxis" jdbcType="INTEGER" property="leftAxis" />
+        <result column="rightAxis" jdbcType="INTEGER" property="rightAxis" />
     </resultMap>
 
     <insert id="addRefund" parameterType="com.example.backend.model.Refund">
-        INSERT INTO refund ( refundID,orderID,productID,specID,applicant,amount,reason,description,state,type,updateTime,refundImage )
-        values ( #{refundID},#{orderID},#{productID},#{specID},#{applicant},#{amount},#{reason},#{description},#{state},#{type},#{updateTime},#{refundImage} )
+        INSERT INTO refund ( refundID,orderID,productID,specID,lensID,applicant,amount,reason,description,state,type,updateTime,refundImage,leftDegree,rightDegree,interpupillary,leftAstigmatism,rightAstigmatism,leftAxis,rightAxis )
+        values ( #{refundID},#{orderID},#{productID},#{specID},#{lensID},#{applicant},#{amount},#{reason},#{description},#{state},#{type},#{updateTime},#{refundImage},#{leftDegree},#{rightDegree},#{interpupillary},#{leftAstigmatism},#{rightAstigmatism},#{leftAxis},#{rightAxis} )
     </insert>
 
     <select id="refundList" resultType="com.example.backend.model.Refund">
