@@ -13,6 +13,8 @@ public class User {
     @Id
     private String userID;
 
+    private String phoneNumber;
+
     private String nickname;
 
     private String gender;
@@ -27,6 +29,14 @@ public class User {
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getNickname(){
@@ -60,4 +70,5 @@ public class User {
     public void setRegistrationTime(Date registrationTime) {
         this.registrationTime = registrationTime;
     }
+
 }

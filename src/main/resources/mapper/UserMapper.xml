@@ -6,6 +6,7 @@
           WARNING - @mbg.generated
         -->
         <id column="userID" jdbcType="VARCHAR" property="userID" />
+        <result column="phoneNumber" jdbcType="VARCHAR" property="phoneNumber" />
         <result column="nickname" jdbcType="VARCHAR" property="nickname" />
         <result column="gender" jdbcType="VARCHAR" property="gender" />
         <result column="avatarUrl" jdbcType="VARCHAR" property="avatarUrl" />
@@ -19,7 +20,7 @@
 
 
     <insert id="addUser" parameterType="com.example.backend.model.User" >
-        INSERT INTO user ( userID,nickname,gender,avatarUrl,registrationTime ) values(#{userID},#{nickname},#{gender},#{avatarUrl},#{registrationTime})
+        INSERT INTO user ( userID,phoneNumber,nickname,gender,avatarUrl,registrationTime ) values(#{userID},#{phoneNumber},#{nickname},#{gender},#{avatarUrl},#{registrationTime})
     </insert>
 
     
