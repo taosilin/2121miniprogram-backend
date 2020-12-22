@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.example.backend.web.model.CommentResult;
 import com.example.backend.web.model.ReplyRequest;
@@ -108,5 +109,10 @@ public class CommentServiceImpl extends AbstractService<Comment> implements Comm
             commentResults.add(commentResult);
         }
         return commentResults;
+    }
+
+    @Override
+    public Map<String, Object> findApprovalRatingAndCommentCoutByProductID(String productID) {
+        return commentMapper.findApprovalRatingAndCommentCoutByProductID(productID);
     }
 }

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/comment")
@@ -62,6 +63,18 @@ public class CommentController {
     public Result latestComment(@RequestBody Comment comment){
         CommentResult c = commentService.latestComment(comment.getProductID());
         return ResultGenerator.genSuccessResult(c);
+    }
+
+    // 获取商品好评率和评价总数
+    @GetMapping(value = "productCommentByProductID/{productID}")
+    public Result productCommentByProductID(@PathVariable("productID") String productID){
+        Map<String ,Object> infoMap = commentService.findApprovalRatingAndCommentCoutByProductID(productID);
+        if(infoMap.get("approvalRating")!=null){
+            String approvalRating = infoMap.get("approvalRating").toString();
+            infoMap.put("approvalRatingStr2",approvalRating.substring(0,approvalRating.indexOf("."))+"%");
+            infoMap.put("approvalRatingStr",approvalRating.substring(0,approvalRating.indexOf(".")));
+        }
+        return ResultGenerator.genSuccessResult(infoMap);
     }
 
     // （用户前端显示）商品评论列表

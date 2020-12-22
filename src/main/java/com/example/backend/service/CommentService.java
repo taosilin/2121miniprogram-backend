@@ -8,6 +8,7 @@ import com.example.backend.web.model.UserComment;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CommentService extends Service<Comment> {
     void addComment(Comment c);
@@ -22,4 +23,6 @@ public interface CommentService extends Service<Comment> {
     List<UserComment> commentList(String productID);
     CommentResult latestComment(String productID);
     List<CommentResult> frameCommentList(String productID);     // （用户前端显示）商品评论列表
+
+    public Map<String, Object> findApprovalRatingAndCommentCoutByProductID(String productID);
 }
