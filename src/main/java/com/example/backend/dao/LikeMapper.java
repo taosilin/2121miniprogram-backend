@@ -11,4 +11,6 @@ public interface LikeMapper extends Mapper<Like>{
     public void deleteLike(Like l);
     public List<Product> likeList(String userID);
     public List<Frame> likeFrameList(String userID);
+
+    public int findUserIsLike(@Param("userID")String userID,@Param("productID")String productID);
 }

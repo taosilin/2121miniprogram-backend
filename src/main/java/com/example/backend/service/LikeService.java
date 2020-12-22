@@ -12,4 +12,6 @@ public interface LikeService extends Service<Like>{
     void deleteLike(Like l);
     List<Product> likeList(String userID);
     List<Frame> likeFrameList(String userID);
+
+    public int findUserIsLike(String userID,String productID);
 }

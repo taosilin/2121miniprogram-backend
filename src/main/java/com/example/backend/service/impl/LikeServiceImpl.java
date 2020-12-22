@@ -39,4 +39,9 @@ public class LikeServiceImpl extends AbstractService<Like> implements LikeServic
     public List<Frame> likeFrameList(String userID){
         return likeMapper.likeFrameList(userID);
     }
+
+    @Override
+    public int findUserIsLike(String userID, String productID) {
+        return likeMapper.findUserIsLike(userID,productID);
+    }
 }

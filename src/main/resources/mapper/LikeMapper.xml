@@ -30,4 +30,14 @@
         FROM likeTable as l join frame as f on (l.productID=f.frameID)
         WHERE l.userID=#{userID}
     </select>
+    
+    <select id="findUserIsLike" resultType="int">
+        SELECT
+            count(productID) as cout
+        FROM
+            likeTable
+        WHERE
+            productID = #{productID}
+            AND userID = #{userID}
+    </select>
 </mapper>

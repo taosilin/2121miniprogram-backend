@@ -43,4 +43,10 @@ public class LikeController {
         List<Frame> list = likeService.likeFrameList(like.getUserID());
         return ResultGenerator.genSuccessResult(list);
     }
+
+    @PostMapping("/findUserIsLike")
+    public Result findUserIsLike(@RequestBody Like like){
+        int i = likeService.findUserIsLike(like.getUserID(),like.getProductID());
+        return ResultGenerator.genSuccessResult(i>0?true:false);
+    }
 }
