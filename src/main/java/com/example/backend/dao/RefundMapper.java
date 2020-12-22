@@ -10,5 +10,5 @@ public interface RefundMapper extends Mapper<Refund> {
     public void addRefund(Refund r);
     public List<Refund> refundList(@Param("page")Integer page,@Param("size")Integer size);
     public Integer refundTotal();
-    public Refund findByOrderID(@Param("orderID")String orderID);
+    public List<Refund> findByOrderID(@Param("orderID")String orderID);
 }

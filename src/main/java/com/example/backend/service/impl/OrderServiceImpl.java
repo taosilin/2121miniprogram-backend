@@ -66,7 +66,7 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
         orderRequest.order = orderMapper.findByOrderID(orderID);
         orderRequest.products = orderProductMapper.findOrderProduct(orderID);
         orderRequest.frames = orderFrameMapper.findOrderFrame(orderID);
-        orderRequest.refund = refundMapper.findByOrderID(orderID);
+        orderRequest.refunds = refundMapper.findByOrderID(orderID);
         orderRequest.address = addressMapper.findByAddressID(orderRequest.order.getAddressID());
         return orderRequest;
     }

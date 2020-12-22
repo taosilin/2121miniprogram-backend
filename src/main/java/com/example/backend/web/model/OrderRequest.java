@@ -8,6 +8,6 @@ public class OrderRequest {
     public Order order;
     public List<OrderProductResult> products;
     public List<OrderFrameResult> frames;
-    public Refund refund;
+    public List<Refund> refunds;
     public Address address;
 }
