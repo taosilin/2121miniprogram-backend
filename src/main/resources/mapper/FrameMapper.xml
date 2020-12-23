@@ -35,7 +35,7 @@
             fr.* ,IFNULL(cm.cout,0) as commmentCout
         FROM
             frame fr
-        LEFT JOIN (SELECT count(*) as cout , productID FROM comment WHERE evaluation > 1 ORDER BY productID ) cm on fr.frameID = cm.productID
+        LEFT JOIN (SELECT count(*) as cout , productID FROM comment WHERE evaluation > 1 GROUP BY productID ) cm on fr.frameID = cm.productID
         limit #{page},#{size}
     </select>
 
@@ -76,7 +76,7 @@
             fr.* ,IFNULL(cm.cout,0) as commmentCout
         FROM
             frame fr
-        LEFT JOIN (SELECT count(*) as cout , productID FROM comment WHERE evaluation > 1 ORDER BY productID ) cm on fr.frameID = cm.productID
+        LEFT JOIN (SELECT count(*) as cout , productID FROM comment WHERE evaluation > 1 GROUP BY productID ) cm on fr.frameID = cm.productID
         WHERE frameName like #{searchString}
     </select>
 
@@ -86,7 +86,7 @@
             fr.* ,IFNULL(cm.cout,0) as commmentCout
         FROM
             frame fr
-        LEFT JOIN (SELECT count(*) as cout , productID FROM comment WHERE evaluation > 1 ORDER BY productID ) cm on fr.frameID = cm.productID
+        LEFT JOIN (SELECT count(*) as cout , productID FROM comment WHERE evaluation > 1 GROUP BY productID ) cm on fr.frameID = cm.productID
         WHERE classification like #{classification} AND state=#{state}
         limit #{page},#{size}
     </select>

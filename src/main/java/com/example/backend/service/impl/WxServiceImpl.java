@@ -1,5 +1,6 @@
 package com.example.backend.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.backend.core.WXConfigUtil;
 import com.example.backend.service.WxService;
 
@@ -8,6 +9,8 @@ import com.github.wxpay.sdk.WXPay;
 import com.github.wxpay.sdk.WXPayConstants;
 import com.github.wxpay.sdk.WXPayUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +23,8 @@ import java.util.Map;
 @Service
 @Slf4j
 public class WxServiceImpl implements WxService {
+
+    private static Logger longger = LoggerFactory.getLogger("WxService");
     public static final String SPBILL_CREATE_IP = "129.211.168.202";
     public static final String NOTIFY_URL = "http://www.weixin.qq.com/wxpay/pay.php";
     public static final String TRADE_TYPE = "JSAPI";
@@ -71,7 +76,7 @@ public class WxServiceImpl implements WxService {
     @Override
     public Map doUnifiedOrder(WXPayRequest wxPayRequest) throws Exception {
         try {
-
+            longger.info("----------------->"+ JSONObject.toJSON(wxPayRequest));
             WXConfigUtil config = new WXConfigUtil();
 
             WXPay wxpay = new WXPay(config);
@@ -104,9 +109,9 @@ public class WxServiceImpl implements WxService {
 
             data.put("fee_type", "CNY");
 
-            float actualAmount = Float.valueOf(wxPayRequest.actualAmount)*100;
+//            float actualAmount = Float.valueOf(wxPayRequest.actualAmount)*100;
             // 单位为分
-            data.put("total_fee", String.valueOf(actualAmount));
+            data.put("total_fee", wxPayRequest.actualAmount);
 
             //自己的服务器IP地址
             data.put("spbill_create_ip", SPBILL_CREATE_IP);
