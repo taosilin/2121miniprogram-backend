@@ -104,8 +104,9 @@ public class WxServiceImpl implements WxService {
 
             data.put("fee_type", "CNY");
 
+            float actualAmount = Float.valueOf(wxPayRequest.actualAmount)*100;
             // 单位为分
-            data.put("total_fee", "1");
+            data.put("total_fee", String.valueOf(actualAmount));
 
             //自己的服务器IP地址
             data.put("spbill_create_ip", SPBILL_CREATE_IP);
