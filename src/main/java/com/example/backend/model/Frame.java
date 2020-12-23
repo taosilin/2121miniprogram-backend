@@ -34,6 +34,8 @@ public class Frame {
 
     private String keyword;
 
+    private String commmentCout;
+
     public String getFrameID() {
         return frameID;
     }
@@ -120,6 +122,14 @@ public class Frame {
 
     public void setClassification(String classification) {
         this.classification = classification;
+    }
+
+    public String getCommmentCout() {
+        return commmentCout;
+    }
+
+    public void setCommmentCout(String commmentCout) {
+        this.commmentCout = commmentCout;
     }
 
     public String getTab() {

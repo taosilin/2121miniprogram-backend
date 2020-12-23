@@ -71,8 +71,13 @@ public class CommentController {
         Map<String ,Object> infoMap = commentService.findApprovalRatingAndCommentCoutByProductID(productID);
         if(infoMap.get("approvalRating")!=null){
             String approvalRating = infoMap.get("approvalRating").toString();
-            infoMap.put("approvalRatingStr2",approvalRating.substring(0,approvalRating.indexOf("."))+"%");
-            infoMap.put("approvalRatingStr",approvalRating.substring(0,approvalRating.indexOf(".")));
+            if(approvalRating.equals("0.00")){
+                approvalRating = "100.00";
+                infoMap.put("approvalRating",approvalRating);
+            }
+                infoMap.put("approvalRatingStr2",approvalRating.substring(0,approvalRating.indexOf("."))+"%");
+                infoMap.put("approvalRatingStr",approvalRating.substring(0,approvalRating.indexOf(".")));
+
         }
         return ResultGenerator.genSuccessResult(infoMap);
     }
