@@ -72,8 +72,11 @@
 
     <!--按镜框名称搜索-->
     <select id="searchByFrameName" parameterType="String" resultType="com.example.backend.model.Frame">
-        SELECT *
-        FROM frame
+        SELECT
+            fr.* ,IFNULL(cm.cout,0) as commmentCout
+        FROM
+            frame fr
+        LEFT JOIN (SELECT count(*) as cout , productID FROM comment WHERE evaluation > 1 ORDER BY productID ) cm on fr.frameID = cm.productID
         WHERE frameName like #{searchString}
     </select>
 
