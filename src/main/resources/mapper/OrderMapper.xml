@@ -65,6 +65,20 @@
         WHERE orderID=#{orderID}
     </update>
 
+    <!--用户付款 修改订单状态-->
+    <update id="payOrder" parameterType="com.example.backend.model.Order">
+        UPDATE orderTable
+        SET state=#{state},paymentTime=#{paymentTime}
+        WHERE orderID=#{orderID}
+    </update>
+
+    <!--用户确认收货 修改订单状态-->
+    <update id="confirmOrder" parameterType="com.example.backend.model.Order">
+        UPDATE orderTable
+        SET state=#{state},paymentTime=#{paymentTime}
+        WHERE orderID=#{orderID}
+    </update>
+
     <!--按状态筛选订单 列表 分页-->
     <select id="stateFilter" resultType="com.example.backend.model.Order">
         SELECT *

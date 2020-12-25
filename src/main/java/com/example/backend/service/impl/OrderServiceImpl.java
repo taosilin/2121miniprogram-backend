@@ -8,6 +8,7 @@ import com.example.backend.model.OrderProduct;
 import com.example.backend.service.OrderService;
 import com.example.backend.core.AbstractService;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -95,7 +96,24 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
 
     // 修改订单状态
     public void updateOrderState(String orderID,String state){
-        orderMapper.updateOrderState(orderID, state);
+        if (state.equals("2")){
+            Order order = new Order();
+            order.setOrderID(orderID);
+            order.setState(state);
+            order.setPaymentTime(new Timestamp(System.currentTimeMillis()));
+            orderMapper.payOrder(order);
+        }
+        else if (state.equals("7")){
+            Order order = new Order();
+            order.setOrderID(orderID);
+            order.setState(state);
+            order.setPaymentTime(new Timestamp(System.currentTimeMillis()));
+            orderMapper.confirmOrder(order);
+        }
+        else{
+            orderMapper.updateOrderState(orderID, state);
+        }
+
     }
 
     // 待办预警

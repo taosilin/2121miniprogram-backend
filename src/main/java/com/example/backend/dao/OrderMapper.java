@@ -16,6 +16,8 @@ public interface OrderMapper extends Mapper<Order> {
     public void updateOrder(Order o);
 
     public void updateOrderState(@Param("orderID")String orderID,@Param("state")String state); // 修改订单状态
+    public void payOrder(Order o); // 用户付款
+    public void confirmOrder(Order o); // 用户下单
 
     public List<Order> stateFilter(@Param("state")String state,@Param("page")Integer page,@Param("size")Integer size);
     public Integer stateOrderNum(@Param("state")String state); // 查询某状态的订单数量
