@@ -78,4 +78,8 @@ public class UserCouponServiceImpl extends AbstractService<UserCoupon> implement
         return couponList;
     }
 
+    public void couponExpired(UserCoupon u){
+        userCouponMapper.updateCouponState("0",u.getUserID(),u.getCouponID());
+    }
+
 }

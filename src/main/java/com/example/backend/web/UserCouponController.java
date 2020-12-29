@@ -40,4 +40,11 @@ public class UserCouponController {
         CouponList couponList = userCouponService.enabledCoupons(userCouponRequest.userID, userCouponRequest.totalAmount);
         return ResultGenerator.genSuccessResult(couponList);
     }
+
+    // 优惠券过期
+    @PostMapping("/expired")
+    public Result couponExpired(@RequestBody UserCoupon userCoupon){
+        userCouponService.couponExpired(userCoupon);
+        return ResultGenerator.genSuccessResult();
+    }
 }
