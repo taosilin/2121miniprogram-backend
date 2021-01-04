@@ -104,6 +104,7 @@ public class FrameServiceImpl extends AbstractService<Frame> implements FrameSer
         return p;
     }
 
+    // 查询镜框总数
     public Integer frameTotal(){
         return frameMapper.frameTotal();
     }

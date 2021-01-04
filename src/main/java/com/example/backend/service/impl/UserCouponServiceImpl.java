@@ -47,6 +47,7 @@ public class UserCouponServiceImpl extends AbstractService<UserCoupon> implement
     }
 
     public List<UserCouponResult> couponList(String userID){
+        userCouponMapper.couponExpired(userID);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");// 格式化时间
         List<UserCouponResult> couponList = userCouponMapper.couponList(userID);
         List<UserCouponResult> resultList = new ArrayList<>();
@@ -65,6 +66,7 @@ public class UserCouponServiceImpl extends AbstractService<UserCoupon> implement
     }
 
     public CouponList enabledCoupons(String userID,Double totalAmount){
+        userCouponMapper.couponExpired(userID);
         CouponList couponList = new CouponList();
         List<UserCouponResult> coupons = userCouponMapper.couponList(userID);
         for (UserCouponResult c:coupons){
@@ -78,8 +80,8 @@ public class UserCouponServiceImpl extends AbstractService<UserCoupon> implement
         return couponList;
     }
 
-    public void couponExpired(UserCoupon u){
-        userCouponMapper.updateCouponState("0",u.getUserID(),u.getCouponID());
-    }
+//    public void couponExpired(UserCoupon u){
+//        userCouponMapper.updateCouponState("0",u.getUserID(),u.getCouponID());
+//    }
 
 }

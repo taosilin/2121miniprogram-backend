@@ -14,13 +14,14 @@
         <result column="classification" jdbcType="VARCHAR" property="classification" />
         <result column="tab" jdbcType="VARCHAR" property="tab" />
         <result column="keyword" jdbcType="VARCHAR" property="keyword" />
-        <result column="state" jdbcType="VARCHAR" property="state" />
+        <result column="state" jdbcType="VARCHAR" property="state"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
 
     </resultMap>
 
     <insert id="addProduct" parameterType="com.example.backend.model.Product">
-        INSERT INTO product (productID,productName,sketch,coverImage,imageList,description,classification,tab,keyword,state)
-        values(#{productID},#{productName},#{sketch},#{coverImage},#{imageList},#{description},#{classification},#{tab},#{keyword},#{state})
+        INSERT INTO product (productID,productName,sketch,coverImage,imageList,description,classification,tab,keyword,state,price)
+        values(#{productID},#{productName},#{sketch},#{coverImage},#{imageList},#{description},#{classification},#{tab},#{keyword},#{state},#{price})
     </insert>
 
     <select id="productDetail" parameterType="String" resultType="com.example.backend.model.Product">
@@ -31,7 +32,7 @@
 
     <update id="updateProduct" parameterType="com.example.backend.model.Product">
         UPDATE product
-        SET productName=#{productName},sketch=#{sketch},coverImage=#{coverImage},imageList=#{imageList},description=#{description},classification=#{classification},tab=#{tab},keyword=#{keyword},state=#{state}
+        SET productName=#{productName},sketch=#{sketch},coverImage=#{coverImage},imageList=#{imageList},description=#{description},classification=#{classification},tab=#{tab},keyword=#{keyword},state=#{state},price=#{price}
         WHERE productID=#{productID}
     </update>
 

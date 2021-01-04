@@ -12,4 +12,5 @@ public interface UserCouponMapper extends Mapper<UserCoupon> {
     public void getCoupon(UserCoupon u);
     public List<UserCouponResult> couponList(@Param("userID") String userID);
     public void updateCouponState(@Param("state")String state,@Param("userID")String userID,@Param("couponID")String couponID);
+    public void couponExpired(@Param("userID")String userID);
 }

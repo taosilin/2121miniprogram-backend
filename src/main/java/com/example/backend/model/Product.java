@@ -24,6 +24,8 @@ public class Product {
 
     private String state;
 
+    private Double price;
+
     public String getProductID() {
         return productID;
     }
@@ -102,5 +104,13 @@ public class Product {
 
     public void setKeyword(String keyword) {
         this.keyword = keyword;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

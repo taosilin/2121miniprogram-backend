@@ -31,4 +31,10 @@
         WHERE userID=#{userID} AND couponID=#{couponID}
     </update>
 
+    <!--用户优惠券过期-->
+    <update id="couponExpired" parameterType="String">
+        UPDATE userCoupon
+        SET state='0'
+        WHERE userID=#{userID} AND state='1' AND to_days(now())>to_days(deadline)
+    </update>
 </mapper>
