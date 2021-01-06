@@ -110,6 +110,13 @@ public class OrderServiceImpl extends AbstractService<Order> implements OrderSer
             order.setPaymentTime(new Timestamp(System.currentTimeMillis()));
             orderMapper.confirmOrder(order);
         }
+        else if (state.equals("8")){
+            Order order = orderMapper.findByOrderID(orderID);
+            if (order.getCouponID()!=null){
+                userCouponMapper.updateCouponState("1",order.getUserID(),order.getCouponID());
+            }
+            orderMapper.updateOrderState(orderID, state);
+        }
         else{
             orderMapper.updateOrderState(orderID, state);
         }
