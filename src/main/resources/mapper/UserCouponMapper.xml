@@ -12,7 +12,7 @@
         <result column="deadline" jdbcType="DATE" property="deadline" />
 
     </resultMap>
-
+    <!--用户领取优惠券-->
     <insert id="getCoupon" parameterType="com.example.backend.model.UserCoupon" >
         INSERT INTO userCoupon ( userID,couponID,state,receiveTime,deadline ) values(#{userID},#{couponID},#{state},#{receiveTime},#{deadline})
     </insert>
@@ -37,4 +37,5 @@
         SET state='0'
         WHERE userID=#{userID} AND state='1' AND to_days(now())>to_days(deadline)
     </update>
+
 </mapper>

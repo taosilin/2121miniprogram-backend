@@ -41,10 +41,14 @@ public class UserCouponController {
         return ResultGenerator.genSuccessResult(couponList);
     }
 
-//    // 优惠券过期
-//    @PostMapping("/expired")
-//    public Result couponExpired(@RequestBody UserCoupon userCoupon){
-//        userCouponService.couponExpired(userCoupon);
-//        return ResultGenerator.genSuccessResult();
-//    }
+    // 用户根据优惠券码兑换优惠券
+    @PostMapping("/getByCouponCode")
+    public Result getByCouponCode(@RequestBody MyRequestBody myRequestBody){
+        if (userCouponService.getByCouponCode(myRequestBody.userID, myRequestBody.sortedBy)){
+            return ResultGenerator.genSuccessResult("领取成功！");
+        }
+        else{
+            return ResultGenerator.genFailResult("优惠券码不正确");
+        }
+    }
 }

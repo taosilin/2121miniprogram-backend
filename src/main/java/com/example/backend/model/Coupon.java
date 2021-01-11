@@ -18,6 +18,14 @@ public class Coupon {
 
     private Integer timeLimit;
 
+    private String couponCode;
+
+    private Integer num;
+
+    private Integer remain;
+
+    private String couponType;
+
     public String getCouponID() {
         return couponID;
     }
@@ -72,5 +80,37 @@ public class Coupon {
 
     public void setDiscount(Double discount) {
         this.discount = discount;
+    }
+
+    public String getCouponCode() {
+        return couponCode;
+    }
+
+    public void setCouponCode(String couponCode) {
+        this.couponCode = couponCode;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
+    public Integer getRemain() {
+        return remain;
+    }
+
+    public void setRemain(Integer remain) {
+        this.remain = remain;
+    }
+
+    public String getCouponType() {
+        return couponType;
+    }
+
+    public void setCouponType(String couponType) {
+        this.couponType = couponType;
     }
 }

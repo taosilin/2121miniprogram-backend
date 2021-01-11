@@ -12,5 +12,5 @@ public interface UserCouponService extends Service<UserCoupon> {
     void getCoupon(UserCoupon u);
     List<UserCouponResult> couponList(String userID);
     CouponList enabledCoupons(String userID,Double totalAmount);
-    // void couponExpired(UserCoupon u);
+    boolean getByCouponCode(String userID,String couponCode);
 }

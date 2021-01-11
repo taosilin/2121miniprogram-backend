@@ -12,10 +12,15 @@
         <result column="description" jdbcType="VARCHAR" property="description" />
         <result column="productType" jdbcType="VARCHAR" property="productType" />
         <result column="timeLimit" jdbcType="INTEGER" property="timeLimit" />
+        <result column="couponCode" jdbcType="VARCHAR" property="couponCode" />
+        <result column="num" jdbcType="INTEGER" property="num" />
+        <result column="remain" jdbcType="INTEGER" property="remain" />
+        <result column="couponType" jdbcType="VARCHAR" property="couponType" />
     </resultMap>
 
     <insert id="addCoupon" parameterType="com.example.backend.model.Coupon" >
-        INSERT INTO coupon ( couponID,couponName,restriction,discount,description,productType,timeLimit ) values(#{couponID},#{couponName},#{restriction},#{discount},#{description},#{productType},#{timeLimit})
+        INSERT INTO coupon ( couponID,couponName,restriction,discount,description,productType,timeLimit,couponCode,num,remain,couponType )
+        values(#{couponID},#{couponName},#{restriction},#{discount},#{description},#{productType},#{timeLimit},#{couponCode},#{num},#{remain},#{couponType})
     </insert>
 
     <select id="findByCouponID" parameterType="String" resultType="com.example.backend.model.Coupon">
@@ -38,4 +43,17 @@
     <select id="couponTotal" resultType="Integer">
         SELECT COUNT(*) FROM coupon
     </select>
+
+    <select id="findByCouponCode" parameterType="String" resultType="com.example.backend.model.Coupon">
+        SELECT *
+        FROM coupon
+        WHERE couponCode=#{couponCode}
+    </select>
+
+    <update id="updateCouponNum" parameterType="String">
+        UPDATE coupon
+        SET remain=remain-1
+        WHERE couponID=#{couponID}
+    </update>
+
 </mapper>

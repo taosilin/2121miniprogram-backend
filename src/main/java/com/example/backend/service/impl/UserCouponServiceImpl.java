@@ -80,8 +80,23 @@ public class UserCouponServiceImpl extends AbstractService<UserCoupon> implement
         return couponList;
     }
 
-//    public void couponExpired(UserCoupon u){
-//        userCouponMapper.updateCouponState("0",u.getUserID(),u.getCouponID());
-//    }
-
+    public boolean getByCouponCode(String userID,String couponCode){
+        Coupon coupon = couponMapper.findByCouponCode(couponCode);
+        if (coupon!=null){
+            UserCoupon u = new UserCoupon();
+            u.setUserID(userID);
+            u.setCouponID(coupon.getCouponID());
+            u.setReceiveTime(new Date());
+            u.setState(1);
+            Calendar ca = Calendar.getInstance();
+            ca.setTime(new Date());// 获取的是当天的日期，可以自己获取需要计算的时间，传进来就可以，需要注意的是日期类型。
+            ca.add(ca.DATE, coupon.getTimeLimit());
+            u.setDeadline(ca.getTime());
+            userCouponMapper.getCoupon(u);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
