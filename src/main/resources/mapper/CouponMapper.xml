@@ -44,16 +44,18 @@
         SELECT COUNT(*) FROM coupon
     </select>
 
+    <!--按优惠券码查找优惠券-->
     <select id="findByCouponCode" parameterType="String" resultType="com.example.backend.model.Coupon">
         SELECT *
         FROM coupon
         WHERE couponCode=#{couponCode}
     </select>
 
+    <!--用户领取优惠券数量扣减-->
     <update id="updateCouponNum" parameterType="String">
         UPDATE coupon
         SET remain=remain-1
-        WHERE couponID=#{couponID}
+        WHERE couponID=#{couponID} AND remain-1>=0
     </update>
 
 </mapper>

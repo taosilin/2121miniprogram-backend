@@ -82,7 +82,7 @@ public class UserCouponServiceImpl extends AbstractService<UserCoupon> implement
 
     public boolean getByCouponCode(String userID,String couponCode){
         Coupon coupon = couponMapper.findByCouponCode(couponCode);
-        if (coupon!=null){
+        if (coupon!=null&&coupon.getRemain()>0){
             UserCoupon u = new UserCoupon();
             u.setUserID(userID);
             u.setCouponID(coupon.getCouponID());
@@ -93,6 +93,7 @@ public class UserCouponServiceImpl extends AbstractService<UserCoupon> implement
             ca.add(ca.DATE, coupon.getTimeLimit());
             u.setDeadline(ca.getTime());
             userCouponMapper.getCoupon(u);
+            couponMapper.updateCouponNum(coupon.getCouponID());
             return true;
         }
         else{
