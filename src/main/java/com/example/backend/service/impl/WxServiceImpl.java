@@ -26,7 +26,7 @@ public class WxServiceImpl implements WxService {
 
     private static Logger longger = LoggerFactory.getLogger("WxService");
     public static final String SPBILL_CREATE_IP = "129.211.168.202";
-    public static final String NOTIFY_URL = "http://www.weixin.qq.com/wxpay/pay.php";
+    public static final String NOTIFY_URL = "https://from2121.com:8443/order/notify";
     public static final String TRADE_TYPE = "JSAPI";
 
     @Override
