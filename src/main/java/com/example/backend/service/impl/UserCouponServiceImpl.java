@@ -81,19 +81,21 @@ public class UserCouponServiceImpl extends AbstractService<UserCoupon> implement
     }
 
     public boolean getByCouponCode(String userID,String couponCode){
-        Coupon coupon = couponMapper.findByCouponCode(couponCode);
-        if (coupon!=null&&coupon.getRemain()>0){
-            UserCoupon u = new UserCoupon();
-            u.setUserID(userID);
-            u.setCouponID(coupon.getCouponID());
-            u.setReceiveTime(new Date());
-            u.setState(1);
-            Calendar ca = Calendar.getInstance();
-            ca.setTime(new Date());// 获取的是当天的日期，可以自己获取需要计算的时间，传进来就可以，需要注意的是日期类型。
-            ca.add(ca.DATE, coupon.getTimeLimit());
-            u.setDeadline(ca.getTime());
-            userCouponMapper.getCoupon(u);
-            couponMapper.updateCouponNum(coupon.getCouponID());
+        List<Coupon> coupons = couponMapper.findByCouponCode(couponCode);
+        if (coupons.size()>0){
+            for (Coupon coupon:coupons){
+                UserCoupon u = new UserCoupon();
+                u.setUserID(userID);
+                u.setCouponID(coupon.getCouponID());
+                u.setReceiveTime(new Date());
+                u.setState(1);
+                Calendar ca = Calendar.getInstance();
+                ca.setTime(new Date());// 获取的是当天的日期，可以自己获取需要计算的时间，传进来就可以，需要注意的是日期类型。
+                ca.add(ca.DATE, coupon.getTimeLimit());
+                u.setDeadline(ca.getTime());
+                userCouponMapper.getCoupon(u);
+                couponMapper.updateCouponNum(coupon.getCouponID());
+            }
             return true;
         }
         else{

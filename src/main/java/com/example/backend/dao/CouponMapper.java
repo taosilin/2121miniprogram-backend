@@ -12,6 +12,6 @@ public interface CouponMapper extends Mapper<Coupon>{
     public List<Coupon> couponList(@Param("page")Integer page,@Param("size")Integer size);
     public void deleteCoupon(@Param("couponID")String couponID);
     public Integer couponTotal();
-    public Coupon findByCouponCode(@Param("couponCode")String couponCode);
+    public List<Coupon> findByCouponCode(@Param("couponCode")String couponCode);
     public void updateCouponNum(@Param("couponID")String couponID);
 }
